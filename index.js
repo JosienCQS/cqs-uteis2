@@ -274,7 +274,7 @@
             if(Desc == false && Sign == false && Exem ==  true) MSG = 'estrutura'                                                               +' e '+'exemplo'
             if(Desc == false && Sign == false && Exem == false) MSG = 'estrutura'
 
-            console.log('Versão atual: v1.0 de 27 jun 2021 by Zienaps\n\nCOMO USAR AS FUNÇÕES:\n')
+            console.log('Versão atual: v1.1 de 03 jul 2021 by Zienaps\n\nCOMO USAR AS FUNÇÕES:\n')
             console.log('Mostrando '+MSG+' das funções disponíveis. Veja melhor no ReadMe')
             
             if(Func == true) console.log('\nrandomize(Min, {Max}, {Dec})')

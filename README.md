@@ -1,5 +1,5 @@
 # SOBRE
-Versão atual: v1.0 de 27 jun 2021 by Zienaps
+Versão atual: v1.1 de 3 jul 2021 by Zienaps
 
 # COMO USAR AS FUNÇÕES
 ## randomize(Min, {Max}, {Dec})
