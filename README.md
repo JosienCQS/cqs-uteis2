@@ -11,15 +11,19 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
    
    > Dec        [Int] (Opc) = Quantidade de casas decimais no resultado (Padrão: Resultado inteiro)
   
- - Exemplo:
+  Exemplo:
    randomize(5, 30.5, 2)
+    
     PROCESSO: [ Sorteio ] 13,27787 >> [ Arred. para Dec casa ] 13.3
+    
     O sistema irá sortear um número entre o Min e o Max e depois arredondará mantendo a quantidade de casas decimais definida em Dec
-  Sortear um elemento de um vetor [randomize(Min)]:
+
+- Sortear um elemento de um vetor [randomize(Min)]:
    > Min        [Array] = Adicione o vetor com os valores no qual queira ser sorteado
   
- - Exemplo:
+  Exemplo:
    randomize([2, 5, 'B', 'D', 'JOTA'])
+    
     PROCESSO: [ Sorteio ] 3.43543 >> [ Ver posição ] 3 >> [ Trazer posição ] 'D'
     
     O sistema irá sortear um número aleatório entre 0 e o tamanho do vetor e verá qual o elemento está na posição do valor sorteado. Esse será o resultado
@@ -30,8 +34,9 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
    
    > Chance     [Array] = Vetor onde etarão as chances de sorteio de cada elemento
   
- - Exemplo:
+  Exemplo:
    chance(['A', 'B', 'C', 'D', 'E'], [1, 3, 2, 5, 3], false)
+    
     PROCESSO: [ Sorteio ] 8.946 >> [ Procurar em Chance ] 1+3+2+5+3 >> posição[3] >> 'D'
     
     O sistema irá sortear um valor aleatório e irá ver qual posição caiu nesse peso
@@ -42,8 +47,9 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
    
    > Dec        [Int] (Opc) = Quantidade de casas decimais no resultado (Padrão: floor com todos os dígitos)
   
- - Exemplo:
+  Exemplo:
    avg([1, 5, 2, 7, 'C', 3], 2)
+    
     PROCESSO: [ Remover não-numerais ] 1,5,2,7,3 >> [ Soma tudo ] 18 >> [ Divide pela quantidade de números ] 18/5 = 3.6
     
     O sistema irá remover os elementos que não for número e tirar uma média de todos os valores restantes
@@ -54,8 +60,9 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
    
    > Local      [Array]: Local onde deve ser verificado
   
- - Exemplo:
+  Exemplo:
    repete(3, [1, 5, 3, 4, 3, 5, 3, 3, 2, 1])
+    
     PROCESSO: [ Deixa somente o valor procurado ] 3,3,3,3 >> [ Verifica o tamanho ] 4
     
     O sistema verifica quantos elementos tem o mesmo valor do valor procurado e trás quantos encontrou
@@ -68,8 +75,9 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
    
    > Repete     [Bool] (Opc): Se os números sorteados podem repetir
   
- - Exemplo:
+  Exemplo:
    sortear(30, 3, false)
+   
    PROCESSO: [ Cria um vetor de 1 a 30 ] 1,2,3...29,30 >> [ Sorteia um elemento ] 29 >> [ Remove o elemento do vetor ] 1,2,3...28,30 >> [ Refaz o processo 'Quantidade' vezes ] 13,15 >> [ trás todos os sorteados ] 29,13,15
    
    O sistema sorteia um número do vetor inicial e, se false, remove-o da lista. Repete o processo várias vezes e depois trás em vetor o resultado
@@ -80,11 +88,12 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
    
    > Acompanhar [Bool] (Opc) = Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta. Use somente caso queira acompanhar o processo)
   
-  - Exemplo:
-   unificar([1, 5, 2, 3, 5, 4, 3, 2, 5, 1, 3], false)
-    PROCESSO: 1,5,6,2,3,5,4,3,2,5,1,3 >> [ Verifica os termos e exclui se já existe ] >> 6,4,2,4,1,3
+   Exemplo:
+    unificar([1, 5, 2, 3, 5, 4, 3, 2, 5, 1, 3], false)
     
-    O sistema remove os termos que ele verificar se já existe após ele
+     PROCESSO: 1,5,6,2,3,5,4,3,2,5,1,3 >> [ Verifica os termos e exclui se já existe ] >> 6,4,2,4,1,3
+    
+     O sistema remove os termos que ele verificar se já existe após ele
 
 ## filtragem(Onde, oQue, {Manter}, {Acompanhar})
 - Veja se os valores de um vetor estão no segundo vetor e mantenha os que não tiver, ou vice-versa
@@ -117,6 +126,7 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
   
  - Exemplo:
    LimparLog(true, 20)
+   
    PROCESSO: [ Envia 20 linhas vazias ] >> [ Envia mensagem de aviso ] O terminal foi limpo
    
    O sistema envia simplesmente uma quantidade de linhas vazias para esconder as mensagens
@@ -129,18 +139,22 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
    
    > Exemplo    [Bool] (Opc): Se quer ver exemplos de cada função
   
- - Exemplo:
+  Exemplo:
+   
    HowToUse(true, true, false)
+   
    PROCESSO: [ Traz as funções, descrições e significados. Por 'Exemplo' estar false, ela não será mostrada ]
    
    O sistema irá enviar mensagens no terminal explicando o uso de cada função. Será mostrado somente os parâmetros marcados como true
 
 ## Testar(Exclusivos)
 - [EXCLUSO] Teste todas as funções ou algumas específicas. Adicione-os em um vetor e mande para a função
+   
    > Exclusivos  [Array] (Opc): Marque, como string, quais funções quer testar (Padrão: Todos)
   
  - Exemplo:
    Testar(['randomize', 'sortear'])
+   
    PROCESSO: [ Roda cada função ]
    
    O sistema irá testar todas as funções disponíveis no momento, utilizando alguns valores já definidos
