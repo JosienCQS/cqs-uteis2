@@ -6,7 +6,9 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 - Peça um número aleatório entre dois extremos. Escolha se quer casas decimais ou não. Você também pode sortear elementos de um vetor
   Sortear um valor [randomize(Min, Max, Dec)]:
    > Min        [Int] = Valor mínimo a ser sorteado
+   
    > Max        [Int] = Valor máximo a ser sorteado
+   
    > Dec        [Int] (Opc) = Quantidade de casas decimais no resultado (Padrão: Resultado inteiro)
   Exemplo:
    randomize(5, 30.5, 2)
@@ -22,6 +24,7 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 ## chance(Valor, Chance, {Acompanhar})
 - Sorteie um elemento de um vetor trabalhando em cima de chance
    > Valor      [Array] = Vetor onde estarão os elementos a ser sorteado
+   
    > Chance     [Array] = Vetor onde etarão as chances de sorteio de cada elemento
   Exemplo:
    chance(['A', 'B', 'C', 'D', 'E'], [1, 3, 2, 5, 3], false)
@@ -31,6 +34,7 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 ## avg(Vetor, {Dec})
 - Tire a média dos valores que estão dentro do vetor. Valores não numéricos serão ignorados
    > Vetor      [Array] = Vetor com os valores dentro
+   
    > Dec        [Int] (Opc) = Quantidade de casas decimais no resultado (Padrão: floor com todos os dígitos)
   Exemplo:
    avg([1, 5, 2, 7, 'C', 3], 2)
@@ -40,6 +44,7 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 ## repete(Valor, Local)
 - Verifique quantas vezes tal valor apareceu em um conjunto
    > Valor      [Any]: Qual o valor deve ser verificado
+   
    > Local      [Array]: Local onde deve ser verificado
   Exemplo:
    repete(3, [1, 5, 3, 4, 3, 5, 3, 3, 2, 1])
@@ -49,7 +54,9 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 ## sortear(Tamanho, Quantidade, {Repete})
 - Crie um vetor com números sorteados, repetidos ou não
    > Tamanho    [Int]: Qual o valor máximo a ser sorteado (será sorteado de 1 até X)
+   
    > Quantidade [Int] (Opc): Quantos números devem ser sorteados
+   
    > Repete     [Bool] (Opc): Se os números sorteados podem repetir
   Exemplo:
    sortear(30, 3, false)
@@ -59,6 +66,7 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 ## unificar(Vetor, {Acompanhar})
 - Remova valores duplicados de seu vetor permanecendo somente o último elemento repetido
    > Vetor      [Array] = Vetor com os elementos a serem verificados
+   
    > Acompanhar [Bool] (Opc) = Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta. Use somente caso queira acompanhar o processo)
   Exemplo:
    unificar([1, 5, 2, 3, 5, 4, 3, 2, 5, 1, 3], false)
@@ -68,8 +76,11 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 ## filtragem(Onde, oQue, {Manter}, {Acompanhar})
 - Veja se os valores de um vetor estão no segundo vetor e mantenha os que não tiver, ou vice-versa
    > Onde       [Array]: Vetor a verificar os valores. Retornará esse vetor filtrado pelo 'oQue'
+   
    > oQue       [Array]: Vetor onde o sistema usará de base para filtrar o primeiro vetor
+   
    > Manter     [Bool] (Opc): true caso queira manter somente os valores encontrados (Padrão remove valores encontrados)
+   
    > Acompanhar [Bool or \'Impo\'] (Opc): Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta). 'Impo' mostra somente logs importantes
   Exemplo:
   - (remover) filtragem([1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5], [3, 5, 8])
@@ -82,6 +93,7 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 ## LimparLog({Aviso}, {Tamanho})
 - [EXCLUSO] Limpe o terminal
    > Aviso      [Bool] (Opc): Se deve ser avisado que a limpeza foi feita após a mesma
+   
    > Tamanho    [Int] (Opc): Quantas linhas devem ser adicionadas (Padrão: 100)
   Exemplo:
    LimparLog(true, 20
@@ -91,7 +103,9 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
 ## HowToUse({Descrição}, {Significado}, {Exemplo})
 - [EXCLUSO] Veja como usa cada function
    > Descrição  [Bool] (Opc): Se quer ver a descrição das funções
+   
    > Significado[Bool] (Opc): Se quer ver o significado de cada parâmetro
+   
    > Exemplo    [Bool] (Opc): Se quer ver exemplos de cada função
   Exemplo:
    HowToUse(true, true, false)
