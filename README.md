@@ -17,6 +17,7 @@ Versão atual: v1.1 de 3 jul 2021 by Zienaps
     O sistema irá sortear um número entre o Min e o Max e depois arredondará mantendo a quantidade de casas decimais definida em Dec
   Sortear um elemento de um vetor [randomize(Min)]:
    > Min        [Array] = Adicione o vetor com os valores no qual queira ser sorteado
+  
   Exemplo:
    randomize([2, 5, 'B', 'D', 'JOTA'])
     PROCESSO: [ Sorteio ] 3.43543 >> [ Ver posição ] 3 >> [ Trazer posição ] 'D'
