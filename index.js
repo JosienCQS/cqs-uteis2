@@ -1,3 +1,121 @@
+    const versao = '1.2.0'
+        const Pub = '03 jul 2021'
+        console.log('[cqs-uteis] Iniciado o uso da versão v'+versao+' de '+Pub+' by Zienaps')
+
+        
+
+        /*TRAZER TAMANHO DO MêS*/
+        function mesTamanho(Mes, Ano){
+            if(Mes == 2 && Ano == undefined){console.warn('[mesTamanho: Error in Ano='+Ano+'] Necessário ano para bucar dias de Fevereiro'); return}
+            if(Mes != 2 && Ano != undefined) console.info('[mesTamanho] Não é necessário colocar Ano quando não é Fevereiro')
+
+            let Tamanho = 0
+            if(Mes == 1) Tamanho = 31
+            if(Mes == 2) if(Ano%4 == 0) {Tamanho = 29} else{Tamanho = 28}
+            if(Mes == 3) Tamanho = 31
+            if(Mes == 4) Tamanho = 30
+            if(Mes == 5) Tamanho = 31
+            if(Mes == 6) Tamanho = 30
+            if(Mes == 7) Tamanho = 31
+            if(Mes == 8) Tamanho = 31
+            if(Mes == 9) Tamanho = 30
+            if(Mes == 10) Tamanho = 31
+            if(Mes == 11) Tamanho = 30
+            if(Mes == 11) Tamanho = 31
+
+            let Acao = 1
+            if(Acao >= -1 && Acao <= 1) {console.log('[mesTamanho: Concluded]: Ação feita')}
+
+            return Tamanho
+        }
+
+
+        /*TRAZER NOME DO MÊS*/
+        function mesNome(Mes, Tipo, Lingua){
+            let Nome = ''
+            let TipoA
+            let LinguaA
+            if(Tipo == undefined){TipoA = 'Grande'} else{TipoA = Tipo}
+            if(Tipo == undefined){LinguaA = 'PT'} else{LinguaA = Lingua}
+
+
+            let GranPor = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+            let TresPor = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+            let DuasPor = ['Jn', 'Fv', 'Mr', 'Ab', 'Ma', 'Jn', 'Jl', 'Ag', 'St', 'Ot', 'Nv', 'Dz']
+            let UmalPor = ['A', 'F', 'M', 'B', 'I', 'H', 'L', 'G', 'S', 'O', 'N', 'D']
+            let PrimPor = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
+            let GranEng = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            let TresEng = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            let DuasEng = ['Jn', 'Fb', 'Mr', 'Ap', 'My', 'Jn', 'Jl', 'Ag', 'Sp', 'Ot', 'Nv', 'Dc']
+            let UmalEng = ['A', 'F', 'C', 'P', 'M', 'E', 'Y', 'G', 'S', 'O', 'N', 'D']
+            let PrimEng = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
+
+            let Trazer = []
+            if(TipoA == 'Grande'     && LinguaA == 'PT') Trazer = GranPor
+            if(TipoA == 'Tres'       && LinguaA == 'PT') Trazer = TresPor
+            if(TipoA == 'Duas'       && LinguaA == 'PT') Trazer = DuasPor
+            if(TipoA == 'Uma'        && LinguaA == 'PT') Trazer = UmalPor
+            if(TipoA == 'Primeira'   && LinguaA == 'PT') Trazer = PrimPor
+            if(TipoA == 'Grande'     && LinguaA == 'EN') Trazer = GranEng
+            if(TipoA == 'Tres'       && LinguaA == 'EN') Trazer = TresEng
+            if(TipoA == 'Duas'       && LinguaA == 'EN') Trazer = DuasEng
+            if(TipoA == 'Uma'        && LinguaA == 'EN') Trazer = UmalEng
+            if(TipoA == 'Primeira'   && LinguaA == 'EN') Trazer = PrimEng
+            Nome = Trazer[Mes-1]
+
+            let Acao = 1
+            if(Acao >= -1 && Acao <= 1) {console.log('[mesNome: Concluded]: Ação feita')}
+
+            return Nome
+        }
+
+
+        /*BUSCAR VALOR DE DATA*/
+        function dataBuscar(Data, Busca){
+            var data = new Date(Data)
+            var dia = data.getDate()
+            var semana = data.getDay()
+            var mes = data.getMonth()+1
+            var mess = mesNome(mes, 'Grande', 'PT')
+            var ano = data.getFullYear()
+            var hoje = new Date([ano, mes, dia])
+            var hora = data.getHours()
+            var minuto = data.getMinutes()
+            var segundo = data.getSeconds()
+            var milis = data.getMilliseconds()
+            var TMilis = Date.now()
+            var TSegundo = TMilis / 1000
+            var TMinuto = TMilis / 1000 / 60 
+            var THora  = TMilis / 1000 / 60 / 60
+            var TDia  = TMilis / 1000 / 60 / 60 / 24
+
+            let Pedido = ''
+            if(Busca == 'data') Pedido = data
+            if(Busca == 'dia') Pedido = dia
+            if(Busca == 'semana') Pedido = semana
+            if(Busca == 'mes') Pedido = mes
+            if(Busca == 'mess') Pedido = mess
+            if(Busca == 'ano') Pedido = ano
+            if(Busca == 'hoje') Pedido = hoje
+            if(Busca == 'hora') Pedido = hora
+            if(Busca == 'minuto') Pedido = minuto
+            if(Busca == 'segundo') Pedido = segundo
+            if(Busca == 'milissegundo') Pedido = milis
+            if(Busca == 'atualMilissegundo') Pedido = TMilis
+            if(Busca == 'atualSegundo') Pedido = TSegundo
+            if(Busca == 'atualMinuto') Pedido = TMinuto
+            if(Busca == 'atualHora') Pedido = THora
+            if(Busca == 'atualDia') Pedido = TDia
+
+            if(Pedido == ''){console.warn('[dataBuscar: Error in Busca='+Busca+'] Não foi encontrado essa busca (Exemplos: dia, mes, minuto)'); return}
+            
+            let Acao = 1
+            if(Acao >= -1 && Acao <= 1) {console.log('[dataBuscar: Concluded]: Ação feita')}
+
+            return Pedido
+        }
+
+
         /*NÚMERO ALEATÓRIO*/
         function randomize(Min, Max, Dec){
             if(!Min[1]){var TipoDeConta = 2} else{var TipoDeConta = 1}
@@ -253,7 +371,7 @@
             for(i=0; i < Tamanho; i++){console.log('')}
             if(Aviso){console.log('O Terminal foi limpo')}
             
-            return
+            return true
         }
 
 
@@ -274,7 +392,7 @@
             if(Desc == false && Sign == false && Exem ==  true) MSG = 'estrutura'                                                               +' e '+'exemplo'
             if(Desc == false && Sign == false && Exem == false) MSG = 'estrutura'
 
-            console.log('Versão atual: v1.1 de 03 jul 2021 by Zienaps\n\nCOMO USAR AS FUNÇÕES:\n')
+            console.log('Versão atual: v'+versao+' de '+Pub+' by Zienaps\n\nCOMO USAR AS FUNÇÕES:\n')
             console.log('Mostrando '+MSG+' das funções disponíveis. Veja melhor no ReadMe')
             
             if(Func == true) console.log('\nrandomize(Min, {Max}, {Dec})')
@@ -285,13 +403,11 @@
             if(Sign == true) console.log('   > Dec        [Int] (Opc) = Quantidade de casas decimais no resultado (Padrão: Resultado inteiro)')
             if(Exem == true) console.log('  Exemplo:')
             if(Exem == true) console.log('   randomize(5, 30.5, 2)')
-            if(Exem == true) console.log('    PROCESSO: [Sorteio] 13,27787 >> [Arred. para Dec casa] 13.3')
             if(Exem == true) console.log('    O sistema irá sortear um número entre o Min e o Max e depois arredondará mantendo a quantidade de casas decimais definida em Dec')
             if(Func == true) console.log('  Sortear um elemento de um vetor [randomize(Min)]:')
             if(Sign == true) console.log('   > Min        [Array] = Adicione o vetor com os valores no qual queira ser sorteado')
             if(Exem == true) console.log('  Exemplo:')
             if(Exem == true) console.log("   randomize([2, 5, 'B', 'D', 'JOTA'])")
-            if(Exem == true) console.log("    PROCESSO: [Sorteio] 3.43543 >> [Ver posição] 3 >> [Trazer posição] 'D'")
             if(Exem == true) console.log('    O sistema irá sortear um número aleatório entre 0 e o tamanho do vetor e verá qual o elemento está na posição do valor sorteado. Esse será o resultado')
 
             if(Func == true) console.log( '\nchance(Valor, Chance, {Acompanhar})    [NEW!]')
@@ -300,7 +416,6 @@
             if(Sign == true) console.log('   > Chance     [Array] = Vetor onde etarão as chances de sorteio de cada elemento')
             if(Exem == true) console.log('  Exemplo:')
             if(Exem == true) console.log("   chance(['A', 'B', 'C', 'D', 'E'], [1, 3, 2, 5, 3], false)")
-            if(Exem == true) console.log("    PROCESSO: [Sorteio] 8.946 >> [Procurar em Chance] 1+3+2+5+3 >> posição [3] >> 'D'")
             if(Exem == true) console.log('    O sistema irá sortear um valor aleatório e irá ver qual posição caiu nesse peso')
 
             if(Func == true) console.log('\navg(Vetor, {Dec})')
@@ -309,7 +424,6 @@
             if(Sign == true) console.log('   > Dec        [Int] (Opc) = Quantidade de casas decimais no resultado (Padrão: floor com todos os dígitos)')
             if(Exem == true) console.log('  Exemplo:')
             if(Exem == true) console.log("   avg([1, 5, 2, 7, 'C', 3], 2)")
-            if(Exem == true) console.log('    PROCESSO: [Remover não-numerais] 1,5,2,7,3 >> [Soma tudo] 18 >> [Divide pela quantidade de números] 18/5 = 3.6')
             if(Exem == true) console.log("    O sistema irá remover os elementos que não for número e tirar uma média de todos os valores restantes")
 
             if(Func == true) console.log('\nsequencia(Max, {Min}, {Espaco})    [NEW!]')
@@ -319,7 +433,7 @@
             if(Sign == true) console.log('   > Espaco      [Dec] (Opc): Qual o espaço entre um número e o outro (Padrão: 1)')
             if(Exem == true) console.log('  Exemplo:')
             if(Exem == true) console.log('   sequencia(15, 0, 2)')
-            if(Exem == true) console.log('    PROCESSO: [Ver distancia] 2 >> [Criar a sequencia respeitando a distancia] 0,2,4,6,8,10,12,14')
+            if(Exem == true) console.log('    O sistema irá ver a distância escolhida, criar a sequencia respeitando a distancia e parar quando chegar no limite')
 
             if(Func == true) console.log('\nrepete(Valor, Local)')
             if(Desc == true) console.log('- Verifique quantas vezes tal valor apareceu em um conjunto')
@@ -327,7 +441,6 @@
             if(Sign == true) console.log('   > Local      [Array]: Local onde deve ser verificado')
             if(Exem == true) console.log("  Exemplo:")
             if(Exem == true) console.log("   repete(3, [1, 5, 3, 4, 3, 5, 3, 3, 2, 1]")
-            if(Exem == true) console.log("    PROCESSO: [Deixa somente o valor procurado] 3,3,3,3 >> [Verifica o tamanho] 4")
             if(Exem == true) console.log("    O sistema verifica quantos elementos tem o mesmo valor do valor procurado e trás quantos encontrou")
 
             if(Func == true) console.log('\nsortear(Tamanho, Quantidade, {Repete})')
@@ -337,7 +450,6 @@
             if(Sign == true) console.log('   > Repete     [Bool] (Opc): Se os números sorteados podem repetir')
             if(Exem == true) console.log("  Exemplo:")
             if(Exem == true) console.log("   sortear(30, 3, false")
-            if(Exem == true) console.log("   PROCESSO: [Cria um vetor de 1 a 30] 1,2,3...29,30 >> [Sorteia um elemento] 29 >> [Remove o elemento do vetor] 1,2,3...28,30 >> [Refaz o processo 'Quantidade' vezes] 13,15 >> [trás todos os sorteados] 29,13,15")
             if(Exem == true) console.log("   O sistema sorteia um número do vetor inicial e, se false, remove-o da lista. Repete o processo várias vezes e depois trás em vetor o resultado")
             
             if(Func == true) console.log('\nunificar(Vetor, {Acompanhar})')
@@ -346,7 +458,6 @@
             if(Sign == true) console.log('   > Acompanhar [Bool] (Opc) = Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta. Use somente caso queira acompanhar o processo)')
             if(Exem == true) console.log("  Exemplo:")
             if(Exem == true) console.log("   unificar([1, 5, 2, 3, 5, 4, 3, 2, 5, 1, 3], false)")
-            if(Exem == true) console.log("    PROCESSO: 1,5,6,2,3,5,4,3,2,5,1,3 >> [Verifica os termos e exclui se já existe] >> 6,4,2,4,1,3")
             if(Exem == true) console.log("    O sistema remove os termos que ele verificar se já existe após ele")
 
             if(Func == true) console.log('\nfiltragem(Onde, oQue, {Manter}, {Acompanhar})   [NEW!]')
@@ -357,11 +468,34 @@
             if(Sign == true) console.log('   > Acompanhar [Bool or \'Impo\'] (Opc): Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta). \'Impo\' mostra somente logs importantes')
             if(Exem == true) console.log("  Exemplo:")
             if(Exem == true) console.log("  - (remover) filtragem([1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5], [3, 5, 8])")
-            if(Exem == true) console.log("     PROCESSO: [Remove o 3] 1,5,7,4,8,4,2,1,10,2,5 >> [Remove o 5] 1,7,4,8,4,2,1,10,2 >> [Remove o 8] 1,7,4,4,2,1,10,2")
             if(Exem == true) console.log("     O sistema verifica se o valor de certo elemento está contido no segundo vetor. Se sim, ele é removido do vetor principal")
             if(Exem == true) console.log("  - (Manter) filtragem([1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5], [3, 5, 8], true)")
-            if(Exem == true) console.log("     PROCESSO: [Destaca os que não for encontrado] 1,7,4,4,2,10,2 >> [Remove os destacados] 3,5,8,3,5")
             if(Exem == true) console.log("     O sistema verifica se o valor de certo elemento não está contido no segundo vetor. Se não estiver, ele é removido do vetor principal")
+
+            if(Func == true) console.log("\nmesTamanho(Mes, {Ano})")
+            if(Desc == true) console.log("- Traga a quantidade de dias que tem em tal mês")
+            if(Sign == true) console.log("   > Mes        [Int]: Qual mês quer buscar o tamanho (em número)")
+            if(Sign == true) console.log("   > Ano        [int] (Par): De qual ano quer buscar o dia do mês de fevereiro")
+            if(Exem == true) console.log("  Exemplo:")
+            if(Exem == true) console.log("   mesTamanho(5)")
+            if(Exem == true) console.log("    O sistema irá procurar em uma lista o número do mês buscado. Ele irá retornar o valor correspondente")
+
+            if(Func == true) console.log("\nmesNome(Mes, {Tipo}, {Lingua})")
+            if(Desc == true) console.log("- Traga o nome de um mês em um formato e língua específica")
+            if(Sign == true) console.log("   > Mes        [Int]: Qual mês quer buscar o nome (em número)")
+            if(Sign == true) console.log("   > Tipo       [String] (Opc): Como retornar o mês (Grande, Tres, Duas, Uma, Primeira) (Padrão: Grande)")
+            if(Sign == true) console.log("   > Lingua     [String] (Opc): Em que língua deve trazer o resultado (PT ou EN) (Padrão: PT)")
+            if(Exem == true) console.log("  Exemplo:")
+            if(Exem == true) console.log("   mesNome(5, 'Tres')")
+            if(Exem == true) console.log("    O sistema irá buscar o mes em uma lista, separar a língua pedida e depois o tipo pedido")
+
+            if(Func == true) console.log("\ndataBuscar(Data, Busca)")
+            if(Desc == true) console.log("- Traga um valor específico de uma data")
+            if(Sign == true) console.log("   > Data       [Date]: Data no qual quer verificar")
+            if(Sign == true) console.log("   > Busca      [String]: Valor que queira buscar")
+            if(Exem == true) console.log("  Exemplo:")
+            if(Exem == true) console.log("   dataBuscar([2020, 5, 9], 'dia')")
+            if(Exem == true) console.log("    O sistema irá ler a data (ou transformar o vetor [yyyy, mm, dd] em data, depois irá buscar o valor que procura")
 
             if(Func == true) console.log('\nLimparLog({Aviso}, {Tamanho})                       COMANDO EXCLUSO')
             if(Desc == true) console.log('- Limpe o terminal\n  Estrutura:')
@@ -369,7 +503,6 @@
             if(Sign == true) console.log('   > Tamanho    [Int] (Opc): Quantas linhas devem ser adicionadas (Padrão: 100)')
             if(Exem == true) console.log("  Exemplo:")
             if(Exem == true) console.log("   LimparLog(true, 20")
-            if(Exem == true) console.log("   PROCESSO: [Envia 20 linhas vazias] >> [Envia mensagem de aviso] O terminal foi limpo")
             if(Exem == true) console.log("   O sistema envia simplesmente uma quantidade de linhas vazias para esconder as mensagens")
 
             if(Func == true) console.log("\nHowToUse({Descrição}, {Significado}, {Exemplo})     COMANDO EXCLUSO")
@@ -379,18 +512,35 @@
             if(Sign == true) console.log("   > Exemplo     [Bool] (Opc): Se quer ver exemplos de cada função")
             if(Exem == true) console.log("  Exemplo:")
             if(Exem == true) console.log("   HowToUse(true, true, false)")
-            if(Exem == true) console.log("   PROCESSO: [Irá trazer as funções, descrições e significados. Por Exemplo estar false, ela não será mostrada]")
             if(Exem == true) console.log("   O sistema irá enviar mensagens no terminal explicando o uso de cada função. Será mostrado somente os parâmetros marcados como true")
+            
+            if(Func == true) console.log("\nChecar({Tipo})                                      COMANDO EXCLUSO")
+            if(Desc == true) console.log("- Receba uma notificação no log sempre quando o código rodar")
+            if(Sign == true) console.log("   > Tipo        [String] (Opc): Quer enviar qual mensagem ('inicio' para inicio do código', 'fim' para final do código e qualquer outra coisa como ponto de check-up")
+            if(Exem == true) console.log("  Exemplo")
+            if(Exem == true) console.log("   Inicio()")
+            if(Exem == true) console.log("    O sistema irá enviar uma mensagem pré-definida no terminal de acordo com o tipo de notificacao")
             
             if(Func == true) console.log("\nTestar(Exclusivos)                                  COMANDO EXCLUSO")
             if(Desc == true) console.log("- Teste todas as funções ou algumas específicas. Adicione-os em um vetor e mande para a função")
             if(Sign == true) console.log("   > Exclusivos  [Array] (Opc): Marque, como string, quais funções quer testar (Padrão: Todos)")
             if(Exem == true) console.log("  Exemplo:")
             if(Exem == true) console.log("   Testar(['randomize', 'sortear'])")
-            if(Exem == true) console.log("   PROCESSO: [Irá rodar cada função]")
             if(Exem == true) console.log("   O sistema irá testar todas as funções disponíveis no momento, utilizando alguns valores já definidos")
 
-            return
+            return true
+        }
+
+
+        /*NOTIFICAR LOG*/
+        function Checar(Tipo){
+            let Tipoa = Tipo
+            let Hoje = new Date()
+            if(Tipoa == 'inicio'){console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: O código iniciou`); return}
+            if(Tipoa == 'fim'){console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: O código finalizou`); return}
+            if(Tipoa != 'inicio' && Tipoa != 'fim') console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: Check-up '${Tipo}' alcançado`)
+        
+            return true
         }
 
 
@@ -465,6 +615,31 @@
                 Testado++
             }
 
+            if(Exclusivos.includes('mesTamanho')|| Exclusivos == 'all'){
+                console.log('\n\nMESTAMANHO(6)')
+                console.log(mesTamanho(6))
+                Testado++
+            }
+
+            if(Exclusivos.includes('mesNome')|| Exclusivos == 'all'){
+                console.log('\n\nMESNOME(8, "Tres", "EN")')
+                console.log(mesNome(8, 'Tres', 'EN'))
+                Testado++
+            }
+
+            let hojes = new Date()
+            if(Exclusivos.includes('dataBuscar')|| Exclusivos == 'all'){
+                console.log('\n\nDATABUSCAR(hoje, "mes")')
+                console.log(dataBuscar(hojes, 'mes'))
+                Testado++
+            }
+
+            if(Exclusivos.includes('Checar') || Exclusivos == 'all'){
+                console.log('\n\nCHECAR("Checkpoint Testes")')
+                console.log(Checar('Checkpoint Testes'))
+                Testado++
+            }
+
             Testado++
             console.log('\n\n[EXCLUSO] TESTAR()')
             
@@ -475,8 +650,7 @@
             return
         }
 
-        Testar()
-
+        
 
 module.exports = {
     randomize,
