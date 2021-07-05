@@ -1,5 +1,5 @@
     const versao = '1.2.0'
-        const Pub = '03 jul 2021'
+        const Pub = '07 jul 2021'
         console.log('[cqs-uteis] Iniciado o uso da versão v'+versao+' de '+Pub+' by Zienaps')
 
         
@@ -74,7 +74,7 @@
         function dataBuscar(Data, Busca){
             var data = new Date(Data)
             var dia = data.getDate()
-            var semana = data.getDay()
+            var semana = data.getDay()+1
             var mes = data.getMonth()+1
             var mess = mesNome(mes, 'Grande', 'PT')
             var ano = data.getFullYear()
@@ -392,7 +392,7 @@
             if(Desc == false && Sign == false && Exem ==  true) MSG = 'estrutura'                                                               +' e '+'exemplo'
             if(Desc == false && Sign == false && Exem == false) MSG = 'estrutura'
 
-            console.log('Versão atual: v'+versao+' de '+Pub+' by Zienaps\n\nCOMO USAR AS FUNÇÕES:\n')
+            console.log('Versão atual: v'+versao+' de '+Pub+' by Zienaps\nVeja todas as funções e atualizações aqui: https://zienaps.weebly.com/cqs-utei \n\nCOMO USAR AS FUNÇÕES:\n')
             console.log('Mostrando '+MSG+' das funções disponíveis. Veja melhor no ReadMe')
             
             if(Func == true) console.log('\nrandomize(Min, {Max}, {Dec})')
@@ -534,6 +534,7 @@
 
         /*NOTIFICAR LOG*/
         function Checar(Tipo){
+            if(Tipo == undefined) Tipo = ''
             let Tipoa = Tipo
             let Hoje = new Date()
             if(Tipoa == 'inicio'){console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: O código iniciou`); return}
@@ -651,17 +652,20 @@
         }
 
         
-
 module.exports = {
     randomize,
     chance,
+    mesTamanho,
+    mesNome,
+    dataBuscar,
     avg,
-    repete,
     sortear,
     unificar,
-    sequencia,
+    repete,
     filtragem,
+    sequencia,
     LimparLog,
     HowToUse,
+    Checar,
     Testar
 }
