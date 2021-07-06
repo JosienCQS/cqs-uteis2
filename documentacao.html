@@ -6,160 +6,193 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentação CQS-Uteis</title>
 </head>
-<body bgcolor="white">
+<body style="background-color: rgb(0, 132, 247)">
     <div>
-        <h1>COMO USAR CADA FUNÇÃO</h1>
-        <div>
-            <hr>
-            <h2>randomize(Max, <i title="Parâmetro opcional">Min</i>, <i title="Parâmetro opcional">Dec</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
-            <p>Peça um número aleatório entre dois extremos. Escolha se quer casas decimais ou não. Você também pode sortear elementos de um vetor</p>
-            <ul>
+        <div align="center"><p style="z-index: 10;border: 5px solid rgb(172, 76, 76); position: fixed; bottom: 0; background-color: rgb(172, 76, 76)"> <br>Instale pelo seu terminal: <code style="background-color: rgb(138, 62, 62); color: white"> npm i cqs-uteis </code><br> </p></div>
+        <h1 align="center">COMO USAR CADA FUNÇÃO</h1>
+        <hr>
+
+        <!--RANDOMIZE-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px groove rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">randomize(Max, <i title="Parâmetro opcional">Min</i>, <i title="Parâmetro opcional">Dec</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+            <span style="position: relative; left: 15px">Peça um número aleatório entre dois extremos. Escolha se quer casas decimais ou não. Você também pode sortear elementos de um vetor</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Inteiro">[Int]</kbd> <b                                             >Max</b>:  Valor máximo a ser sorteado OU vetor com os elementos a serem sorteados</li>
                 <li><kbd title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: 1">(Opc)</kbd> <b>Min</b>:  Valor mínimo a ser sorteado</li>
                 <li><kbd title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: 0">(Opc)</kbd> <b>Dec</b>:  Quantidade de casas decimais no resultado</li>
             </ul>
-            <h3>Exemplo 1</h3>
-            <p><kbd title="retornou: 16.25">randomize</kbd>(<kbd title="Max">30.5</kbd>, <kbd title="Min">5</kbd>, <kbd title="Dec">2</kbd>)</p>
-            <p>  O sistema irá sortear um número entre o <u title="Valor mínimo a ser sorteado">Min</u> e o <u title="Valor máximo a ser sorteado">Max</u> e depois arredondará mantendo a quantidade de casas decimais definida em <u title="Quantidade de casas decimais no resultado">Dec</u></p>
-            <h3>Exemplo 2</h3>
-            <p><kbd title="retornou: D">randomize</kbd>(<kbd title="Max (Vetor com os elementos)">[2, 5, 'B', 'D', 'JOTA']</kbd>)</p>
-            <p>  O sistema irá sortear um número entre 0 e o tamanho do vetor e verá qual o elemento está na posição do valor sorteado. Esse será o resultado</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo 1</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: 16.25">randomize</kbd>(<kbd title="Max">30.5</kbd>, <kbd title="Min">5</kbd>, <kbd title="Dec">2</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá sortear um número entre o <u title="Valor mínimo a ser sorteado">Min</u> e o <u title="Valor máximo a ser sorteado">Max</u> e depois arredondará mantendo a quantidade de casas decimais definida em <u title="Quantidade de casas decimais no resultado">Dec</u></span>
+                <span style="position: relative; left: 15px"><br><br><b>Exemplo 2</b></h3>
+                <span style="position: relative; left: 10px"><br><kbd title="retornou: D">randomize</kbd>(<kbd title="Max (Vetor com os elementos)">[2, 5, 'B', 'D', 'JOTA']</kbd>)</span>
+                <span style="position: relative; left: 15px"><br>  O sistema irá sortear um número entre 0 e o tamanho do vetor e verá qual o elemento está na posição do valor sorteado. Esse será o resultado<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>chance(Valor, Chance, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 3 de julho de 2021">v1.1.0</i></h2>
-            <p>Sorteie um elemento de um vetor trabalhando em cima de chance</p>
-            <ul>
+        <!--CHANCE-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">chance(Valor, Chance, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 3 de julho de 2021">v1.1.0</i></h2>
+            <span style="position: relative; left: 15px">Sorteie um elemento de um vetor trabalhando em cima de chance</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd  title="Vetor">[Array]</kbd> <b                                                      >Valor</b>:  Vetor onde estão os elementos a ser sorteado</li>
                 <li><kbd  title="Vetor">[Array]</kbd> <b                                                     >Chance</b>:  Vetor onde estão as chances de sorteio de cada elemento</li>
                 <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Acompanhar</b>:  Se desejas receber mensagens do progresso do sorteio no terminal</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: B">chance</kbd>(<kbd title="Valor">['A', 'B', 'C', 'D', 'E']</kbd>, <kbd title="Chance">[1, 3, 2, 5, 3]</kbd>, <kbd title="Acompanhar">false</kbd>)</p>
-            <p>  O sistema irá sortear um valor aleatório, irá ver qual posição caiu nesse peso e retornar o elemento dessa posição</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: B">chance</kbd>(<kbd title="Valor">['A', 'B', 'C', 'D', 'E']</kbd>, <kbd title="Chance">[1, 3, 2, 5, 3]</kbd>, <kbd title="Acompanhar">false</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá sortear um valor aleatório, irá ver qual posição caiu nesse peso e retornar o elemento dessa posição<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>avg(Vetor, <i title="Parâmetro opcional">Dec</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
-            <p>Tire uma média dos valores que estão dentro do vetor. Valores não numéricos serão ignorados</p>
-            <ul>
+        <!--AVG-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">avg(Vetor, <i title="Parâmetro opcional">Dec</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+            <span style="position: relative; left: 15px">Tire uma média dos valores que estão dentro do vetor. Valores não numéricos serão ignorados</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Vetor">[Array]</kbd> <b                                                                    >Vetor</b>:  Vetor com os valores dentro</li>
                 <li><kbd title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: floor com todos os dígitos">(Opc)</kbd> <b>Dec</b>:  Quantidade de casas decimais no resultado</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: 3.7">avg</kbd>(<kbd title="Vetor">[1, 4, 3, 6, 'C', 5, 4, 1]</kbd>, <kbd title="Dec">1</kbd>)</p>
-            <p>  O sistema irá remover os elementos que não for número e tirar uma média de todos os valores restantes</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: 3.7">avg</kbd>(<kbd title="Vetor">[1, 4, 3, 6, 'C', 5, 4, 1]</kbd>, <kbd title="Dec">1</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá remover os elementos que não for número e tirar uma média de todos os valores restantes<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>sequencia(Max, <i title="Parâmetro opcional">Min</i>, <i title="Parâmetro opcional">Espaco</i>) - Desde <i title="de 03 de julho de 2021">v1.1.0</i></h2>
-            <p>Cria um vetor com números do <u title="Valor mínimo que deve ter na sequência">Min</u> ao <u title="Valor máximo que deve ter na sequência">Max</u> pulando uma quantidade dada em <u title="Qual o espaço deve ter entre cada número da sequência">Espaco</u></p>
-            <ul>
+        <!--SEQUENCIA-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">sequencia(Max, <i title="Parâmetro opcional">Min</i>, <i title="Parâmetro opcional">Espaco</i>) - Desde <i title="de 03 de julho de 2021">v1.1.0</i></h2>
+            <span style="position: relative; left: 15px">Cria um vetor com números do <u title="Valor mínimo que deve ter na sequência">Min</u> ao <u title="Valor máximo que deve ter na sequência">Max</u> pulando uma quantidade dada em <u title="Qual o espaço deve ter entre cada número da sequência">Espaco</u></span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Inteiro">[Int]</kbd> <b                                             >Max</b>:  Valor máximo que deve ter na sequência</li>
                 <li><kbd title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: 0">(Opc)</kbd> <b>Min</b>:  Valor mínimo que deve ter na sequência</li>
                 <li><kbd title="Decimal">[Dec]</kbd> <kbd title="Opcional. Padrão: 1">(Opc)</kbd> <b>Dec</b>:  Qual o espaço deve ter entre cada número da sequência</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: [0, 2, 4, 6, 8, 10, 12, 14]">sequencia</kbd>(<kbd title="Max">15</kbd>, <kbd title="Min">0</kbd>, <kbd title="Espaco">2</kbd>)</p>
-            <p>  O sistema irá ver a distância escolhida, criar a sequencia respeitando a distancia e parar quando chegar no limite</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: [0, 2, 4, 6, 8, 10, 12, 14]">sequencia</kbd>(<kbd title="Max">15</kbd>, <kbd title="Min">0</kbd>, <kbd title="Espaco">2</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá ver a distância escolhida, criar a sequencia respeitando a distancia e parar quando chegar no limite<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>repete(Valor, Local) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
-            <p>Verifique quantas vezes tal valor apareceu em um conjunto</p>
-            <ul>
+        <!--REPETE-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">repete(Valor, Local) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+            <span style="position: relative; left: 15px">Verifique quantas vezes tal valor apareceu em um conjunto</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Qualquer">[Any]</kbd> <b>Valor</b>:  Qual o valor (ou texto) deve ser verificado</li>
                 <li><kbd  title="Vetor">[Array]</kbd> <b>Local</b>:  Local onde deve ser verificado</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: 4">repete</kbd>(<kbd title="Valor">3</kbd>, <kbd title="Local">[1, 5, 3, 4, 3, 'Zienaps', 5, 3, 3, 2, 1]</kbd>)</p>
-            <p>  O sistema verifica quantos elementos tem o mesmo valor do valor procurado e trás quantos encontrou</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: 4">repete</kbd>(<kbd title="Valor">3</kbd>, <kbd title="Local">[1, 5, 3, 4, 3, 'Zienaps', 5, 3, 3, 2, 1]</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema verifica quantos elementos tem o mesmo valor do valor procurado e trás quantos encontrou<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>sortear(Tamanho, Quantidade, <i title="Parâmetro opcional">Repete</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
-            <p>Crie um vetor com números sorteados, repetidos ou não</p>
-            <ul>
+        <!--SORTEAR-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">sortear(Tamanho, Quantidade, <i title="Parâmetro opcional">Repete</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+            <span style="position: relative; left: 15px">Crie um vetor com números sorteados, repetidos ou não</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd  title="Inteiro">[Int]</kbd> <b                                                               >Tamando</b>:  Qual o valor máximo a ser sorteado</li>
                 <li><kbd  title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: valor de Tamanho">(Opc)</kbd> <b>Quantidade</b>:  Quantos números devem ser sorteados</li>
                 <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b               >Repete</b>:  Se os números sorteados podem repetir</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: [4, 25, 17]">sortear</kbd>(<kbd title="Tamanho">30</kbd>, <kbd title="Quantidade">3</kbd>, <kbd title="Repete">false</kbd>)</p>
-            <p>  O sistema sorteia um número do vetor inicial e, se false, remove-o da lista. Repete o processo várias vezes e depois traz em vetor o resultado</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: [4, 25, 17]">sortear</kbd>(<kbd title="Tamanho">30</kbd>, <kbd title="Quantidade">3</kbd>, <kbd title="Repete">false</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema sorteia um número do vetor inicial e, se false, remove-o da lista. Repete o processo várias vezes e depois traz em vetor o resultado<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>unificar(Vetor, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
-            <p>Remova valores duplicados de seu vetor permanecendo somente o último elemento repetido</p>
-            <ul>
+        <!--UNIFICAR-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">unificar(Vetor, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+            <span style="position: relative; left: 15px">Remova valores duplicados de seu vetor permanecendo somente o último elemento repetido</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Vetor">[Array]</kbd> <b                                                       >Vetor</b>:  Vetor com os elementos a serem verificados</li>
                 <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Acompanhar</b>:  Se deve trazer em log o processo de verificação (Isso pode atrasar)</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: [6, 4, 2, 5, 1, 3]">unificar</kbd>(<kbd title="Vetor">[1, 6, 5, 2, 3, 4, 3, 2, 5, 1, 3]</kbd>, <kbd title="Acompanhar">false</kbd>)</p>
-            <p>  O sistema remove os termos que ele verificar se já existe após ele</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: [6, 4, 2, 5, 1, 3]">unificar</kbd>(<kbd title="Vetor">[1, 6, 5, 2, 3, 4, 3, 2, 5, 1, 3]</kbd>, <kbd title="Acompanhar">false</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema remove os termos que ele verificar se já existe após ele<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>filtragem(Onde, oQue, <i title="Parâmetro opcional">Manter</i>, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
-            <p>Veja se os valores de um vetor estão no segundo vetor e mantenha os que não tiver, ou vice-versa</p>
-            <ul>
+        <!--FILTRAGEM-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">filtragem(Onde, oQue, <i title="Parâmetro opcional">Manter</i>, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+            <span style="position: relative; left: 15px">Veja se os valores de um vetor estão no segundo vetor e mantenha os que não tiver, ou vice-versa</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Vetor">[Array]</kbd> <b                                                                                 >Onde</b>:  Vetor a verificar os valores. Retornará esse vetor filtrado pelo oQue</li>
                 <li><kbd title="Vetor">[Array]</kbd> <b                                                                                 >oQue</b>:  Vetor onde o sistema usará de base para filtrar o primeiro vetor</li>
                 <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b                             >Manter</b>:  true caso queira manter somente os valores encontrados</li>
                 <li><kbd title="Boleano ou texto 'Impo'">[Bool or 'Impo']</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Acompanhar</b>:  Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta). 'Impo' mostra somente logs importantes</li>
             </ul>
-            <h3>Exemplo 1 (remover)</h3>
-            <p><kbd title="retornou: [1, 7, 4, 4, 2, 10, 2]">filtragem</kbd>(<kbd title="Onde">[1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5]</kbd>, <kbd title="oQue">[3, 5, 8]</kbd>)</p>
-            <p>  O sistema verifica se o valor de certo elemento está contido no segundo vetor. Se sim, ele é removido do vetor principal</p>
-            <h3>Exemplo 2 (manter)</h3>
-            <p><kbd title="retornou: [3, 5, 8, 3, 5]">filtragem</kbd>(<kbd title="Onde">[1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5]</kbd>, <kbd title="oQue">[3, 5, 8]</kbd>, <kbd title="Manter">true</kbd>)</p>
-            <p>  O sistema verifica se o valor de certo elemento não está contido no segundo vetor. Se não estiver, ele é removido do vetor principal</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo 1 (remover)</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: [1, 7, 4, 4, 2, 10, 2]">filtragem</kbd>(<kbd title="Onde">[1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5]</kbd>, <kbd title="oQue">[3, 5, 8]</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema verifica se o valor de certo elemento está contido no segundo vetor. Se sim, ele é removido do vetor principal<br> </span>
+                <span style="position: relative; left: 15px"><br><b>Exemplo 2 (manter)</b></span>
+                <span style="position: relative; left: 10px"><br><kbd title="retornou: [3, 5, 8, 3, 5]">filtragem</kbd>(<kbd title="Onde">[1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5]</kbd>, <kbd title="oQue">[3, 5, 8]</kbd>, <kbd title="Manter">true</kbd>)</span>
+                <span style="position: relative; left: 15px"><br>  O sistema verifica se o valor de certo elemento não está contido no segundo vetor. Se não estiver, ele é removido do vetor principal<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>mesTamanho(Mes, <i title="Parâmetro parcial">Ano</i>) - Desde <i title="versão atual">v1.2.0</i></h2>
-            <p>Traga a quantidade de dias que tem em tal mês</p>
-            <ul>
+        <!--MES TAMANHO-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">mesTamanho(Mes, <i title="Parâmetro parcial">Ano</i>) - Desde <i title="versão atual">v1.2.0</i></h2>
+            <span style="position: relative; left: 15px">Traga a quantidade de dias que tem em tal mês</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Inteiro">[Int]</kbd> <b                                                                 >Mes</b>:  Qual mês quer buscar o tamanho</li>
                 <li><kbd title="Inteiro">[Int]</kbd> <kbd title="Parcial. Necessário somente se Mes == 2">(Par)</kbd> <b>Ano</b>:  De qual ano quer buscar o dia de tal mês</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: 31">mesTamanho</kbd>(<kbd title="Mes">5</kbd>)</p>
-            <p>  O sistema irá procurar em uma lista o número do mês buscado. Ele irá retornar o valor correspondente</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: 31">mesTamanho</kbd>(<kbd title="Mes">5</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá procurar em uma lista o número do mês buscado. Ele irá retornar o valor correspondente<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>mesNome(Mes, <i title="Parâmetro opcional">Tipo</i>, <i title="Parâmetro opcional">Língua</i>) - Desde <i title="Versão atual">v1.2.0</i></h2>
-            <p>Traga o nome de um mês em um formato e língua específica</p>
-            <ul>
+        <!--MES NOME-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">mesNome(Mes, <i title="Parâmetro opcional">Tipo</i>, <i title="Parâmetro opcional">Língua</i>) - Desde <i title="Versão atual">v1.2.0</i></h2>
+            <span style="position: relative; left: 15px">Traga o nome de um mês em um formato e língua específica</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Inteiro">[Int]</kbd> <b                                                                                                                                                           >Mes</b>:  Qual mês quer bucar o nome</li>
                 <li><kbd title="Texto">[Str]</kbd> <kbd title="Opcional. Padrão: Grande">(Opc)</kbd> <kbd title="Aceito somente os seguintes valores: 'Grande', 'Tres', 'Duas', 'Uma', 'Primeira'">(Res)</kbd> <b>Tipo</b>:  Como retornar o mês</li>
                 <li><kbd title="Texto">[Str]</kbd> <kbd title="Opcional. Padrão: PT">(Opc)</kbd> <kbd title="Aceito somente os seguintes valores: 'PT', 'EN'">(Res)</kbd> <b                                   >Lingua</b>:  Em qual idioma deve trazer o resultado</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: 'Mai'">mesNome</kbd>(<kbd title="Mes">5</kbd>, <kbd title="Tipo">'Tres'</kbd>)</p>
-            <p>  O sistema irá buscar o mes em uma lista, separar a língua pedida e depois o tipo pedido</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: 'Mai'">mesNome</kbd>(<kbd title="Mes">5</kbd>, <kbd title="Tipo">'Tres'</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá buscar o mes em uma lista, separar a língua pedida e depois o tipo pedido<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2>dataBuscar(Data, Busca) - Desde <i title="Versão atual">v1.2.0</i></h2>
-            <p>Traga um valor específico de uma data</p>
-            <ul>
+        <!--DATA BUSCAR-->
+        <div style="background-color: rgb(3, 212, 3); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px">dataBuscar(Data, Busca) - Desde <i title="Versão atual">v1.2.0</i></h2>
+            <span style="position: relative; left: 15px">Traga um valor específico de uma data</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Data">[Date]</kbd> <b >Data</b>:  Data que queira verificar</li>
                 <li><kbd title="Texto">[Str]</kbd> <kbd title="Aceito somente os valores citados abaixo">(Res)</kbd> <b>Busca</b>:  Valor que queira buscar</li>
-                <ul>
+                <ul style="position: relative; left: 18px">
                     <li><b>data</b>: Retorna a data completa</li>
                     <li><b>dia</b>: Retorna o dia em número</li>
                     <li><b>semana</b>: Retorna o dia da semana em número</li>
@@ -178,68 +211,82 @@
                     <li><b>atualDia</b>: Retorna a quantidade de dias desde 01/01/1970 00:00</li>
                 </ul>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: 9">dataBuscar</kbd>(<kbd title="Data">[2020, 5, 9]</kbd>, <kbd title="Busca">'dia'</kbd>)</p>
-            <p>  O sistema irá ler a data (ou transformar o vetor [yyyy, mm, dd] em <u title="Data que queira verificar">data</u>, depois irá buscar o valor que procura</p>
+            <div style="background-color: rgb(31, 153, 42); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: 9">dataBuscar</kbd>(<kbd title="Data">[2020, 5, 9]</kbd>, <kbd title="Busca">'dia'</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá ler a data (ou transformar o vetor [yyyy, mm, dd] em <u title="Data que queira verificar">data</u>, depois irá buscar o valor que procura<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> LimparLog(<i title="Parâmetro opcional">Aviso</i>, <i title="Parâmetro opcional">Tamanho</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
-            <p>Limpe o terminal</p>
-            <ul>
+        <!--LIMPAR LOG-->
+        <div style="background-color: rgb(216, 220, 0); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px"><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> LimparLog(<i title="Parâmetro opcional">Aviso</i>, <i title="Parâmetro opcional">Tamanho</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+            <span style="position: relative; left: 15px">Limpe o terminal</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Aviso</b>:  Se deve ser avisado quando a limpeza for concluída</li>
                 <li><kbd title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: 100">(Opc)</kbd> <b >Tamanho</b>:  Quantas linhas deve ser adicionadas</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: true">LimparLog</kbd>(<kbd title="Aviso">true</kbd>, <kbd title="Tamanho">20</kbd>)</p>
-            <p>  O sistema envia uma quantidade de linhas vazias para esconder as mensagens</p>
+            <div style="background-color: rgb(194, 197, 0); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: true">LimparLog</kbd>(<kbd title="Aviso">true</kbd>, <kbd title="Tamanho">20</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema envia uma quantidade de linhas vazias para esconder as mensagens<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> HowToUse(<i title="Parâmetro opcional">Descrição</i>, <i title="Parâmetro opcional">Significado</i>, <i title="Parâmetro opcional">Exemplo</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
-            <p>Veja como usa cada function</p>
-            <ul>
+        <!--HOW TO USE-->
+        <div style="background-color: rgb(216, 220, 0); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px"><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> HowToUse(<i title="Parâmetro opcional">Descrição</i>, <i title="Parâmetro opcional">Significado</i>, <i title="Parâmetro opcional">Exemplo</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+            <span style="position: relative; left: 15px">Veja como usa cada function</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: true">(Opc)</kbd> <b  >Descrição</b>:  Se quer ver a decrição das funções</li>
                 <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: true">(Opc)</kbd> <b>Significado</b>:  Se quer ver o significado de cada parâmetro</li>
                 <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b   >Exemplo</b>:  Se quer ver exemplos de cada função</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: true">HowToUse</kbd>(<kbd title="Descrição">true</kbd>, <kbd title="Significado">true</kbd>, <kbd title="Exemplo">false</kbd>)</p>
-            <p>  O sistema irá enviar mensagens no terminal explicando o uso de cada função. Será mostrado somente os parâmetros marcados como true</p>
+            <div style="background-color: rgb(194, 197, 0); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: true">HowToUse</kbd>(<kbd title="Descrição">true</kbd>, <kbd title="Significado">true</kbd>, <kbd title="Exemplo">false</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá enviar mensagens no terminal explicando o uso de cada função. Será mostrado somente os parâmetros marcados como true<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> Checar(<i title="Parâmetro opcional">Tipo</i>) - Desde <i title="Versão atual">v1.2.0</i></h2>
-            <p>Receba uma notificação no terminal sempre quando o código alcançar tal ponto</p>
-            <ul>
+        <!--CHECAR-->
+        <div style="background-color: rgb(216, 220, 0); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px"><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> Checar(<i title="Parâmetro opcional">Tipo</i>) - Desde <i title="Versão atual">v1.2.0</i></h2>
+            <span style="position: relative; left: 15px">Receba uma notificação no terminal sempre quando o código alcançar tal ponto</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Texto">[Str]</kbd> <kbd title="Opcional. Padrão: Texto vazio">(Opc)</kbd> <b>Tipo</b>:  Qual mensagem enviar</li>
-                <ul>
+                <ul style="position: relative; left: 18px">
                     <li><b>'inicio'</b>: Mensagem pré-definida de início de código</li>
                     <li><b>'fim'</b>: Mensagem pré-definida de conclusão de código</li>
                     <li><b>Outro texto</b>: Mensagem pré-definida com um Checkpoint de identificação própria</li>
                 </ul>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: true">Checar</kbd>(<kbd title="Tipo">'inicio'</kbd>)</p>
-            <p>  O sistema irá enviar uma mensagem pré-definida no terminal de acordo com o tipo de notificação</p>
+            <div style="background-color: rgb(194, 197, 0); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: true">Checar</kbd>(<kbd title="Tipo">'inicio'</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá enviar uma mensagem pré-definida no terminal de acordo com o tipo de notificação<br> </span>
+            </div>
         </div>
         <hr>
 
-        <div>
-            <h2><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> Testar(<i title="Parâmetro opcional">Exclusivos</i>) - Desde <i title="Versão atual">v1.2.0</i></h2>
-            <p>Teste todas as funções ou algumas específicas. Adicione-os em um vetor e mande para a função</p>
-            <ul>
+                <!--TESTAR-->
+        <div style="background-color: rgb(216, 220, 0); border: 2px solid rgb(12, 117, 209)">
+            <h2 style="position: relative; left: 05px"><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> Testar(<i title="Parâmetro opcional">Exclusivos</i>) - Desde <i title="Versão atual">v1.2.0</i></h2>
+            <span style="position: relative; left: 15px">Teste todas as funções ou algumas específicas. Adicione-os em um vetor e mande para a função</span>
+            <ul style="position: relative; left: 20px">
                 <li><kbd title="Vetor">[Array]</kbd> <kbd title="Opcional. Padrão: All">(Opc)</kbd> <kbd title="Aceito somente os seguintes valores: 'All' para todos, Função para função específica. Separe por elemento">(Res)</kbd> <b>Exclusivos</b>:  Marque, como String, quais funções quer testar</li>
             </ul>
-            <h3>Exemplo</h3>
-            <p><kbd title="retornou: true">Testar</kbd>(<kbd title="Exclusivos">['randomize', 'sortear']</kbd>)</p>
-            <p>  O sistema irá testar funções citadas (ou todas, se não citado), utilizando alguns valores já definidos</p>
+            <div style="background-color: rgb(194, 197, 0); position: relative; bottom: 10px; height: 90%; left: 10px; width: 98%">
+                <span style="position: relative; left: 15px"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 25px"><br><kbd title="retornou: true">Testar</kbd>(<kbd title="Exclusivos">['randomize', 'sortear']</kbd>)</span>
+                <span style="position: relative; left: 30px"><br>  O sistema irá testar funções citadas (ou todas, se não citado), utilizando alguns valores já definidos<br> </span>
+            </div>
         </div>
         <hr>
 
+        
     </div>
-</body>
 </html>
