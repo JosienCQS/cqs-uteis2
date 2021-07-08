@@ -1,6 +1,6 @@
         const explicacao = 'Revisão geral.Novas funções.Correções e mudanças. Parte da correção'
-        const versao = '1.2.3.1'
-        const Pub = '06 jul 2021'
+        const versao = '1.2.3.2'
+        const Pub = '08 jul 2021'
         console.log('[cqs-uteis] Iniciado o uso da versão v'+versao+' de '+Pub+' by Zienaps')
 
         
@@ -393,7 +393,7 @@
             if(Desc == false && Sign == false && Exem ==  true) MSG = 'estrutura'                                                               +' e '+'exemplo'
             if(Desc == false && Sign == false && Exem == false) MSG = 'estrutura'
 
-            console.log('Versão atual: v'+versao+' de '+Pub+' by Zienaps\nVeja todas as funções e atualizações aqui: https://zienaps.weebly.com/cqs-utei \n\nCOMO USAR AS FUNÇÕES:\n')
+            console.log('Versão atual: v'+versao+' de '+Pub+' by Zienaps\nVeja todas as funções e atualizações aqui: https://zienaps.neocities.org/cqs-uteis.html \n\nCOMO USAR AS FUNÇÕES:\n')
             console.log('Mostrando '+MSG+' das funções disponíveis. Veja melhor no ReadMe')
             
             if(Func == true) console.log('\nrandomize(Min, {Max}, {Dec})')

@@ -1,21 +1,27 @@
 {
-    "name": "cqs-uteis",
-    "version": "1.2.3.1",
-    "description": "Ferramentas simples porém muito úteis",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/JosienCQS/cqs-uteis2.git"
-    },
-    "keywords": ["simples", "leve", "util"],
-    "author": "josiencqs",
-    "license": "ISC",
-    "bugs": {
-      "url": "https://github.com/JosienCQS/cqs-uteis2/issues"
-    },
-    "homepage": "https://github.com/JosienCQS/cqs-utei2s#readme"
+  "name": "cqs-uteis",
+  "version": "1.2.3.2",
+  "description": "Ferramentas simples porém muito úteis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosienCQS/cqs-uteis2.git"
+  },
+  "keywords": [
+    "simples",
+    "leve",
+    "util"
+  ],
+  "author": "josiencqs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosienCQS/cqs-uteis2/issues"
+  },
+  "homepage": "https://github.com/JosienCQS/cqs-utei2s#readme",
+  "dependencies": {
+    "cqs-uteis": "^1.2.1"
   }
-  
+}
