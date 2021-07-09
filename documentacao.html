@@ -8,7 +8,16 @@
 </head>
 <body style="background-color: rgb(24, 81, 131)">
     <div>
-        <div align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm i cqs-uteis </code><br> </p></div>
+        <div id="Install"><div onmousedown="TranspInstall()" onmouseenter="TranspInstall()" style="opacity: 1" align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm install cqs-uteis </code><br> </p></div></div>
+        <script>
+            function TranspInstall() {
+                Install.innerHTML = `<div onmousedown="OpacoInstall()" onmouseleave="OpacoInstall()" style="opacity: 0.3" align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm install cqs-uteis </code><br> </p></div>`
+            }
+                
+            function OpacoInstall() {
+                Install.innerHTML = `<div onmousedown="TranspInstall()" onmouseenter="TranspInstall()" style="opacity: 1"   align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm install cqs-uteis </code><br> </p></div>`
+            }
+        </script>
 
         <div align="center" style="z-index: 10; position: fixed; bottom: 20px; right: 15px"><span id="Inf"></span><br><img src="img/zienaps.png" alt="Zienaps" width=50 height=50></div>
 
@@ -18,36 +27,79 @@
             d = new Date(); if(d.getHours()<10){var ver1 = '0'} else{var ver1 = ''}; if(d.getMinutes()<10){var ver2 = '0'} else{var ver2 = ''}
             let versao = {
                 Publica: ['1.2.1', '05/07/2021'],
-                Construcao: ['1.2.3.2', '08/07/2021']
+                Construcao: ['1.2.3.3', '09/07/2021']
             }
             Inf.innerHTML = 'Versões<br><span title="Disponível">Disp</span>: <span title="'+versao.Publica[1]+'">'+versao.Publica[0]+'</span><br><span title="Construindo">Cons</span>: <span title="'+versao.Construcao[1]+'">'+versao.Construcao[0]+'</span>'
             , 100000})
         </script>
 
         <!--COMO USAR A DOC-->
-        <div  style="background-color: whitesmoke; border: 2px solid">
-            <h2   style="position: relative; left: 1%">Como usar a documentação</h2>
-            <p    style="position: relative; margin-left: 1%; margin-right: 1%">
-                <span >ESTRUTURA:</span>
-                <span style="position: relative; left: 1%"><br><b>Função(parâmetros) - Versão de publicação</b></span>
-                <span style="position: relative; left: 1%"><br>  Explicação</span>
-                <span style="position: relative; left: 1%"><br>   *  [Tags] Parâmetro: Explicação de cada parâmetro</span>
-                <span style="position: relative; left: 1%"><br>   Exemplos</span>
-                <span style="position: relative; left: 1%"><br>    Exemplo com valores aleatórios</span>
-                <span style="position: relative; left: 1%"><br>     Explicação do exemplo</span>
-                <span ><br></span>
-
-                <span ><br>Passando o cursor do mouse por cima de algum texto você pode ver uma breve descrição do termo. Você pode encontrar em:</span>
-                <span ><br>  * Nos parâmetros em itálicos, para ver se são opcionais</span>
-                <span ><br>  * Na versão de publicação, para ver a data publicada</span>
-                <span ><br>  * Nas tags de um parâmetro (na lista), para entendê-los melhor</span>
-                <span ><br>  * Nos parâmeros da função, nos exemplos, para entender a posição de cada parâmetro</span>
-                <span ><br>  * Em palavras sublinhadas de descrições, para ver o significado desses</span>
-            </p>
+        <div id="HowRead">
+            <span ><button onclick="HowUsar()" style="background-color:rgb(22, 141, 22) color=white">Como usar</button></span>
         </div>
-        <hr   style="border: 2px">
-        <hr   style="border: 2px">
-        <hr   style="border: 2px">
+            <script>
+                function HowUsar() {
+                    HowRead.innerHTML = `
+                    <div  style="background-color: whitesmoke; border: 2px solid; z-index: 10; position: relative">
+                        <button onclick="HowUsarEsconder()" style="background-color: rgb(22, 141, 22); color: white">Esconder</button>
+                        <button onclick="HowUsarFixar()" style="background-color: rgb(22, 141, 22); color: white">Fixar</button>
+                        <h2   style="position: relative; left: 1%">Como usar a documentação</h2>
+                        <p    style="position: relative; margin-left: 1%; margin-right: 1%">
+                            <span >ESTRUTURA:</span>
+                            <span style="position: relative; left: 1%"><br><b>Função(parâmetros) - Versão de publicação</b></span>
+                            <span style="position: relative; left: 1%"><br>  Explicação</span>
+                            <span style="position: relative; left: 1%"><br>   *  [Tags] Parâmetro: Explicação de cada parâmetro</span>
+                            <span style="position: relative; left: 1%"><br>   Exemplos</span>
+                            <span style="position: relative; left: 1%"><br>    Exemplo com valores aleatórios</span>
+                            <span style="position: relative; left: 1%"><br>     Explicação do exemplo</span>
+                            <span ><br></span>
+
+                            <span ><br>Passando o cursor do mouse por cima de algum texto você pode ver uma breve descrição do termo. Você pode encontrar em:</span>
+                            <span ><br>  * Nos parâmetros em itálicos, para ver se são opcionais</span>
+                            <span ><br>  * Na versão de publicação, para ver a data publicada</span>
+                            <span ><br>  * Nas tags de um parâmetro (na lista), para entendê-los melhor</span>
+                            <span ><br>  * Nos parâmeros da função, nos exemplos, para entender a posição de cada parâmetro</span>
+                            <span ><br>  * Em palavras sublinhadas de descrições, para ver o significado desses</span>
+                        </p>
+                    </div>
+                    <hr   style="border: 2px">
+                    <hr   style="border: 2px">
+                    <hr   style="border: 2px">`
+                }
+                
+                function HowUsarEsconder() {
+                    HowRead.innerHTML = `<span ><button onclick="HowUsar()" style="background-color:rgb(22, 141, 22) color=white">Como usar</button></span>`
+                }
+
+                function HowUsarFixar() {
+                    HowRead.innerHTML = `
+                    <div  style="background-color: whitesmoke; border: 2px solid; z-index: 10; position: fixed; height: 25%; width: 45%; overflow: auto">
+                        <button onclick="HowUsarEsconder()" style="background-color: rgb(22, 141, 22); color: white">Esconder</button>
+                        <button onclick="HowUsar()" style="background-color: rgb(22, 141, 22); color: white">Desfixar</button>
+                        <h2   style="position: relative; left: 1%">Como usar a documentação</h2>
+                        <p    style="position: relative; margin-left: 1%; margin-right: 1%">
+                            <span >ESTRUTURA:</span>
+                            <span style="position: relative; left: 1%"><br><b>Função(parâmetros) - Versão de publicação</b></span>
+                            <span style="position: relative; left: 1%"><br>  Explicação</span>
+                            <span style="position: relative; left: 1%"><br>   *  [Tags] Parâmetro: Explicação de cada parâmetro</span>
+                            <span style="position: relative; left: 1%"><br>   Exemplos</span>
+                            <span style="position: relative; left: 1%"><br>    Exemplo com valores aleatórios</span>
+                            <span style="position: relative; left: 1%"><br>     Explicação do exemplo</span>
+                            <span ><br></span>
+
+                            <span ><br>Passando o cursor do mouse por cima de algum texto você pode ver uma breve descrição do termo. Você pode encontrar em:</span>
+                            <span ><br>  * Nos parâmetros em itálicos, para ver se são opcionais</span>
+                            <span ><br>  * Na versão de publicação, para ver a data publicada</span>
+                            <span ><br>  * Nas tags de um parâmetro (na lista), para entendê-los melhor</span>
+                            <span ><br>  * Nos parâmeros da função, nos exemplos, para entender a posição de cada parâmetro</span>
+                            <span ><br>  * Em palavras sublinhadas de descrições, para ver o significado desses</span>
+                        </p>
+                    </div>
+                    <hr   style="border: 2px">
+                    <hr   style="border: 2px">
+                    <hr   style="border: 2px">`
+                }
+            </script>
 
         <h1   align="center" style="color: whitesmoke">COMO USAR CADA FUNÇÃO</h1>
         
@@ -108,5 +160,6 @@
             </script>
         </div>
         <hr   >
+        
     </div>
 </html>

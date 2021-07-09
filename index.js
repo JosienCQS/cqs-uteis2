@@ -1,6 +1,6 @@
         const explicacao = 'Revisão geral.Novas funções.Correções e mudanças. Parte da correção'
-        const versao = '1.2.3.2'
-        const Pub = '08 jul 2021'
+        const versao = '1.2.3.3'
+        const Pub = '09 jul 2021'
         console.log('[cqs-uteis] Iniciado o uso da versão v'+versao+' de '+Pub+' by Zienaps')
 
         
