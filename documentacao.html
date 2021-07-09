@@ -11,11 +11,11 @@
         <div id="Install"><div onmousedown="TranspInstall()" onmouseenter="TranspInstall()" style="opacity: 1" align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm install cqs-uteis </code><br> </p></div></div>
         <script>
             function TranspInstall() {
-                Install.innerHTML = `<div onmousedown="OpacoInstall()" onmouseleave="OpacoInstall()" style="opacity: 0.3" align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm install cqs-uteis </code><br> </p></div>`
+                Install.innerHTML = `<div onmousedown="OpacoInstall()" onmouseenter="TranspInstall()" style="opacity: 0.3" align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm install cqs-uteis </code><br> </p></div></div>`
             }
                 
             function OpacoInstall() {
-                Install.innerHTML = `<div onmousedown="TranspInstall()" onmouseenter="TranspInstall()" style="opacity: 1"   align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm install cqs-uteis </code><br> </p></div>`
+                Install.innerHTML = `<div onmousedown="TranspInstall()" onmouseenter="TranspInstall()" style="opacity: 1" align="center"><p style="z-index: 10; border: 3px solid rgb(145, 66, 66); position: fixed; top: 20px; right: 15px; background-color: rgb(172, 76, 76); color: white"> <br>          Instale pelo terminal:          <br><code style="background-color: rgb(138, 62, 62); color: white"> npm install cqs-uteis </code><br> </p></div></div>`
             }
         </script>
 
@@ -27,7 +27,7 @@
             d = new Date(); if(d.getHours()<10){var ver1 = '0'} else{var ver1 = ''}; if(d.getMinutes()<10){var ver2 = '0'} else{var ver2 = ''}
             let versao = {
                 Publica: ['1.2.1', '05/07/2021'],
-                Construcao: ['1.2.3.3', '09/07/2021']
+                Construcao: ['1.2.3.4', '09/07/2021']
             }
             Inf.innerHTML = 'Versões<br><span title="Disponível">Disp</span>: <span title="'+versao.Publica[1]+'">'+versao.Publica[0]+'</span><br><span title="Construindo">Cons</span>: <span title="'+versao.Construcao[1]+'">'+versao.Construcao[0]+'</span>'
             , 100000})
@@ -40,7 +40,7 @@
             <script>
                 function HowUsar() {
                     HowRead.innerHTML = `
-                    <div  style="background-color: whitesmoke; border: 2px solid; z-index: 10; position: relative">
+                    <div  style="background-color: whitesmoke; border: 2px solid; z-index: 11; position: relative">
                         <button onclick="HowUsarEsconder()" style="background-color: rgb(22, 141, 22); color: white">Esconder</button>
                         <button onclick="HowUsarFixar()" style="background-color: rgb(22, 141, 22); color: white">Fixar</button>
                         <h2   style="position: relative; left: 1%">Como usar a documentação</h2>
@@ -73,7 +73,7 @@
 
                 function HowUsarFixar() {
                     HowRead.innerHTML = `
-                    <div  style="background-color: whitesmoke; border: 2px solid; z-index: 10; position: fixed; height: 25%; width: 45%; overflow: auto">
+                    <div  style="background-color: whitesmoke; border: 2px solid; z-index: 11; position: fixed; height: 25%; width: 45%; overflow: auto">
                         <button onclick="HowUsarEsconder()" style="background-color: rgb(22, 141, 22); color: white">Esconder</button>
                         <button onclick="HowUsar()" style="background-color: rgb(22, 141, 22); color: white">Desfixar</button>
                         <h2   style="position: relative; left: 1%">Como usar a documentação</h2>
@@ -104,7 +104,7 @@
         <h1   align="center" style="color: whitesmoke">COMO USAR CADA FUNÇÃO</h1>
         
         <!--RANDOMIZE-->
-        <div  style="background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
             <!--ESTRUTURA-->
             <div style="position: relative; margin-left: 1%; margin-right: 1%">
                 <h2   >randomize(Max, <i title="Parâmetro opcional">Min</i>, <i title="Parâmetro opcional">Dec</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
@@ -117,12 +117,18 @@
             </div>
             
             <!--EXEMPLO-->
-            <div  id="VerExemplo" style="position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
                 <span style="position: relative; left: 1%"><br><b>Exemplos</b></span>
-                <span style="position: relative; left: 2%"><br><kbd>randomize</kbd>( <input id="RandomizeValor1" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Max" size="10">, <input id="RandomizeValor2" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Min" size="10">, <input id="RandomizeValor3" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Dec" size="10"> ) <small id="ReturnRandomize"><button onclick="ExemploRandomize()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 2%"><br><kbd>randomize</kbd>(
+                     <input id="RandomizeValor1" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Max" size="10">,
+                     <input id="RandomizeValor2" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Min" size="10">,
+                     <input id="RandomizeValor3" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Dec" size="10"> 
+                   ) <small id="ReturnRandomize"><button onclick="ExemploRandomize()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
                 <span style="position: relative; left: 3%"><br>  O sistema irá sortear um número entre o <u title="Valor mínimo a ser sorteado">Min</u> e o <u title="Valor máximo a ser sorteado">Max</u> e depois arredondará mantendo a quantidade de casas decimais definida em <u title="Quantidade de casas decimais no resultado">Dec</u></span>
                 <span style="position: relative; left: 1%"><br></span>
-                <span style="position: relative; left: 2%"><br><kbd>randomize</kbd>(<kbd title="Max (Vetor com os elementos)">[ <input placeholder="Monte um vetor com valores que preferir" id="RandomizeVetor" style="width: 200px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Vetor com valores" size="10"> ]</kbd>) <small id="ReturnRandomize2"><button onclick="ExemploRandomize2()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 2%"><br><kbd>randomize</kbd>(
+                    [<kbd title="Max (Vetor com os elementos)"><input placeholder="Monte um vetor com valores que preferir" id="RandomizeVetor" style="width: 250px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Vetor com valores" size="10">]</kbd>
+                   ) <small id="ReturnRandomize2"><button onclick="ExemploRandomize2()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
                 <span style="position: relative; left: 3%"><br>  O sistema irá sortear um número entre 0 e o tamanho do vetor e verá qual o elemento está na posição do valor sorteado. Esse será o resultado<br> </span>
             </div>
             <script>
@@ -132,15 +138,15 @@
                     let Dec = Number(document.querySelector("#RandomizeValor3").value)
 
                     if(!Max){Max = 30; RandomizeValor1.value = 30}
-                    if(!Min){Min =  1; RandomizeValor2.value = 1}
-                    if(!Dec){Dec =  2; RandomizeValor3.value = 2}
+                    if(!Min){Min =  1}
+                    if(!Dec){Dec =  2}
 
                     let Fim
                     let Result = Min + (Math.round((Math.random() * (Max - Min)) * 10**Dec) / 10**Dec)
                     
                     Fim = `\\ retornou: ${Result}`
-                    if(!Result) Fim = `Tipo de entrada de valor desconhecida`
-                    if(Max < Min) Fim = `Valor de <u title="Valor máx a ser sorteado">Max</u> não deve ser menor que valor de <u title="Valor mínimo a ser sorteado">Min</u>`
+                    if(!Result) Fim = `[terminal] Tipo de entrada de valor desconhecida`
+                    if(Max < Min) Fim = `[terminal] Valor de <u title="Valor máx a ser sorteado">Max</u> não deve ser menor que valor de <u title="Valor mínimo a ser sorteado">Min</u>`
 
                     ReturnRandomize.innerHTML = Fim
                 }
@@ -161,5 +167,128 @@
         </div>
         <hr   >
         
+        <!--CHANCE-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >chance(Valor, Chance, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 3 de julho de 2021">v1.1.0</i></h2>
+                <span >Sorteie um elemento de um vetor trabalhando em cima de chance</span>
+                <ul   >
+                    <li><kbd  title="Vetor">[Array]</kbd> <b                                                      >Valor</b>:  Vetor onde estão os elementos a ser sorteado</li>
+                    <li><kbd  title="Vetor">[Array]</kbd> <b                                                     >Chance</b>:  Vetor onde estão as chances de sorteio de cada elemento</li>
+                    <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Acompanhar</b>:  Se desejas receber mensagens do progresso do sorteio no terminal<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>chance</kbd>(
+                    [<input id="ChanceValor1" style="width: 200px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Valor">], 
+                    [<input id="ChanceValor2" style="width: 100px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Chance">], 
+                     <input id="ChanceValor3" style="width: 35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Acompanhar"> ) 
+                     <small id="ReturnChance"><button onclick="ExemploChance()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>  O sistema irá sortear um valor aleatório, irá ver qual posição caiu nesse peso e retornar o elemento dessa posição<br> </span>
+            </div>
+            <script>
+                function ExemploChance() {
+                    let Valor1 = document.querySelector("#ChanceValor1").value
+                    let Valor = Valor1.split(', ')
+                    if(!Valor1){Valor = ['Alguem', 'Zienaps', 'Dizer', 'Alumínio', 'Sinônimo']; ChanceValor1.value = "Alguem, Zienaps, Dizer, Alumínio, Sinônimo"}
+                    let ValorTam = Valor.length
+
+                    let Chance1 = document.querySelector("#ChanceValor2").value
+                    let Chancea = Chance1.split(', ')
+                    let Chance = []
+
+                    for(i=0; i < Chancea.length; i++){
+                        Chance.push(Number(Chancea[i]))
+                    }
+                    if(!Chance1){Chance = [2, 5, 4, 3, 6]; ChanceValor2.value = "2, 5, 4, 3, 6"}
+                    let ChanceTam = Chance.length
+
+                    let Acompanhar = false
+                    if(document.querySelector("#ChanceValor3").value == 'true') Acompanhar = true
+
+                    let ChanceTotal = 0
+                    let AcumChance = []
+                    let sorteio
+                    let PosGanhou
+                    let Texto = ''
+                    if(Acompanhar) Texto = '<br>'
+
+                    if(ValorTam == ChanceTam){
+                        for(i=0; i < ChanceTam; i++){
+                            ChanceTotal = ChanceTotal + Chance[i];                                              if(Acompanhar){Texto = Texto+'[terminal] Chance acumulada: (+ '+Chance[i]+') '+ChanceTotal+'<br>'}
+                            AcumChance.push(ChanceTotal);                                                       if(Acompanhar){Texto = Texto+'[terminal]     Vetor de chances: '+AcumChance+'<br>'}
+                        }
+
+                        sorteio = Math.round(Math.random() * (ChanceTotal) * 10**10) / 10**10;                  if(Acompanhar){Texto = Texto+'[terminal] Sorteio: '+sorteio+'<br>'}
+
+                        for(i=0; i < ChanceTam; i++){
+                            let h = i-1
+                            let AcumChanceMen = AcumChance[h]
+                            if(!AcumChanceMen){AcumChanceMen = 0}                                               if(Acompanhar){Texto = Texto+'[terminal] Verificação atual: ['+i+'] '+AcumChanceMen+' - '+AcumChance[i]+'<br>'}
+                            if(AcumChanceMen <= sorteio && AcumChance[i]> sorteio){
+                                PosGanhou = i;                                                                  if(Acompanhar){Texto = Texto+'[terminal]     Posição que ganhou: '+i+'<br>'}
+                            } else{                                                                             if(Acompanhar){Texto = Texto+'[terminal]     Posição fora de lugar: '+i+'<br>'}}
+                        }
+                        Texto = '\\retornou: '+Valor[PosGanhou]+Texto; ReturnChance.innerHTML = Texto
+
+                    } else{Texto = Texto+`[terminal] [chance: Error in Chance=${Chance}] Tamanho de Chance não é o mesmo de Valor (Valor tem ${ValorTam} elemento(s) enquanto Chance tem ${ChanceTam} elemento(s))`; ReturnChance.innerHTML = Texto; return}
+                }
+            </script>
+        </div>
+        <hr   >
+
+        <!--AVG-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >avg(Vetor, <i title="Parâmetro opcional">Dec</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+                <span >Tire uma média dos valores que estão dentro do vetor. Valores não numéricos serão ignorados</span>
+                <ul   >
+                    <li><kbd title="Vetor">[Array]</kbd> <b                                                                    >Vetor</b>:  Vetor com os valores dentro</li>
+                    <li><kbd title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: floor com todos os dígitos">(Opc)</kbd> <b>Dec</b>:  Quantidade de casas decimais no resultado<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>avg</kbd>(
+                    [<input id="AvgValor1" style="width: 200px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Vetor">],
+                     <input id="AvgValor2" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Dec"> 
+                   ) <small id="ReturnAvg"><button onclick="ExemploAvg()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>  O sistema irá ver a distância escolhida, criar a sequencia respeitando a distancia e parar quando chegar no limite<br> </span>
+            </div>
+            <script>
+                function ExemploAvg() {
+                    let Vetora = document.querySelector("#AvgValor1").value
+                    let Vetor = Vetora.split(', ')
+                    if(!Vetora){Vetor = [2, 5, 3, 6, 3, 6, 9]; AvgValor1.value = "2, 5, 3, 6, 3, 6, 9"}
+                    let Dec   = document.querySelector("#AvgValor2").value
+                    if(!Vetor[0]){ReturnAvg.innner.HTML = `[avg: Error in Vetor=${Vetor}] valor deve ser um vetor`; return}
+
+                    let ValorSoma = 0
+                    let ValorFinal = null
+                    let VetorSize = Vetor.length
+                    let Remover = VetorSize
+                    let teste = 0
+
+                    for(i = 0; i < VetorSize; i++){
+                        if(isNaN(Vetor[i]) || Vetor[i] == null){Remover = Remover - 1}
+                        else{ValorSoma = ValorSoma + Number(Vetor[i])}
+                    }
+
+                    if(isNaN(Dec)){ValorFinal = ValorSoma / Remover}
+                    else{ValorFinal = Math.round((ValorSoma / Remover) * 10**Dec) / 10**Dec}
+
+                    ReturnAvg.innerHTML = '\\retornou: '+ValorFinal
+                }
+            </script>
+        </div>
+        <hr   >
+
     </div>
 </html>
