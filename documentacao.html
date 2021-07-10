@@ -27,7 +27,7 @@
             d = new Date(); if(d.getHours()<10){var ver1 = '0'} else{var ver1 = ''}; if(d.getMinutes()<10){var ver2 = '0'} else{var ver2 = ''}
             let versao = {
                 Publica: ['1.2.1', '05/07/2021'],
-                Construcao: ['1.2.3.4', '09/07/2021']
+                Construcao: ['1.2.3.5', '10/07/2021']
             }
             Inf.innerHTML = 'Versões<br><span title="Disponível">Disp</span>: <span title="'+versao.Publica[1]+'">'+versao.Publica[0]+'</span><br><span title="Construindo">Cons</span>: <span title="'+versao.Construcao[1]+'">'+versao.Construcao[0]+'</span>'
             , 100000})
@@ -152,7 +152,7 @@
                 }
                 function ExemploRandomize2() {
                     let Max = document.querySelector("#RandomizeVetor").value
-                    let Vetor = Max.split(', ')
+                    let Vetor = Max.split(',')
 
                     if(!Max){Vetor = ['Alguem', 'Zienaps', 'Dizer', 'Alumínio', 'Sinônimo']; RandomizeVetor.value = "Alguem, Zienaps, Dizer, Alumínio, Sinônimo"}
 
@@ -193,12 +193,12 @@
             <script>
                 function ExemploChance() {
                     let Valor1 = document.querySelector("#ChanceValor1").value
-                    let Valor = Valor1.split(', ')
+                    let Valor = Valor1.split(',')
                     if(!Valor1){Valor = ['Alguem', 'Zienaps', 'Dizer', 'Alumínio', 'Sinônimo']; ChanceValor1.value = "Alguem, Zienaps, Dizer, Alumínio, Sinônimo"}
                     let ValorTam = Valor.length
 
                     let Chance1 = document.querySelector("#ChanceValor2").value
-                    let Chancea = Chance1.split(', ')
+                    let Chancea = Chance1.split(',')
                     let Chance = []
 
                     for(i=0; i < Chancea.length; i++){
@@ -265,7 +265,7 @@
             <script>
                 function ExemploAvg() {
                     let Vetora = document.querySelector("#AvgValor1").value
-                    let Vetor = Vetora.split(', ')
+                    let Vetor = Vetora.split(',')
                     if(!Vetora){Vetor = [2, 5, 3, 6, 3, 6, 9]; AvgValor1.value = "2, 5, 3, 6, 3, 6, 9"}
                     let Dec   = document.querySelector("#AvgValor2").value
                     if(!Vetor[0]){ReturnAvg.innner.HTML = `[avg: Error in Vetor=${Vetor}] valor deve ser um vetor`; return}
@@ -290,5 +290,314 @@
         </div>
         <hr   >
 
+        <!--SEQUENCIA-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >sequencia(Max, <i title="Parâmetro opcional">Min</i>, <i title="Parâmetro opcional">Espaco</i>) - Desde <i title="de 03 de julho de 2021">v1.1.0</i></h2>
+                <span >Cria um vetor com números do <u title="Valor mínimo que deve ter na sequência">Min</u> ao <u title="Valor máximo que deve ter na sequência">Max</u> pulando uma quantidade dada em <u title="Qual o espaço deve ter entre cada número da sequência">Espaco</u></span>
+                <ul   >
+                    <li><kbd title="Inteiro">[Int]</kbd> <b                                                >Max</b>:  Valor máximo que deve ter na sequência</li>
+					<li><kbd title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: 0">(Opc)</kbd> <b   >Min</b>:  Valor mínimo que deve ter na sequência</li>
+					<li><kbd title="Decimal">[Dec]</kbd> <kbd title="Opcional. Padrão: 1">(Opc)</kbd> <b>Espaco</b>:  Qual o espaço deve ter entre cada número da sequência<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>sequencia</kbd>(
+                    <input id="SequenciaValor1" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Max">,
+                    <input id="SequenciaValor2" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Min">,
+                    <input id="SequenciaValor3" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Espaco"> 
+                  ) <small id="ReturnSequencia"><button onclick="ExemploSequencia()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema irá ver a distância escolhida, criar a sequencia respeitando a distancia e parar quando chegar no limite<br> </span>
+            </div>
+            <script>
+                function ExemploSequencia() {
+				let Maxa = document.querySelector("#SequenciaValor1").value
+				let Mina = document.querySelector("#SequenciaValor2").value
+				let Espacoa = document.querySelector("#SequenciaValor3").value
+				Max = Number(Maxa)
+				Min = Number(Mina)-1
+				Espaco = Number(Espacoa)
+				
+				if(!Maxa){Max = 20; SequenciaValor1.value = 20}
+				if(!Mina){Min = 0}
+				if(!Espacoa){Espaco = 1}
+				
+				let Tamanho = (Max - Min) / Espaco
+				let Ultimo = Min - Espaco + 1
+				let Atual = 0
+				let Sequencia = []
+
+				for(i=0; i < Tamanho; i++){
+					if(Ultimo + Espaco > Max){} else{
+						Atual = Ultimo + Espaco
+						Ultimo = Atual
+						Sequencia.push(Atual)
+					}
+				}
+
+				ReturnSequencia.innerHTML = '\\retornou: '+Sequencia
+                }
+            </script>
+        </div>
+        <hr   >
+
+		<!--REPETE-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >repete(Valor, Local) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+                <span >Verifique quantas vezes tal valor apareceu em um conjunto</span>
+                <ul   >
+                    <li><kbd title="Qualquer">[Any]</kbd> <b>Valor</b>:  Qual o valor (ou texto) deve ser verificado</li>
+					<li><kbd  title="Vetor">[Array]</kbd> <b>Local</b>:  Local onde deve ser verificado<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>repete</kbd>(
+                    <input id="RepeteValor1" style="width: 40px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Valor">,
+                    <input id="RepeteValor2" style="width: 200px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Local">
+                  ) <small id="ReturnRepete"><button onclick="ExemploRepete()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>  O sistema verifica quantos elementos tem o mesmo valor do valor procurado e traz quantos encontrou<br> </span>
+            </div>
+            <script>
+                function ExemploRepete() {
+					let Valora = document.querySelector("#RepeteValor1").value
+					let Locala = document.querySelector("#RepeteValor2").value
+					let Valor = Valora
+					let Local = Locala.split(',')
+					if(!Valora){Valor = "Abacate"; RepeteValor1.value = "Abacate"}
+					if(!Locala){Local = ["Arroz", "Laranja", "Abacate", "Maionese", "Limão", "Abacate", "Unha"]; RepeteValor2.value = "Arroz, Laranja, Abacate, Maionese, Limão, Abacate, Unha"}
+                    let LocalTam = Local.length
+					let Repete = 0
+
+					for(i=0; i <LocalTam; i++){
+						if(Local[i] == Valor){
+							Repete++
+						}
+					}
+
+					ReturnRepete.innerHTML = '\\retornou: '+Repete
+                }
+            </script>
+        </div>
+        <hr   >
+
+		<!--SORTEAR-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >sortear(Tamanho, Quantidade, <i title="Parâmetro opcional">Repete</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+                <span >Crie um vetor com números sorteados, repetidos ou não</span>
+                <ul   >
+                    <li><kbd  title="Inteiro">[Int]</kbd> <b                                                               >Tamando</b>:  Qual o valor máximo a ser sorteado</li>
+					<li><kbd  title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: valor de Tamanho">(Opc)</kbd> <b>Quantidade</b>:  Quantos números devem ser sorteados</li>
+					<li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b               >Repete</b>:  Se os números sorteados podem repetir<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>sortear</kbd>(
+                    <input id="SortearValor1" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Tamanho">,
+                    <input id="SortearValor2" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Quantidade">,
+                    <input id="SortearValor3" style="width: 35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Repete"> 
+                  ) <small id="ReturnSortear"><button onclick="ExemploSortear()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>  O sistema sorteia um número do vetor inicial e, se false, remove-o da lista. Repete o processo várias vezes e depois traz em vetor o resultado<br> </span>
+            </div>
+            <script>
+                function ExemploSortear() {
+					let Tamanhoa = document.querySelector("#SortearValor1").value
+					let Quantidadea = document.querySelector("#SortearValor2").value
+					let Repetea = document.querySelector("#SortearValor3").value
+					let Max = Number(Tamanhoa)
+					let Qtdd = Number(Quantidadea)
+					let Repete = false
+					if(Repetea == 'true') Repete = true
+					if(!Tamanhoa){Max = 10; SortearValor1.value = 10}
+					if(!Quantidadea){Qtdd = Max}
+					let QtddMax = 0
+					let Fila = []
+					let Sorteado = []
+					Repete = false
+					
+					if(Repete){Repete = true}
+					if(isNaN(Qtdd)){QtddMax = Max} else{QtddMax = Number(Qtdd)}
+
+					for(i = 0; i < Max; i++){
+						Fila.push(i+1)
+					}
+
+					for(i = 0; i < QtddMax; i++){
+						let Add = Fila[Math.floor(Math.random() * Fila.length)]
+						Sorteado.push(Add)
+						
+						if(!Repete){
+							let Remover = Fila.indexOf(Add)
+							Fila.splice(Remover, 1)
+						}
+					}
+
+				ReturnSortear.innerHTML = '\\retornou: '+Sorteado
+                }
+            </script>
+        </div>
+        <hr   >
+
+		<!--UNIFICAR-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >unificar(Vetor, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+                <span >Remova valores duplicados de seu vetor permanecendo somente o último elemento repetido</span>
+                <ul   >
+                    <li><kbd  title="Vetor">[Array]</kbd> <b                                                      >Vetor</b>:  Vetor com os elementos a serem verificados</li>
+					<li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Acompanhar</b>:  Se deve trazer em log o processo de verificação (Isso pode atrasar)<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>unificar</kbd>(
+                    <input id="UnificarValor1" style="width: 200px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Vetor">,
+                    <input id="UnificarValor2" style="width: 35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Acompanhar"> 
+                  ) <small id="ReturnUnificar"><button onclick="ExemploUnificar()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema remove os termos que ele verificar se já existe após ele (diferencia texto de valor: 6 != '6')<br> </span>
+            </div>
+            <script>
+                function ExemploUnificar() {
+					let Vetora = document.querySelector("#UnificarValor1").value
+					let Vetor = Vetora.split(',')
+                    let loga = document.querySelector("#UnificarValor2").value
+					if(!Vetora){Vetor = [1, 5, 3, 6, 4, 'C', 5, 9, 'D', 'C', '6', 9, 8]; UnificarValor1.value = "1, 5, 3, 6, 4, 'C', 5, 9, 'D', 'C', '6', 9, 8"}
+					let log = false
+					if(loga) log = true
+					let Fim = []
+					let ver = 0
+					let Texto = ''
+					if(log) Texto = '<br>'
+					for(a=0; a<Vetor.length; a++){
+						ver = Vetor.length
+						if(log){Texto = Texto+'[terminal]Posição A = '+a+'<br>'}
+						for(b=(a+1); b<Vetor.length; b++){
+							if(log){Texto = Texto+'[terminal]    Posição B = '+b+'<br>'}
+							if(Vetor[a] === Vetor[b]){
+								if(log){Texto = Texto+'[terminal]        (A = '+Vetor[a]+') == (B = '+Vetor[b]+') - Removendo '+Vetor[a]+'<br>'}
+								ver = -1
+							}else{
+								if(log){Texto = Texto+  '[terminal]        (A = '+Vetor[a]+') / (B = '+Vetor[b]+') - Mantendo '+Vetor[a]+'<br>'}
+								ver = ver - 1
+								
+							}
+						}
+						if(log){Texto = Texto+'[terminal]    ValorFinal (remover elemento se negativo): '+ver+'<br>'}
+						if(ver < 0){}else{
+							Fim.push(Vetor[a])}
+							if(log){Texto = Texto+'[terminal]    Novo vetor: ['+Fim+'] <br>'}
+					}
+
+					ReturnUnificar.innerHTML = '\\retornou: '+Fim+Texto
+                }
+            </script>
+        </div>
+        <hr   >
+
+		<!--FILTRAGEM-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >filtragem(Onde, oQue, <i title="Parâmetro opcional">Manter</i>, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+                <span >Veja se os valores de um vetor estão no segundo vetor e mantenha os que não tiver, ou vice-versa</span>
+                <ul   >
+                    <li><kbd title="Vetor">[Array]</kbd> <b                                                                                 >Onde</b>:  Vetor a verificar os valores. Retornará esse vetor filtrado pelo oQue</li>
+					<li><kbd title="Vetor">[Array]</kbd> <b                                                                                 >oQue</b>:  Vetor onde o sistema usará de base para filtrar o primeiro vetor</li>
+					<li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b                             >Manter</b>:  true caso queira manter somente os valores encontrados</li>
+					<li><kbd title="Boleano ou texto 'Impo'">[Bool or 'Impo']</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Acompanhar</b>:  Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta). 'Impo' mostra somente logs importantes<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>filtragem</kbd>(
+                    <input id="FiltragemValor1" style="width: 200px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Onde (Neste exemplo, não coloque espaço após a vírgula)" placeholder="Neste exemplo, não coloque espaço após a vírgula">,
+                    <input id="FiltragemValor2" style="width: 200px; background-color: rgb(22, 155, 22); color: whitesmoke" title="oQue (Neste exemplo, não coloque espaço após a vírgula)" placeholder="Neste exemplo, não coloque espaço após a vírgula">,
+					<input id="FiltragemValor3" style="width:  35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Manter">,
+                    <input id="FiltragemValor4" style="width:  35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Acompanhar"> 
+                  ) <small id="ReturnFiltragem"><button onclick="ExemploFiltragem()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span id="ExplicaFiltragem" style="position: relative; left: 3%"><br>O sistema verifica se o valor de certo elemento está contido no segundo vetor. Se sim, ele é removido do vetor principal<br> </span>
+            </div>
+            <script>
+                function ExemploFiltragem() {
+					let Ondea = document.querySelector("#FiltragemValor1").value
+					let oQuea = document.querySelector("#FiltragemValor2").value
+					let Mantera = document.querySelector("#FiltragemValor3").value
+					let Acompanhara = document.querySelector("#FiltragemValor4").value
+					let Onde = Ondea.split(',')
+					let oQue = oQuea.split(',')
+					let Manter = false; 	if(Mantera) Manter = true
+					let Acompanhar = false; if(Acompanhara == 'true'){Acompanhar = true}; if(Acompanhara == 'Impo' || Acompanhara == 'impo'){Acompanhar = 'Impo'}
+					
+					if(!Ondea){Onde = [1, 5, 3, 6, 4, 'C', 5, 9, 'D', 'C', '6', 9, 8]; FiltragemValor1.value = "1, 5, 3, 6, 4, 'C', 5, 9, 'D', 'C', '6', 9, 8"}
+					if(!oQuea){oQue = [3, 6, 9]; FiltragemValor2.value = "3, 6, 9"}
+					
+                    let Resultado = []
+					let OndeTam = Onde.length
+					let oQueTam = oQue.length
+					let verif
+					let aviso = ''
+					if(Acompanhar == 'impo'){Acompanhar = 'Impo'}
+					let Texto = ''
+					/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){
+						let TManter
+						if(Manter == true){TManter = 'NÃO '} else{TManter = ''}
+						Texto = `<br>Removendo todos os valores de [${Onde}] que ${TManter}forem encontrados em [${oQue}]`+'<br>'
+					}
+
+					for(a=0; a < OndeTam; a++){
+						/*>>*/if(Acompanhar == true){Texto = Texto+`  Posição a comparar: Onde[${a}] (valor: ${Onde[a]})`+'<br>'}
+						verif = oQueTam
+
+						for(b=0; b < oQueTam; b++){
+							/*>>*/if(Acompanhar == true){Texto = Texto+`      Comparando posição Onde[${a}] com: oQue[${b}] (valor de oQue[b]: ${oQue[b]})`+'<br>'}
+							if(Onde[a] === oQue[b]){
+								/*>>*/if(Acompanhar == true){Texto = Texto+`          Verificação diz que ${Onde[a]} === ${oQue[b]}`+'<br>'}
+								verif = -1
+								b = oQueTam+5
+							} else{
+								/*>>*/if(Acompanhar == true){Texto = Texto+`          Verificação diz que ${Onde[a]} <> ${oQue[b]}`+'<br>'}
+								verif = verif
+							}
+						}
+						if(Manter == true){
+							if(verif < 0){
+								/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ` por estar em ${oQue}`}; Texto = Texto+`              Mantendo ${Onde[a]}`+aviso+'<br>'}
+								Resultado.push(Onde[a])
+							} else{/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ` por não estar em ${oQue}`}; Texto = Texto+`              Removendo ${Onde[a]}`+aviso+'<br>'}}
+						} else{
+							if(verif >= 0){
+								/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ` por não estar em ${oQue}`}; Texto = Texto+`              Mantendo ${Onde[a]}`+aviso+'<br>'}
+								Resultado.push(Onde[a])
+							} else{/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ` por estar em ${oQue}`}; Texto = Texto+`              Removendo ${Onde[a]}`+aviso+'<br>'}}
+						}
+					}
+
+					ReturnFiltragem.innerHTML = '\\retornou: '+Resultado+Texto
+					
+					if(Manter) ExplicaFiltragem.innerHTML = '<br>O sistema verifica se o valor de certo elemento não está contido no segundo vetor. Se não estiver, ele é removido do vetor principal<br> '
+                }
+            </script>
+        </div>
+        <hr   >
+
+	<p    align="center" style="color: #ff0000">\\ <span title="Partes abaixo estão em manutenção">EM CONSTRUÇÃO</span> //</p>
     </div>
 </html>

@@ -1,6 +1,6 @@
         const explicacao = 'Revisão geral.Novas funções.Correções e mudanças. Parte da correção'
-        const versao = '1.2.3.4'
-        const Pub = '09 jul 2021'
+        const versao = '1.2.3.5'
+        const Pub = '10 jul 2021'
         console.log('[cqs-uteis] Iniciado o uso da versão v'+versao+' de '+Pub+' by Zienaps')
 
         
@@ -225,7 +225,7 @@
                 let Add = Fila[Math.floor(Math.random() * Fila.length)]
                 Sorteado.push(Add)
                 
-                if(Repete){
+                if(!Repete){
                     let Remover = Fila.indexOf(Add)
                     Fila.splice(Remover, 1)
                 }
