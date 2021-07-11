@@ -23,19 +23,17 @@
 
         <script>
             var d = new Date()
-        setInterval( () => {
             d = new Date(); if(d.getHours()<10){var ver1 = '0'} else{var ver1 = ''}; if(d.getMinutes()<10){var ver2 = '0'} else{var ver2 = ''}
-            let versao = {
-                Publica: ['1.2.1', '05/07/2021'],
-                Construcao: ['1.2.3.5', '10/07/2021']
+            var versao = {
+                Publica: ['1.2.3', '11/07/2021'],
+                Construcao: ['1.2.3', '11/07/2021']
             }
             Inf.innerHTML = 'Versões<br><span title="Disponível">Disp</span>: <span title="'+versao.Publica[1]+'">'+versao.Publica[0]+'</span><br><span title="Construindo">Cons</span>: <span title="'+versao.Construcao[1]+'">'+versao.Construcao[0]+'</span>'
-            , 100000})
         </script>
 
         <!--COMO USAR A DOC-->
         <div id="HowRead">
-            <span ><button onclick="HowUsar()" style="background-color:rgb(22, 141, 22) color=white">Como usar</button></span>
+            <span ><button onclick="HowUsar()" style="background-color:rgb(22, 141, 22) color=white">Como entender a documentação</button></span>
         </div>
             <script>
                 function HowUsar() {
@@ -68,7 +66,7 @@
                 }
                 
                 function HowUsarEsconder() {
-                    HowRead.innerHTML = `<span ><button onclick="HowUsar()" style="background-color:rgb(22, 141, 22) color=white">Como usar</button></span>`
+                    HowRead.innerHTML = `<span ><button onclick="HowUsar()" style="background-color:rgb(22, 141, 22) color=white">Como entender a documentação</button></span>`
                 }
 
                 function HowUsarFixar() {
@@ -100,6 +98,8 @@
                     <hr   style="border: 2px">`
                 }
             </script>
+
+        <div align="center"><span style="color: white; background-color: rgb(140, 34, 34)">  Versão 1.2.3 de 11/07/2021 publicada  </span></div>
 
         <h1   align="center" style="color: whitesmoke">COMO USAR CADA FUNÇÃO</h1>
         
@@ -141,12 +141,13 @@
                     if(!Min){Min =  1}
                     if(!Dec){Dec =  2}
 
+					let Random = Math.random()
                     let Fim
-                    let Result = Min + (Math.round((Math.random() * (Max - Min)) * 10**Dec) / 10**Dec)
+                    let Result = Min + (Math.round((Random * (Max - Min)) * 10**Dec) / 10**Dec)
                     
                     Fim = `\\ retornou: ${Result}`
-                    if(!Result) Fim = `[terminal] Tipo de entrada de valor desconhecida`
-                    if(Max < Min) Fim = `[terminal] Valor de <u title="Valor máx a ser sorteado">Max</u> não deve ser menor que valor de <u title="Valor mínimo a ser sorteado">Min</u>`
+                    if(!Result) Fim = '<span style="color: purple">[terminal]</span> Tipo de entrada de valor desconhecida'
+                    if(Max < Min) Fim = '<span style="color: purple">[terminal]</span> Valor de <u title="Valor máx a ser sorteado">Max</u> não deve ser menor que valor de <u title="Valor mínimo a ser sorteado">Min</u>'
 
                     ReturnRandomize.innerHTML = Fim
                 }
@@ -219,23 +220,23 @@
 
                     if(ValorTam == ChanceTam){
                         for(i=0; i < ChanceTam; i++){
-                            ChanceTotal = ChanceTotal + Chance[i];                                              if(Acompanhar){Texto = Texto+'[terminal] Chance acumulada: (+ '+Chance[i]+') '+ChanceTotal+'<br>'}
-                            AcumChance.push(ChanceTotal);                                                       if(Acompanhar){Texto = Texto+'[terminal]     Vetor de chances: '+AcumChance+'<br>'}
+                            ChanceTotal = ChanceTotal + Chance[i];                                              if(Acompanhar){Texto = Texto+'<span style="color: purple">[terminal]</span> Chance acumulada: (+ '+Chance[i]+') '+ChanceTotal+'<br>'}
+                            AcumChance.push(ChanceTotal);                                                       if(Acompanhar){Texto = Texto+'<span style="color: purple">[terminal]</span>     Vetor de chances: '+AcumChance+'<br>'}
                         }
 
-                        sorteio = Math.round(Math.random() * (ChanceTotal) * 10**10) / 10**10;                  if(Acompanhar){Texto = Texto+'[terminal] Sorteio: '+sorteio+'<br>'}
+                        sorteio = Math.round(Math.random() * (ChanceTotal) * 10**10) / 10**10;                  if(Acompanhar){Texto = Texto+'<span style="color: purple">[terminal]</span> Sorteio: '+sorteio+'<br>'}
 
                         for(i=0; i < ChanceTam; i++){
                             let h = i-1
                             let AcumChanceMen = AcumChance[h]
-                            if(!AcumChanceMen){AcumChanceMen = 0}                                               if(Acompanhar){Texto = Texto+'[terminal] Verificação atual: ['+i+'] '+AcumChanceMen+' - '+AcumChance[i]+'<br>'}
+                            if(!AcumChanceMen){AcumChanceMen = 0}                                               if(Acompanhar){Texto = Texto+'<span style="color: purple">[terminal]</span> Verificação atual: ['+i+'] '+AcumChanceMen+' - '+AcumChance[i]+'<br>'}
                             if(AcumChanceMen <= sorteio && AcumChance[i]> sorteio){
-                                PosGanhou = i;                                                                  if(Acompanhar){Texto = Texto+'[terminal]     Posição que ganhou: '+i+'<br>'}
-                            } else{                                                                             if(Acompanhar){Texto = Texto+'[terminal]     Posição fora de lugar: '+i+'<br>'}}
+                                PosGanhou = i;                                                                  if(Acompanhar){Texto = Texto+'<span style="color: purple">[terminal]</span>     Posição que ganhou: '+i+'<br>'}
+                            } else{                                                                             if(Acompanhar){Texto = Texto+'<span style="color: purple">[terminal]</span>     Posição fora de lugar: '+i+'<br>'}}
                         }
-                        Texto = '\\retornou: '+Valor[PosGanhou]+Texto; ReturnChance.innerHTML = Texto
+                        Texto = '\\retornou: '+Valor[PosGanhou]+'<code style="color: white">'+Texto+'</code>'; ReturnChance.innerHTML = Texto
 
-                    } else{Texto = Texto+`[terminal] [chance: Error in Chance=${Chance}] Tamanho de Chance não é o mesmo de Valor (Valor tem ${ValorTam} elemento(s) enquanto Chance tem ${ChanceTam} elemento(s))`; ReturnChance.innerHTML = Texto; return}
+                    } else{Texto = Texto+`<span style="color: purple">[terminal]</span> [chance: Error in Chance=${Chance}] Tamanho de Chance não é o mesmo de Valor (Valor tem ${ValorTam} elemento(s) enquanto Chance tem ${ChanceTam} elemento(s))`; ReturnChance.innerHTML = Texto; return}
                 }
             </script>
         </div>
@@ -268,7 +269,7 @@
                     let Vetor = Vetora.split(',')
                     if(!Vetora){Vetor = [2, 5, 3, 6, 3, 6, 9]; AvgValor1.value = "2, 5, 3, 6, 3, 6, 9"}
                     let Dec   = document.querySelector("#AvgValor2").value
-                    if(!Vetor[0]){ReturnAvg.innner.HTML = `[avg: Error in Vetor=${Vetor}] valor deve ser um vetor`; return}
+                    if(!Vetor[0]){ReturnAvg.innner.HTML = '<code style="color: white">[avg: Error in Vetor='+Vetor+'] valor deve ser um vetor</code>'; return}
 
                     let ValorSoma = 0
                     let ValorFinal = null
@@ -486,25 +487,25 @@
 					if(log) Texto = '<br>'
 					for(a=0; a<Vetor.length; a++){
 						ver = Vetor.length
-						if(log){Texto = Texto+'[terminal]Posição A = '+a+'<br>'}
+						if(log){Texto = Texto+'<span style="color: purple">[terminal]</span>Posição A = '+a+'<br>'}
 						for(b=(a+1); b<Vetor.length; b++){
-							if(log){Texto = Texto+'[terminal]    Posição B = '+b+'<br>'}
+							if(log){Texto = Texto+'<span style="color: purple">[terminal]</span>    Posição B = '+b+'<br>'}
 							if(Vetor[a] === Vetor[b]){
-								if(log){Texto = Texto+'[terminal]        (A = '+Vetor[a]+') == (B = '+Vetor[b]+') - Removendo '+Vetor[a]+'<br>'}
+								if(log){Texto = Texto+'<span style="color: purple">[terminal]</span>        (A = '+Vetor[a]+') == (B = '+Vetor[b]+') - Removendo '+Vetor[a]+'<br>'}
 								ver = -1
 							}else{
-								if(log){Texto = Texto+  '[terminal]        (A = '+Vetor[a]+') / (B = '+Vetor[b]+') - Mantendo '+Vetor[a]+'<br>'}
+								if(log){Texto = Texto+  '<span style="color: purple">[terminal]</span>        (A = '+Vetor[a]+') / (B = '+Vetor[b]+') - Mantendo '+Vetor[a]+'<br>'}
 								ver = ver - 1
 								
 							}
 						}
-						if(log){Texto = Texto+'[terminal]    ValorFinal (remover elemento se negativo): '+ver+'<br>'}
+						if(log){Texto = Texto+'<span style="color: purple">[terminal]</span>    ValorFinal (remover elemento se negativo): '+ver+'<br>'}
 						if(ver < 0){}else{
 							Fim.push(Vetor[a])}
-							if(log){Texto = Texto+'[terminal]    Novo vetor: ['+Fim+'] <br>'}
+							if(log){Texto = Texto+'<span style="color: purple">[terminal]</span>    Novo vetor: ['+Fim+'] <br>'}
 					}
 
-					ReturnUnificar.innerHTML = '\\retornou: '+Fim+Texto
+					ReturnUnificar.innerHTML = '\\retornou: '+Fim+'<code style="color: white">'+Texto+'</code>'
                 }
             </script>
         </div>
@@ -517,9 +518,9 @@
                 <h2   >filtragem(Onde, oQue, <i title="Parâmetro opcional">Manter</i>, <i title="Parâmetro opcional">Acompanhar</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
                 <span >Veja se os valores de um vetor estão no segundo vetor e mantenha os que não tiver, ou vice-versa</span>
                 <ul   >
-                    <li><kbd title="Vetor">[Array]</kbd> <b                                                                                 >Onde</b>:  Vetor a verificar os valores. Retornará esse vetor filtrado pelo oQue</li>
-					<li><kbd title="Vetor">[Array]</kbd> <b                                                                                 >oQue</b>:  Vetor onde o sistema usará de base para filtrar o primeiro vetor</li>
-					<li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b                             >Manter</b>:  true caso queira manter somente os valores encontrados</li>
+                    <li><kbd title="Vetor">[Array]</kbd> <b                                                                                  >Onde</b>:  Vetor a verificar os valores. Retornará esse vetor filtrado pelo oQue</li>
+					<li><kbd title="Vetor">[Array]</kbd> <b                                                                                  >oQue</b>:  Vetor onde o sistema usará de base para filtrar o primeiro vetor</li>
+					<li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b                              >Manter</b>:  true caso queira manter somente os valores encontrados</li>
 					<li><kbd title="Boleano ou texto 'Impo'">[Bool or 'Impo']</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Acompanhar</b>:  Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta). 'Impo' mostra somente logs importantes<br> </li>
                 </ul>
             </div>
@@ -559,38 +560,38 @@
 					/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){
 						let TManter
 						if(Manter == true){TManter = 'NÃO '} else{TManter = ''}
-						Texto = `<br>Removendo todos os valores de [${Onde}] que ${TManter}forem encontrados em [${oQue}]`+'<br>'
+						Texto = '<br><span style="color: purple">[terminal]</span>'+`Removendo todos os valores de [${Onde}] que ${TManter}forem encontrados em [${oQue}]`+'<br>'
 					}
 
 					for(a=0; a < OndeTam; a++){
-						/*>>*/if(Acompanhar == true){Texto = Texto+`  Posição a comparar: Onde[${a}] (valor: ${Onde[a]})`+'<br>'}
+						/*>>*/if(Acompanhar == true){Texto = Texto+'<span style="color: purple">[terminal]</span>  Posição a comparar: Onde['+a+'] (valor: '+Onde[a]+')'+'<br>'}
 						verif = oQueTam
 
 						for(b=0; b < oQueTam; b++){
-							/*>>*/if(Acompanhar == true){Texto = Texto+`      Comparando posição Onde[${a}] com: oQue[${b}] (valor de oQue[b]: ${oQue[b]})`+'<br>'}
+							/*>>*/if(Acompanhar == true){Texto = Texto+'<span style="color: purple">[terminal]</span>      Comparando posição Onde['+a+'] com: oQue['+b+'] (valor de oQue[b]: '+oQue[b]+')'+'<br>'}
 							if(Onde[a] === oQue[b]){
-								/*>>*/if(Acompanhar == true){Texto = Texto+`          Verificação diz que ${Onde[a]} === ${oQue[b]}`+'<br>'}
+								/*>>*/if(Acompanhar == true){Texto = Texto+'<span style="color: purple">[terminal]</span>          Verificação diz que '+Onde[a]+' === '+oQue[b]+'<br>'}
 								verif = -1
 								b = oQueTam+5
 							} else{
-								/*>>*/if(Acompanhar == true){Texto = Texto+`          Verificação diz que ${Onde[a]} <> ${oQue[b]}`+'<br>'}
+								/*>>*/if(Acompanhar == true){Texto = Texto+'<span style="color: purple">[terminal]</span>          Verificação diz que '+Onde[a]+' <> '+oQue[b]+'<br>'}
 								verif = verif
 							}
 						}
 						if(Manter == true){
 							if(verif < 0){
-								/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ` por estar em ${oQue}`}; Texto = Texto+`              Mantendo ${Onde[a]}`+aviso+'<br>'}
+								/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ' por estar em '+oQue}; Texto = Texto+'<span style="color: purple">[terminal]</span>              Mantendo '+Onde[a]+aviso+'<br>'}
 								Resultado.push(Onde[a])
-							} else{/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ` por não estar em ${oQue}`}; Texto = Texto+`              Removendo ${Onde[a]}`+aviso+'<br>'}}
+							} else{/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ' por não estar em '+oQue}; Texto = Texto+'<span style="color: purple">[terminal]</span>              Removendo '+Onde[a]+aviso+'<br>'}}
 						} else{
 							if(verif >= 0){
-								/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ` por não estar em ${oQue}`}; Texto = Texto+`              Mantendo ${Onde[a]}`+aviso+'<br>'}
+								/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ' por não estar em '+oQue}; Texto = Texto+'<span style="color: purple">[terminal]</span>              Mantendo '+Onde[a]+aviso+'<br>'}
 								Resultado.push(Onde[a])
-							} else{/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ` por estar em ${oQue}`}; Texto = Texto+`              Removendo ${Onde[a]}`+aviso+'<br>'}}
+							} else{/*>>*/if(Acompanhar == true || Acompanhar == 'Impo'){if(Acompanhar != 'Impo'){aviso = ' por estar em '+oQue}; Texto = Texto+'<span style="color: purple">[terminal]</span>              Removendo '+Onde[a]+aviso+'<br>'}}
 						}
 					}
 
-					ReturnFiltragem.innerHTML = '\\retornou: '+Resultado+Texto
+					ReturnFiltragem.innerHTML = '\\retornou: '+Resultado+'<code style="color: white">'+Texto+'</code>'
 					
 					if(Manter) ExplicaFiltragem.innerHTML = '<br>O sistema verifica se o valor de certo elemento não está contido no segundo vetor. Se não estiver, ele é removido do vetor principal<br> '
                 }
@@ -598,6 +599,394 @@
         </div>
         <hr   >
 
-	<p    align="center" style="color: #ff0000">\\ <span title="Partes abaixo estão em manutenção">EM CONSTRUÇÃO</span> //</p>
+		<!--MES TAMANHO-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >mesTamanho(Mes, <i title="Parâmetro parcial">Ano</i>) - Desde <i title="versão atual">v1.2.0</i></h2>
+                <span >Traga a quantidade de dias que tem em tal mês</span>
+                <ul   >
+                    <li><kbd title="Inteiro">[Int]</kbd> <b                                                                 >Mes</b>:  Qual mês quer buscar o tamanho</li>
+					<li><kbd title="Inteiro">[Int]</kbd> <kbd title="Parcial. Necessário somente se Mes == 2">(Par)</kbd> <b>Ano</b>:  De qual ano quer buscar o dia de tal mês<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>mesTamanho</kbd>(
+                    <input id="MesTamanhoValor1" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Mes">,
+                    <input id="MesTamanhoValor2" style="width: 30px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Ano"> 
+                  ) <small id="ReturnMesTamanho"><button onclick="ExemploMesTamanho()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema irá procurar em uma lista o número do <u title="Qual mês quer buscar o tamanho">mes</u> buscado. Ele irá retornar o valor correspondente<br> </span>
+            </div>
+            <script>
+                function ExemploMesTamanho() {
+					let Mesa = document.querySelector("#MesTamanhoValor1").value
+					let Anoa = document.querySelector("#MesTamanhoValor2").value
+					let Mes = Number(Mesa)
+					let Ano = Number(Anoa)
+					if(!Mesa){Mes = 5; MesTamanhoValor1.value = 5}
+					
+					let Texto = ''
+                    if(Mes == 2 && Ano == 0){ReturnMesTamanho.innerHTML = '<code style="color: white"><span style="color: purple">[terminal]</span>[mesTamanho: Error in Ano='+Ano+'] Necessário ano para buscar dias de Fevereiro</code>'; return false}
+					if(Mes != 2 && Ano != 0){Texto = '<code style="color: white"><br><span style="color: purple">[terminal]</span>[mesTamanho] Não é necessário colocar Ano quando não é Fevereiro</code>'}
+
+					let Tamanho = 0
+					if(Mes == 1) Tamanho = 31
+					if(Mes == 2) if(Ano%4 == 0) {Tamanho = 29} else{Tamanho = 28}
+					if(Mes == 3) Tamanho = 31
+					if(Mes == 4) Tamanho = 30
+					if(Mes == 5) Tamanho = 31
+					if(Mes == 6) Tamanho = 30
+					if(Mes == 7) Tamanho = 31
+					if(Mes == 8) Tamanho = 31
+					if(Mes == 9) Tamanho = 30
+					if(Mes == 10) Tamanho = 31
+					if(Mes == 11) Tamanho = 30
+					if(Mes == 11) Tamanho = 31
+
+					if(Tamanho == 0){ReturnMesTamanho.innerHTML = '<code style="color: white"><span style="color: purple">[terminal]</span>[mesTamanho: Error in Mes='+Mes+'] Valor citado não é mês</code>'; return false}
+
+					ReturnMesTamanho.innerHTML = '\\retornou: '+Tamanho+'<code style="color: white">'+Texto+'</code>'
+                }
+            </script>
+        </div>
+        <hr   >
+
+		<!--MES NOME-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >mesNome(Mes, <i title="Parâmetro opcional">Tipo</i>, <i title="Parâmetro opcional">Língua</i>) - Desde <i title="Versão atual">v1.2.0</i></h2>
+                <span >Traga o nome de um mês em um formato e língua específica</span>
+                <ul   >
+                    <li><kbd title="Inteiro">[Int]</kbd> <b                                                                                                                                                           >Mes</b>:  Qual mês quer buscar o nome</li>
+					<li><kbd title="Texto">[Str]</kbd> <kbd title="Opcional. Padrão: Grande">(Opc)</kbd> <kbd title="Aceito somente os seguintes valores: 'Grande', 'Tres', 'Duas', 'Uma', 'Primeira'">(Res)</kbd> <b>Tipo</b>:  Como retornar o mês</li>
+					<li><kbd title="Texto">[Str]</kbd> <kbd title="Opcional. Padrão: PT">(Opc)</kbd> <kbd title="Aceito somente os seguintes valores: 'PT', 'EN'">(Res)</kbd> <b                                   >Lingua</b>:  Em qual idioma deve trazer o resultado<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>mesNome</kbd>(
+                    <input id="MesNomeValor1" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Mes">,
+                    <input id="MesNomeValor2" style="width: 50px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Tipo">,
+                    <input id="MesNomeValor3" style="width: 30px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Lingua"> 
+                  ) <small id="ReturnMesNome"><button onclick="ExemploMesNome()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema irá buscar o <u title="Qual mês quer buscar o nome">mes</u> em uma lista, separar a língua pedida e depois o tipo pedido<br> </span>
+            </div>
+            <script>
+                function ExemploMesNome() {
+					let Mesa = document.querySelector("#MesNomeValor1").value
+					let Tipoa = document.querySelector("#MesNomeValor2").value
+					let Linguaa = document.querySelector("#MesNomeValor3").value
+					let Mes = Number(Mesa)
+					let Tipo = Tipoa
+					let Lingua = Linguaa; console.log('Lingua: '+Lingua+' | Tipo: '+Tipo)
+					if(!Mesa){Mes = 9; MesNomeValor1.value = 9}
+					
+                    let Nome = ''
+					let TipoA
+					let LinguaA
+					if(Tipo == ''){TipoA = 'Grande'} else{TipoA = Tipo}
+					if(Tipo == ''){LinguaA = 'PT'} else{LinguaA = Lingua}
+
+
+					let GranPor = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+					let TresPor = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+					let DuasPor = ['Jn', 'Fv', 'Mr', 'Ab', 'Ma', 'Jn', 'Jl', 'Ag', 'St', 'Ot', 'Nv', 'Dz']
+					let UmalPor = ['A', 'F', 'M', 'B', 'I', 'H', 'L', 'G', 'S', 'O', 'N', 'D']
+					let PrimPor = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
+					let GranEng = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+					let TresEng = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+					let DuasEng = ['Jn', 'Fb', 'Mr', 'Ap', 'My', 'Jn', 'Jl', 'Ag', 'Sp', 'Ot', 'Nv', 'Dc']
+					let UmalEng = ['A', 'F', 'C', 'P', 'M', 'E', 'Y', 'G', 'S', 'O', 'N', 'D']
+					let PrimEng = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
+
+					let Trazer = []
+					if(TipoA == 'Grande'     && LinguaA == 'PT') Trazer = GranPor
+					if(TipoA == 'Tres'       && LinguaA == 'PT') Trazer = TresPor
+					if(TipoA == 'Duas'       && LinguaA == 'PT') Trazer = DuasPor
+					if(TipoA == 'Uma'        && LinguaA == 'PT') Trazer = UmalPor
+					if(TipoA == 'Primeira'   && LinguaA == 'PT') Trazer = PrimPor
+					if(TipoA == 'Grande'     && LinguaA == 'EN') Trazer = GranEng
+					if(TipoA == 'Tres'       && LinguaA == 'EN') Trazer = TresEng
+					if(TipoA == 'Duas'       && LinguaA == 'EN') Trazer = DuasEng
+					if(TipoA == 'Uma'        && LinguaA == 'EN') Trazer = UmalEng
+					if(TipoA == 'Primeira'   && LinguaA == 'EN') Trazer = PrimEng
+					Nome = Trazer[Mes-1]
+					
+					if(Nome == ''){ReturnMesNome.innerHTML = '<code style="color: white"><span style="color: purple">[terminal]</span>[mesNome: Error in Mes='+Mes+'] Valor citado não é mês</code>'; return false}
+
+					ReturnMesNome.innerHTML = '\\retornou: '+Nome
+                }
+            </script>
+        </div>
+        <hr   >
+		
+		<!--DATA BUSCAR-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   >dataBuscar(Data, Busca) - Desde <i title="Versão atual">v1.2.0</i></h2>
+                <span >Traga um valor específico de uma data</span>
+                <ul   >
+                    <li><kbd title="Data">[Date]</kbd> <b                                                                   >Data</b>:  Data que queira verificar</li>
+					<li><kbd title="Texto">[Str]</kbd> <kbd title="Aceito somente os valores citados abaixo">(Res)</kbd> <b>Busca</b>:  Valor que queira buscar</li>
+					<ul style="position: relative; left: 18px; width: 93%">
+						<li><b>data</b>: Retorna a data completa</li>
+						<li><b>dia</b>: Retorna o dia em número</li>
+						<li><b>semana</b>: Retorna o dia da semana em número</li>
+						<li><b>mes</b>: Retorna o mês em número</li>
+						<li><b>mess</b>: Retorna o mês em texto</li>
+						<li><b>ano</b>: Retorna o ano em número</li>
+						<li><b>hoje</b>: Retorna a data sem horário</li>
+						<li><b>hora</b>: Retorna a hora em número</li>
+						<li><b>minuto</b>: Retorna o minuto em número</li>
+						<li><b>segundo</b>: Retorna o segundo em número</li>
+						<li><b>milissegundo</b>: Retorna o milissegundo em número</li>
+						<li><b>atualMilissegundo</b>: Retorna a quantidade de milissegundos desde 01/01/1970 00:00</li>
+						<li><b>atualSegundo</b>: Retorna a quantidade de segundos desde 01/01/1970 00:00</li>
+						<li><b>atualMinuto</b>: Retorna a quantidade de minutos desde 01/01/1970 00:00</li>
+						<li><b>atualHora</b>: Retorna a quantidade de horas desde 01/01/1970 00:00</li>
+						<li><b>atualDia</b>: Retorna a quantidade de dias desde 01/01/1970 00:00</li>
+					</ul>
+					<span><br> </span>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>DataBuscar</kbd>(<span id="DataBuscarAbre"></span>
+                    <input id="DataBuscarValor1" style="width: 90px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Data"><span id="DataBuscarFecha"></span>,
+                    <input id="DataBuscarValor2" style="width: 100px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Busca"> 
+                  ) <small id="ReturnDataBuscar"><button onclick="ExemploDataBuscar()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema irá ler a data (ou transformar o vetor [yyyy, mm, dd] em <u title="Data que queira verificar">data</u>, depois irá buscar o valor que procura<br> </span>
+            </div>
+            <script>
+                function ExemploDataBuscar() {
+					let Data = document.querySelector("#DataBuscarValor1").value
+					let Buscaa = document.querySelector("#DataBuscarValor2").value
+					let VetorData = Data.split(',')
+					if(!VetorData[2]){} else{DataBuscarAbre.innerHTML = '['; DataBuscarFecha.innerHTML = ']'}
+					let Busca = Buscaa
+					if(!Data){Data = new Date(); DataBuscarValor1.value = Data}
+					if(!Buscaa){Busca = 'atualMinuto'; DataBuscarValor2.value = 'atualMinuto'}
+					
+                    let data = new Date(Data)
+					let dia = data.getDate()
+					let semana = data.getDay()+1
+					let mes = data.getMonth()+1
+					let mess = '<code style="color: white">"mess" indisponível aqui. Tente novamente em um aplicativo de codificação</code>'
+					let ano = data.getFullYear()
+					let hoje = new Date([ano, mes, dia])
+					let hora = data.getHours()
+					let minuto = data.getMinutes()
+					let segundo = data.getSeconds()
+					let milis = data.getMilliseconds()
+					let TMilis = Date.now()
+					let TSegundo = TMilis / 1000
+					let TMinuto = TMilis / 1000 / 60 
+					let THora  = TMilis / 1000 / 60 / 60
+					let TDia  = TMilis / 1000 / 60 / 60 / 24
+
+					let Pedido = ''
+					if(Busca == 'data') Pedido = data
+					if(Busca == 'dia') Pedido = dia
+					if(Busca == 'semana') Pedido = semana
+					if(Busca == 'mes') Pedido = mes
+					if(Busca == 'mess') Pedido = mess
+					if(Busca == 'ano') Pedido = ano
+					if(Busca == 'hoje') Pedido = hoje
+					if(Busca == 'hora') Pedido = hora
+					if(Busca == 'minuto') Pedido = minuto
+					if(Busca == 'segundo') Pedido = segundo
+					if(Busca == 'milissegundo') Pedido = milis
+					if(Busca == 'atualMilissegundo') Pedido = TMilis
+					if(Busca == 'atualSegundo') Pedido = TSegundo
+					if(Busca == 'atualMinuto') Pedido = TMinuto
+					if(Busca == 'atualHora') Pedido = THora
+					if(Busca == 'atualDia') Pedido = TDia
+
+					if(Pedido == ''){ReturnDataBuscar.innerHTML = '<code style="color: white">[dataBuscar: Error in Busca='+Busca+'] Não foi encontrado essa busca (Exemplos: dia, mes, minuto)</code>'; return false}
+
+					let Acomp = ''
+					if(Busca != 'mess') Acomp = '\\retornou: '
+					ReturnDataBuscar.innerHTML = Acomp+Pedido
+                }
+            </script>
+        </div>
+        <hr   >
+
+		<!--LIMPAR LOG-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   ><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> LimparLog(<i title="Parâmetro opcional">Aviso</i>, <i title="Parâmetro opcional">Tamanho</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+                <span >Limpe o terminal</span>
+                <ul   >
+                    <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b>Aviso</b>:  Se deve ser avisado quando a limpeza for concluída</li>
+					<li><kbd title="Inteiro">[Int]</kbd> <kbd title="Opcional. Padrão: 100">(Opc)</kbd> <b >Tamanho</b>:  Quantas linhas deve ser adicionadas<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>LimparLog</kbd>(
+                    <input id="LimparLogValor1" style="width: 35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Aviso">,
+                    <input id="LimparLogValor2" style="width: 15px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Tamanho"> 
+                  ) <small id="ReturnLimparLog"><button onclick="ExemploLimparLog()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema envia uma quantidade de linhas vazias para esconder as mensagens<br> </span>
+            </div>
+            <script>
+                function ExemploLimparLog() {
+					let Avisoa = document.querySelector("#LimparLogValor1").value
+					let Tamanhoa = document.querySelector("#LimparLogValor2 ").value
+					let Tamanho = Number(Tamanhoa)
+					let Aviso = false
+					if(Avisoa == 'true') Aviso = true
+					
+					let Texto = ''
+                    if(Tamanho == 0){Tamanho = 100}
+					for(i=0; i < Tamanho; i++){Texto = Texto+'<br><span style="color: purple">[terminal]</span>'}
+					if(Aviso){Texto = Texto+'<br><span style="color: purple">[terminal]</span>O Terminal foi limpo'}
+					
+					ReturnLimparLog.innerHTML = '\\retornou: <i>true</i>'+'<code style="color: white">'+Texto+'</code>'
+                }
+            </script>
+        </div>
+        <hr   >
+
+		<!--HOW TO USE-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   ><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> HowToUse(<i title="Parâmetro opcional">Descrição</i>, <i title="Parâmetro opcional">Significado</i>, <i title="Parâmetro opcional">Exemplo</i>) - Desde <i title="de 27 de junho de 2021">v1.0.0</i></h2>
+                <span >Veja como usa cada function</span>
+                <ul   >
+                    <li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: true">(Opc)</kbd> <b  >Descrição</b>:  Se quer ver a decrição das funções</li>
+					<li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: true">(Opc)</kbd> <b>Significado</b>:  Se quer ver o significado de cada parâmetro</li>
+					<li><kbd title="Boleano">[Bool]</kbd> <kbd title="Opcional. Padrão: false">(Opc)</kbd> <b   >Exemplo</b>:  Se quer ver exemplos de cada função<br> 
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>HowToUse</kbd>(
+                    <input id="HowToUseValor1" style="width: 35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Descrição">,
+                    <input id="HowToUseValor2" style="width: 35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Significado">,
+                    <input id="HowToUseValor3" style="width: 35px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Exemplo"> 
+                  ) <small id="ReturnHowToUse"><button onclick="ExemploHowToUse()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema irá enviar mensagens no terminal explicando o uso de cada função. Será mostrado somente os parâmetros marcados como true<br> </span>
+            </div>
+            <script>
+                function ExemploHowToUse() {
+					let Descrição = document.querySelector("#HowToUseValor1").value
+					let Significado = document.querySelector("#HowToUseValor2").value
+					let Exemplo = document.querySelector("#HowToUseValor3").value
+                    let Func = true
+					let Desc = true
+					let Sign = true
+					let Exem = false     
+					if(Descrição == 'false')  {Desc = false}
+					if(Significado == 'false'){Sign = false}
+					if(Exemplo == 'true')     {Exem =  true}
+
+					let Texto = ''
+
+					let MSG = ''
+					if(Desc ==  true && Sign ==  true && Exem ==  true) MSG = 'estrutura'+', ' +'descrição da função'+', ' +'significado dos parâmetros'+' e '+'exemplo'
+					if(Desc ==  true && Sign ==  true && Exem == false) MSG = 'estrutura'+', ' +'descrição da função'+' e '+'significado dos parâmetros'
+					if(Desc ==  true && Sign == false && Exem ==  true) MSG = 'estrutura'+', ' +'descrição da função'                                   +' e '+'exemplo'
+					if(Desc ==  true && Sign == false && Exem == false) MSG = 'estrutura'+' e '+'descrição da função'
+					if(Desc == false && Sign ==  true && Exem ==  true) MSG = 'estrutura'+', '                             +'significado dos parâmetros'+' e '+'exemplo'
+					if(Desc == false && Sign ==  true && Exem == false) MSG = 'estrutura'+', '                             +'significado dos parâmetros'
+					if(Desc == false && Sign == false && Exem ==  true) MSG = 'estrutura'                                                               +' e '+'exemplo'
+					if(Desc == false && Sign == false && Exem == false) MSG = 'estrutura'
+
+					Texto = Texto+'<br><span style="color: purple">[terminal]</span>Versão atual: v'+versao.Publica[0]+' de '+versao.Publica[1]+' by Zienaps'
+					Texto = Texto+'<br><span style="color: purple">[terminal]</span>Veja todas as funções e atualizações aqui: https://zienaps.neocities.org/cqs-uteis.html'
+					Texto = Texto+'<br><span style="color: purple">[terminal]</span>Mostrando '+MSG+' das funções disponíveis'
+            
+					ReturnHowToUse.innerHTML = '\\retornou: <i>true</i><code style="color: white">'+Texto+'<br>HowToUse indisponível aqui. Tente novamente em um aplicativo de codificação</code>'
+                }
+            </script>
+        </div>
+        <hr   >
+
+	<!--CHECAR-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   ><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> Checar(<i title="Parâmetro opcional">Tipo</i>) - Desde <i title="Versão atual">v1.2.0</i></h2></h2>
+                <span >Receba uma notificação no terminal sempre quando o código alcançar tal ponto</span>
+                <ul   >
+                    <li><kbd title="Texto">[Str]</kbd> <kbd title="Opcional. Padrão: Texto vazio">(Opc)</kbd> <b>Tipo</b>:  Qual mensagem enviar</li>
+					<ul style="position: relative; left: 18px; width: 93%">
+						<li><b>'inicio'</b>: Mensagem pré-definida de início de código</li>
+						<li><b>'fim'</b>: Mensagem pré-definida de conclusão de código</li>
+						<li><b>Outro texto</b>: Mensagem pré-definida com um Checkpoint de identificação própria</li>
+					</ul>
+					<span><br> </span>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>Checar</kbd>(
+                    <input id="ChecarValor1" style="width: 90px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Tipo"> 
+                  ) <small id="ReturnChecar"><button onclick="ExemploChecar()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema irá enviar uma mensagem pré-definida no terminal de acordo com o tipo de notificação<br> </span>
+            </div>
+            <script>
+                function ExemploChecar() {
+					let Tipo = document.querySelector("#ChecarValor1").value
+                    if(Tipo == undefined) Tipo = ''
+					let Tipoa = Tipo
+					let Texto = ''
+					let Hoje = new Date()
+					if(Tipoa == 'inicio'){					Texto = '<span style="color: purple">[terminal]</span>'+`${Hoje} - [cqs-uteis diz]: O código iniciou`}
+					if(Tipoa == 'fim'){						Texto = '<span style="color: purple">[terminal]</span>'+`${Hoje} - [cqs-uteis diz]: O código finalizou`}
+					if(Tipoa != 'inicio' && Tipoa != 'fim'){Texto = '<span style="color: purple">[terminal]</span>'+`${Hoje} - [cqs-uteis diz]: Check-up '${Tipo}' alcançado`}
+				
+					ReturnChecar.innerHTML = '\\retornou: <i>true</i>'+'<br><code style="color: white">'+Texto+'</code>'
+                }
+            </script>
+        </div>
+        <hr   >
+
+		<!--TESTAR-->
+        <div  style="z-index: 5; background-color: rgb(22, 175, 22); border: 3px groove rgb(12, 117, 209)">
+            <!--ESTRUTURA-->
+            <div style="position: relative; margin-left: 1%; margin-right: 1%">
+                <h2   ><code title="Comando disponível somente para uso interno">[EXCLUSO]</code> Testar(<i title="Parâmetro opcional">Exclusivos</i>) - Desde <i title="Versão atual">v1.2.0</i></h2>
+                <span >Teste todas as funções ou algumas específicas. Adicione-os em um vetor e mande para a função</span>
+                <ul   >
+                    <li><kbd title="Vetor">[Array]</kbd> <kbd title="Opcional. Padrão: All">(Opc)</kbd> <kbd title="Aceito somente os seguintes valores: 'All' para todos, Função para função específica. Separe por elemento">(Res)</kbd> <b>Exclusivos</b>:  Marque, como String, quais funções quer testar<br> </li>
+                </ul>
+            </div>
+            
+            <!--EXEMPLO-->
+            <div  id="VerExemplo" style="z-index: 6; position: relative; margin-top: 1%; margin-left: 1%; margin-right: 1%; margin-bottom: 2%; background-color: rgb(22, 141, 22); border: 3px solid rgb(23, 119, 23)">
+                <span style="position: relative; left: 1%"><br><b>Exemplo</b></span>
+                <span style="position: relative; left: 2%"><br><kbd>Testar</kbd>([
+                    <input id="TestarValor1" style="width: 90px; background-color: rgb(22, 155, 22); color: whitesmoke" title="Exclusivos"> 
+                 ]) <small id="ReturnTestar"><button onclick="ExemploTestar()" style="background-color: rgb(22, 155, 22); color: whitesmoke">Ver</button></small></span>
+                <span style="position: relative; left: 3%"><br>O sistema irá testar funções citadas (ou todas, se não citado), utilizando alguns valores já definidos<br> </span>
+            </div>
+            <script>
+                function ExemploTestar() {
+					ReturnTestar.innerHTML = '\\retornou: <i>true</i><br><code style="color: white">Testar indisponível aqui. Tente novamente em um aplicativo de codificação</code>'
+                }
+            </script>
+        </div>
+        <hr   >
+		
     </div>
 </html>

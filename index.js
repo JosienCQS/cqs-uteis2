@@ -1,13 +1,13 @@
         const explicacao = 'Revisão geral.Novas funções.Correções e mudanças. Parte da correção'
-        const versao = '1.2.3.5'
-        const Pub = '10 jul 2021'
+        const versao = '1.2.3'
+        const Pub = '11 jul 2021'
         console.log('[cqs-uteis] Iniciado o uso da versão v'+versao+' de '+Pub+' by Zienaps')
 
         
 
         /*TRAZER TAMANHO DO MêS*/
         function mesTamanho(Mes, Ano){
-            if(Mes == 2 && Ano == undefined){console.warn('[mesTamanho: Error in Ano='+Ano+'] Necessário ano para bucar dias de Fevereiro'); return}
+            if(Mes == 2 && Ano == undefined){console.warn('[mesTamanho: Error in Ano='+Ano+'] Necessário ano para buscar dias de Fevereiro'); return false}
             if(Mes != 2 && Ano != undefined) console.info('[mesTamanho] Não é necessário colocar Ano quando não é Fevereiro')
 
             let Tamanho = 0
@@ -23,6 +23,8 @@
             if(Mes == 10) Tamanho = 31
             if(Mes == 11) Tamanho = 30
             if(Mes == 11) Tamanho = 31
+			
+			if(Tamanho == 0){console.log('[mesTamanho: Error in Mes='+Mes+'] Valor citado não é mês'); return false}
 
             let Acao = 1
             if(Acao >= -1 && Acao <= 1) {console.log('[mesTamanho: Concluded]: Ação feita')}
@@ -108,7 +110,7 @@
             if(Busca == 'atualHora') Pedido = THora
             if(Busca == 'atualDia') Pedido = TDia
 
-            if(Pedido == ''){console.warn('[dataBuscar: Error in Busca='+Busca+'] Não foi encontrado essa busca (Exemplos: dia, mes, minuto)'); return}
+            if(Pedido == ''){console.warn('[dataBuscar: Error in Busca='+Busca+'] Não foi encontrado essa busca (Exemplos: dia, mes, minuto)'); return false}
             
             let Acao = 1
             if(Acao >= -1 && Acao <= 1) {console.log('[dataBuscar: Concluded]: Ação feita')}
@@ -132,11 +134,11 @@
                 var Randomized = Min + (Math.round(Math.random() * (Max - Min) * 10**Dec) / 10**Dec)
 
                 /*ERROS*/
-                if(isNaN(Min)){console.warn(`[.randomize: Error in Min=${Min}] 'Min' não é um número`); return}
-                if(isNaN(Max)){console.warn(`[.randomize: Error in Max=${Max}] 'Max' não é um número`); return}
-                if(Min > Max){console.warn(`[.randomize: Error in Min=${Min} & Max=${Max}] 'Min' é maior que 'Max'`); return}
+                if(isNaN(Min)){console.warn(`[.randomize: Error in Min=${Min}] 'Min' não é um número`); return false}
+                if(isNaN(Max)){console.warn(`[.randomize: Error in Max=${Max}] 'Max' não é um número`); return false}
+                if(Min > Max){console.warn(`[.randomize: Error in Min=${Min} & Max=${Max}] 'Min' é maior que 'Max'`); return false}
                 if(Min == Max){console.info(`[.randomize: Attention] 'Min' é igual a 'Max'. Isso limita a somente um resultado`)} 
-                if(Dec < 0){console.warn(`[.randomize: Error in Dec=${Dec}] 'Dec' tem que er 0 ou positivo`); return}
+                if(Dec < 0){console.warn(`[.randomize: Error in Dec=${Dec}] 'Dec' tem que er 0 ou positivo`); return false}
             }
 
             let Acao = 1
@@ -176,13 +178,13 @@
                 if(Acao >= -1 && Acao <= 1) {console.log('[chance: Concluded]: Foi sorteado um elemento que tinha '+Math.round(Acao*100*100)/100+'% de chance')}
 
                 return Valor[PosGanhou]
-            } else{console.warn(`[chance: Error in Chance=${Chance}] Tamanho de Chance não é o mesmo de Valor (Valor tem ${ValorTam} elemento(s) enquanto Chance tem ${ChanceTam} elemento(s))`); return}
+            } else{console.warn(`[chance: Error in Chance=${Chance}] Tamanho de Chance não é o mesmo de Valor (Valor tem ${ValorTam} elemento(s) enquanto Chance tem ${ChanceTam} elemento(s))`); return false}
         }
 
 
         /*TIRAR MÉDIA*/
         function avg(Vetor, Dec){
-            if(!Vetor[0]){console.log(`[avg: Error in Vetor=${Vetor}] valor deve ser um vetor`); return}
+            if(!Vetor[0]){console.log(`[avg: Error in Vetor=${Vetor}] valor deve ser um vetor`); return false}
 
             let ValorSoma = 0
             let ValorFinal = null
@@ -538,8 +540,8 @@
             if(Tipo == undefined) Tipo = ''
             let Tipoa = Tipo
             let Hoje = new Date()
-            if(Tipoa == 'inicio'){console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: O código iniciou`); return}
-            if(Tipoa == 'fim'){console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: O código finalizou`); return}
+            if(Tipoa == 'inicio'){console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: O código iniciou`); return false}
+            if(Tipoa == 'fim'){console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: O código finalizou`); return false}
             if(Tipoa != 'inicio' && Tipoa != 'fim') console.log(`${dataBuscar(Hoje, 'hora')}:${dataBuscar(Hoje, 'minuto')}:${dataBuscar(Hoje, 'segundo')} - [cqs-uteis diz]: Check-up '${Tipo}' alcançado`)
         
             return true
@@ -649,7 +651,7 @@
             if(Acao >= -1 && Acao <= 1) {console.log('[Testar: Concluded]: Foi testado '+Acao+' função')}
             else                        {console.log('[Testar: Concluded]: Foram testados '+Acao+' funções')}
 
-            return
+            return true
         }
 
         

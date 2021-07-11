@@ -1,6 +1,6 @@
 {
   "name": "cqs-uteis",
-  "version": "1.2.3.5",
+  "version": "1.2.3",
   "description": "Ferramentas simples porém muito úteis",
   "main": "index.js",
   "scripts": {
