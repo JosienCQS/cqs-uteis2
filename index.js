@@ -1,6 +1,6 @@
         const explicacao = 'Revisão geral.Novas funções.Correções e mudanças. Parte da correção'
-        const versao = '1.2.3'
-        const Pub = '11 jul 2021'
+        const versao = '1.2.4'
+        const Pub = '28 jul 2021'
         console.log('[cqs-uteis] Iniciado o uso da versão v'+versao+' de '+Pub+' by Zienaps')
 
         
@@ -379,158 +379,10 @@
 
 
         /*COMO USAR AS FUNÇÕES*/
-        function HowToUse(Descrição, Significado, Exemplo){
-            let Func = true
-            let Desc = Descrição;   if(Descrição == undefined)  {Desc = true}
-            let Sign = Significado; if(Significado == undefined){Sign = true}
-            let Exem = Exemplo;     if(Exemplo == undefined)    {Exem = false}
-
-            let MSG = ''
-            if(Desc ==  true && Sign ==  true && Exem ==  true) MSG = 'estrutura'+', ' +'descrição da função'+', ' +'significado dos parâmetros'+' e '+'exemplo'
-            if(Desc ==  true && Sign ==  true && Exem == false) MSG = 'estrutura'+', ' +'descrição da função'+' e '+'significado dos parâmetros'
-            if(Desc ==  true && Sign == false && Exem ==  true) MSG = 'estrutura'+', ' +'descrição da função'                                   +' e '+'exemplo'
-            if(Desc ==  true && Sign == false && Exem == false) MSG = 'estrutura'+' e '+'descrição da função'
-            if(Desc == false && Sign ==  true && Exem ==  true) MSG = 'estrutura'+', '                             +'significado dos parâmetros'+' e '+'exemplo'
-            if(Desc == false && Sign ==  true && Exem == false) MSG = 'estrutura'+', '                             +'significado dos parâmetros'
-            if(Desc == false && Sign == false && Exem ==  true) MSG = 'estrutura'                                                               +' e '+'exemplo'
-            if(Desc == false && Sign == false && Exem == false) MSG = 'estrutura'
-
+        function HowToUse(){
             console.log('Versão atual: v'+versao+' de '+Pub+' by Zienaps\nVeja todas as funções e atualizações aqui: https://zienaps.neocities.org/cqs-uteis.html \n\nCOMO USAR AS FUNÇÕES:\n')
-            console.log('Mostrando '+MSG+' das funções disponíveis. Veja melhor no ReadMe')
+            console.log('Documentação: https://zienaps.neocities.org/cqs-uteis.html')
             
-            if(Func == true) console.log('\nrandomize(Min, {Max}, {Dec})')
-            if(Desc == true) console.log('- Peça um número aleatório entre dois extremos. Escolha se quer casas decimais ou não. Você também pode sortear elementos de um vetor.\n Estrutura:')
-            if(Func == true) console.log('  Sortear um valor [randomize(Min, Max, Dec)]:')
-            if(Sign == true) console.log('   > Min        [Int] = Valor mínimo a ser sorteado')
-            if(Sign == true) console.log('   > Max        [Int] = Valor máximo a ser sorteado')
-            if(Sign == true) console.log('   > Dec        [Int] (Opc) = Quantidade de casas decimais no resultado (Padrão: Resultado inteiro)')
-            if(Exem == true) console.log('  Exemplo:')
-            if(Exem == true) console.log('   randomize(5, 30.5, 2)')
-            if(Exem == true) console.log('    O sistema irá sortear um número entre o Min e o Max e depois arredondará mantendo a quantidade de casas decimais definida em Dec')
-            if(Func == true) console.log('  Sortear um elemento de um vetor [randomize(Min)]:')
-            if(Sign == true) console.log('   > Min        [Array] = Adicione o vetor com os valores no qual queira ser sorteado')
-            if(Exem == true) console.log('  Exemplo:')
-            if(Exem == true) console.log("   randomize([2, 5, 'B', 'D', 'JOTA'])")
-            if(Exem == true) console.log('    O sistema irá sortear um número aleatório entre 0 e o tamanho do vetor e verá qual o elemento está na posição do valor sorteado. Esse será o resultado')
-
-            if(Func == true) console.log( '\nchance(Valor, Chance, {Acompanhar})    [NEW!]')
-            if(Desc == true) console.log('- Sorteie um elemento de um vetor trabalhando em cima de chance')
-            if(Sign == true) console.log('   > Valor      [Array] = Vetor onde estarão os elementos a ser sorteado')
-            if(Sign == true) console.log('   > Chance     [Array] = Vetor onde etarão as chances de sorteio de cada elemento')
-            if(Exem == true) console.log('  Exemplo:')
-            if(Exem == true) console.log("   chance(['A', 'B', 'C', 'D', 'E'], [1, 3, 2, 5, 3], false)")
-            if(Exem == true) console.log('    O sistema irá sortear um valor aleatório e irá ver qual posição caiu nesse peso')
-
-            if(Func == true) console.log('\navg(Vetor, {Dec})')
-            if(Desc == true) console.log('- Tire a média dos valores que estão dentro do vetor. Valores não numéricos serão ignorados\n  Estrutura:')
-            if(Sign == true) console.log('   > Vetor      [Array] = Vetor com os valores dentro')
-            if(Sign == true) console.log('   > Dec        [Int] (Opc) = Quantidade de casas decimais no resultado (Padrão: floor com todos os dígitos)')
-            if(Exem == true) console.log('  Exemplo:')
-            if(Exem == true) console.log("   avg([1, 5, 2, 7, 'C', 3], 2)")
-            if(Exem == true) console.log("    O sistema irá remover os elementos que não for número e tirar uma média de todos os valores restantes")
-
-            if(Func == true) console.log('\nsequencia(Max, {Min}, {Espaco})    [NEW!]')
-            if(Desc == true) console.log('- Cria um vetor com números do mínimo ao máximo pulando uma quantidade dada em Espaco')
-            if(Sign == true) console.log('   > Max         [Int]: Valor máximo que deve ter na sequência')
-            if(Sign == true) console.log('   > Min         [Int] (Opc): Valor mínimo que deve ter na sequência (Padrão: 0)')
-            if(Sign == true) console.log('   > Espaco      [Dec] (Opc): Qual o espaço entre um número e o outro (Padrão: 1)')
-            if(Exem == true) console.log('  Exemplo:')
-            if(Exem == true) console.log('   sequencia(15, 0, 2)')
-            if(Exem == true) console.log('    O sistema irá ver a distância escolhida, criar a sequencia respeitando a distancia e parar quando chegar no limite')
-
-            if(Func == true) console.log('\nrepete(Valor, Local)')
-            if(Desc == true) console.log('- Verifique quantas vezes tal valor apareceu em um conjunto')
-            if(Sign == true) console.log('   > Valor      [Any]: Qual o valor deve ser verificado')
-            if(Sign == true) console.log('   > Local      [Array]: Local onde deve ser verificado')
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   repete(3, [1, 5, 3, 4, 3, 5, 3, 3, 2, 1]")
-            if(Exem == true) console.log("    O sistema verifica quantos elementos tem o mesmo valor do valor procurado e trás quantos encontrou")
-
-            if(Func == true) console.log('\nsortear(Tamanho, Quantidade, {Repete})')
-            if(Desc == true) console.log('- Crie um vetor com números sorteados, repetidos ou não\n  Estrutura:')
-            if(Sign == true) console.log('   > Tamanho    [Int]: Qual o valor máximo a ser sorteado (será sorteado de 1 até X)')
-            if(Sign == true) console.log('   > Quantidade [Int] (Opc): Quantos números devem ser sorteados')
-            if(Sign == true) console.log('   > Repete     [Bool] (Opc): Se os números sorteados podem repetir')
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   sortear(30, 3, false")
-            if(Exem == true) console.log("   O sistema sorteia um número do vetor inicial e, se false, remove-o da lista. Repete o processo várias vezes e depois trás em vetor o resultado")
-            
-            if(Func == true) console.log('\nunificar(Vetor, {Acompanhar})')
-            if(Desc == true) console.log('- Remova valores duplicados de seu vetor permanecendo somente o último elemento repetido\n  Estrutura:')
-            if(Sign == true) console.log('   > Vetor      [Array] = Vetor com os elementos a serem verificados')
-            if(Sign == true) console.log('   > Acompanhar [Bool] (Opc) = Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta. Use somente caso queira acompanhar o processo)')
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   unificar([1, 5, 2, 3, 5, 4, 3, 2, 5, 1, 3], false)")
-            if(Exem == true) console.log("    O sistema remove os termos que ele verificar se já existe após ele")
-
-            if(Func == true) console.log('\nfiltragem(Onde, oQue, {Manter}, {Acompanhar})   [NEW!]')
-            if(Desc == true) console.log('- Veja se os valores de um vetor estão no segundo vetor e mantenha os que não tiver, ou vice-versa')
-            if(Sign == true) console.log('   > Onde       [Array]: Vetor a verificar os valores. Retornará esse vetor filtrado pelo \'oQue\'')
-            if(Sign == true) console.log('   > oQue       [Array]: Vetor onde o sistema usará de base para filtrar o primeiro vetor')
-            if(Sign == true) console.log('   > Manter     [Bool] (Opc): true caso queira manter somente os valores encontrados (Padrão remove valores encontrados')
-            if(Sign == true) console.log('   > Acompanhar [Bool or \'Impo\'] (Opc): Se deve trazer em log o processo de verificação (Isso pode atrasar a resposta). \'Impo\' mostra somente logs importantes')
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("  - (remover) filtragem([1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5], [3, 5, 8])")
-            if(Exem == true) console.log("     O sistema verifica se o valor de certo elemento está contido no segundo vetor. Se sim, ele é removido do vetor principal")
-            if(Exem == true) console.log("  - (Manter) filtragem([1, 3, 5, 7, 4, 8, 4, 3, 2, 10, 2, 5], [3, 5, 8], true)")
-            if(Exem == true) console.log("     O sistema verifica se o valor de certo elemento não está contido no segundo vetor. Se não estiver, ele é removido do vetor principal")
-
-            if(Func == true) console.log("\nmesTamanho(Mes, {Ano})")
-            if(Desc == true) console.log("- Traga a quantidade de dias que tem em tal mês")
-            if(Sign == true) console.log("   > Mes        [Int]: Qual mês quer buscar o tamanho (em número)")
-            if(Sign == true) console.log("   > Ano        [int] (Par): De qual ano quer buscar o dia do mês de fevereiro")
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   mesTamanho(5)")
-            if(Exem == true) console.log("    O sistema irá procurar em uma lista o número do mês buscado. Ele irá retornar o valor correspondente")
-
-            if(Func == true) console.log("\nmesNome(Mes, {Tipo}, {Lingua})")
-            if(Desc == true) console.log("- Traga o nome de um mês em um formato e língua específica")
-            if(Sign == true) console.log("   > Mes        [Int]: Qual mês quer buscar o nome (em número)")
-            if(Sign == true) console.log("   > Tipo       [String] (Opc): Como retornar o mês (Grande, Tres, Duas, Uma, Primeira) (Padrão: Grande)")
-            if(Sign == true) console.log("   > Lingua     [String] (Opc): Em que língua deve trazer o resultado (PT ou EN) (Padrão: PT)")
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   mesNome(5, 'Tres')")
-            if(Exem == true) console.log("    O sistema irá buscar o mes em uma lista, separar a língua pedida e depois o tipo pedido")
-
-            if(Func == true) console.log("\ndataBuscar(Data, Busca)")
-            if(Desc == true) console.log("- Traga um valor específico de uma data")
-            if(Sign == true) console.log("   > Data       [Date]: Data no qual quer verificar")
-            if(Sign == true) console.log("   > Busca      [String]: Valor que queira buscar")
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   dataBuscar([2020, 5, 9], 'dia')")
-            if(Exem == true) console.log("    O sistema irá ler a data (ou transformar o vetor [yyyy, mm, dd] em data, depois irá buscar o valor que procura")
-
-            if(Func == true) console.log('\nLimparLog({Aviso}, {Tamanho})                       COMANDO EXCLUSO')
-            if(Desc == true) console.log('- Limpe o terminal\n  Estrutura:')
-            if(Sign == true) console.log('   > Aviso      [Bool] (Opc): Se deve ser avisado que a limpeza foi feita após a mesma')
-            if(Sign == true) console.log('   > Tamanho    [Int] (Opc): Quantas linhas devem ser adicionadas (Padrão: 100)')
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   LimparLog(true, 20")
-            if(Exem == true) console.log("   O sistema envia simplesmente uma quantidade de linhas vazias para esconder as mensagens")
-
-            if(Func == true) console.log("\nHowToUse({Descrição}, {Significado}, {Exemplo})     COMANDO EXCLUSO")
-            if(Desc == true) console.log("- Veja como usa cada function\n  Estrutura:")
-            if(Sign == true) console.log("   > Descrição   [Bool] (Opc): Se quer ver a descrição das funções")
-            if(Sign == true) console.log("   > Significado [Bool] (Opc): Se quer ver o significado de cada parâmetro")
-            if(Sign == true) console.log("   > Exemplo     [Bool] (Opc): Se quer ver exemplos de cada função")
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   HowToUse(true, true, false)")
-            if(Exem == true) console.log("   O sistema irá enviar mensagens no terminal explicando o uso de cada função. Será mostrado somente os parâmetros marcados como true")
-            
-            if(Func == true) console.log("\nChecar({Tipo})                                      COMANDO EXCLUSO")
-            if(Desc == true) console.log("- Receba uma notificação no log sempre quando o código rodar")
-            if(Sign == true) console.log("   > Tipo        [String] (Opc): Quer enviar qual mensagem ('inicio' para inicio do código', 'fim' para final do código e qualquer outra coisa como ponto de check-up")
-            if(Exem == true) console.log("  Exemplo")
-            if(Exem == true) console.log("   Inicio()")
-            if(Exem == true) console.log("    O sistema irá enviar uma mensagem pré-definida no terminal de acordo com o tipo de notificacao")
-            
-            if(Func == true) console.log("\nTestar(Exclusivos)                                  COMANDO EXCLUSO")
-            if(Desc == true) console.log("- Teste todas as funções ou algumas específicas. Adicione-os em um vetor e mande para a função")
-            if(Sign == true) console.log("   > Exclusivos  [Array] (Opc): Marque, como string, quais funções quer testar (Padrão: Todos)")
-            if(Exem == true) console.log("  Exemplo:")
-            if(Exem == true) console.log("   Testar(['randomize', 'sortear'])")
-            if(Exem == true) console.log("   O sistema irá testar todas as funções disponíveis no momento, utilizando alguns valores já definidos")
-
             return true
         }
 
@@ -548,111 +400,6 @@
         }
 
 
-        //TESTAR FUNÇÕES
-        function Testar(Exclusivos){
-            let Pedido = ''
-            let Testado = 0
-            if(!Exclusivos){Exclusivos = 'all'} else{
-                    for(i = 0; i < Exclusivos.length; i++){
-                    Pedido = Pedido+' '+Exclusivos[i]
-                }
-            }
-            console.log('\nESTÁ SENDO TESTADO TODAS AS FUNÇÕES. ALGUM ERRO? REPORTE A NÓS!')
-
-            if(Exclusivos.includes('randomize')|| Exclusivos == 'all'){
-                console.log('\n\nRANDOMIZE(1, 10, 1)')
-                console.log(randomize(1, 10, 1))
-                Testado++
-            }
-
-            if(Exclusivos.includes('chance')|| Exclusivos == 'all'){
-                console.log("\n\nCHANCE(['A', 'B', 'C', 'D', 'E'], [1, 5, 3, 2, 3])")
-                console.log(chance(['A', 'B', 'C', 'D', 'E'], [1, 5, 3, 2, 3]))
-                Testado++
-            }
-
-            if(Exclusivos.includes('avg')|| Exclusivos == 'all'){
-                console.log('\n\nAVG([1, 4, 3, 6, 5, 4, 3], 1)')
-                console.log(avg([1, 4, 3, 6, 5, 4, 3], 1))
-                Testado++
-            }
-
-            if(Exclusivos.includes('sequencia')|| Exclusivos == 'all'){
-                console.log('\n\nSEQUENCIA(25, 5, 2.25)')
-                console.log(sequencia(25, 5, 2.25))
-                Testado++
-            }
-
-            if(Exclusivos.includes('repete ')|| Exclusivos == 'all'){
-                console.log('\n\nREPETE(5, [1, 3, 5, 3, 5, 6, 3, 1, 2])')
-                console.log(repete(5, [1, 3, 5, 3, 5, 6, 3, 1, 2]))
-                Testado++
-            }
-
-            if(Exclusivos.includes('sortear')|| Exclusivos == 'all'){
-                console.log('\n\nSORTEAR(20, 4, false)')
-                console.log(sortear(20, 4, false))
-                Testado++
-            }
-
-            if(Exclusivos.includes('unificar')|| Exclusivos == 'all'){
-                console.log('\n\nUNIFICAR([1, 4, 5, 3, 2, 4, 5, 7, 4, 6, 3], false)')
-                console.log(unificar([1, 4, 5, 3, 2, 4, 5, 7, 4, 6, 3], false))
-                Testado++
-            }
-
-            if(Exclusivos.includes('filtragem')|| Exclusivos == 'all'){
-                console.log("\n\nFILTRAGEM([1, 4, 2, 6, 4, 3, 2, 6, 5, 9, 8, 6], [1, 2, 4, 3, 5], false, 'Impo')")
-                console.log(filtragem([1, 4, 2, 6, 4, 3, 2, 6, 5, 9, 8, 6], [1, 2, 4, 3, 5], false, 'Impo'))
-                Testado++
-            }
-
-            if(Exclusivos.includes('LimparLog')|| Exclusivos == 'all'){
-                console.log('\n\n[EXCLUSO]  LIMPARLOG([1, 4, 2, 6, 4, 3, 2, 6, 5, 9, 8, 6], [1, 2, 4, 3, 5], false, Impo)')
-                console.log(LimparLog(true, 6))
-                Testado++
-            }
-
-            if(Exclusivos.includes('HowToUse')|| Exclusivos == 'all'){
-                console.log('\n\n[EXCLUSO]  HOWTOUSE(false, false, false)')
-                console.log(HowToUse(false, false, false))
-                Testado++
-            }
-
-            if(Exclusivos.includes('mesTamanho')|| Exclusivos == 'all'){
-                console.log('\n\nMESTAMANHO(6)')
-                console.log(mesTamanho(6))
-                Testado++
-            }
-
-            if(Exclusivos.includes('mesNome')|| Exclusivos == 'all'){
-                console.log('\n\nMESNOME(8, "Tres", "EN")')
-                console.log(mesNome(8, 'Tres', 'EN'))
-                Testado++
-            }
-
-            let hojes = new Date()
-            if(Exclusivos.includes('dataBuscar')|| Exclusivos == 'all'){
-                console.log('\n\nDATABUSCAR(hoje, "mes")')
-                console.log(dataBuscar(hojes, 'mes'))
-                Testado++
-            }
-
-            if(Exclusivos.includes('Checar') || Exclusivos == 'all'){
-                console.log('\n\nCHECAR("Checkpoint Testes")')
-                console.log(Checar('Checkpoint Testes'))
-                Testado++
-            }
-
-            Testado++
-            console.log('\n\n[EXCLUSO] TESTAR()')
-            
-            let Acao = Testado
-            if(Acao >= -1 && Acao <= 1) {console.log('[Testar: Concluded]: Foi testado '+Acao+' função')}
-            else                        {console.log('[Testar: Concluded]: Foram testados '+Acao+' funções')}
-
-            return true
-        }
 
         
 module.exports = {
@@ -669,6 +416,5 @@ module.exports = {
     sequencia,
     LimparLog,
     HowToUse,
-    Checar,
-    Testar
+    Checar
 }
