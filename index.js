@@ -1,6 +1,6 @@
-const explicacao = 'Correção nas colunas de espaçamento'
-const versao = '1.3.2'
-const Pub = '06 ago 2021'
+const explicacao = 'Correção'
+const versao = '1.4.0'
+const Pub = '19 ago 2021'
 
 
 
@@ -15,10 +15,10 @@ const Pub = '06 ago 2021'
     var CLog  = 0
 
     function Config(Inicio, Usos, Avisos, Erros){
-        /*Erro*/  if(Inicio != true && Inicio != false) return Notificar('Warn', Funcao, "Boleano", '', )
-        /*Erro*/  if(Inicio != true && Inicio != false) return Notificar('Warn', Funcao, "Boleano", '', )
-        /*Erro*/  if(Inicio != true && Inicio != false) return Notificar('Warn', Funcao, "Boleano", '', )
-        /*Erro*/  if(Inicio != true && Inicio != false) return Notificar('Warn', Funcao, "Boleano", '', )
+        /*Erro*/  if(Inicio != true && Inicio != false) return Notificar('Warn', Funcao, "Boleano", 'Inicio', Inicio)
+        /*Erro*/  if(Usos   != true && Usos   != false) return Notificar('Warn', Funcao, "Boleano", 'Usos', Usos)
+        /*Erro*/  if(Avisos != true && Avisos != false) return Notificar('Warn', Funcao, "Boleano", 'Avisos', Avisos)
+        /*Erro*/  if(Erros  != true && Erros  != false) return Notificar('Warn', Funcao, "Boleano", 'Erros', Erros)
 
         ConfigInicio = Inicio
         ConfigUsos   = Usos
@@ -31,6 +31,30 @@ const Pub = '06 ago 2021'
         if(Erros  == undefined){ConfigErros  =  true}
 
         return [CWarn, CInfo, CLog]
+    }
+	
+	
+	
+	/*O QUE ATUALIZOU*/
+    function Update(){
+		//Listar o que mudou dentro da versão do peso atual (1.X). Mudar assim que subir peso
+        console.log('O QUE ATUALIZOU?')
+        console.log('\nVersão 1.3.1')
+        console.log(' * Notificações padronizadas')
+        console.log('\nVersão 1.3.2')
+        console.log(' * Atualizado a estrutura do código')
+        console.log(' * Corrigido erros de notificação das functions. Estava travando todo o código')
+        console.log(' * Modificado "HowToUse()" para "AcessarSite()"')
+        console.log('\nVersão 1.3.3')
+        console.log(' * Corrigido uma function não estava sendo lida')
+        console.log('\nVersão 1.3.4')
+        console.log(' * Corrigido uma let que não estava sendo lida')
+		console.log('\nVersão 1.4.0')
+		console.log(' * Randomize agora aceita valores em posições invertidas (Mínimo no máximo e vice-versa)')
+        console.log(' * Adicionado 3 novas functions')
+        console.log(' * "ColunaParaVetor" tinha um let indisponível. Agora funcionando corretamente')
+		
+		return true
     }
 
 
@@ -58,16 +82,16 @@ const Pub = '06 ago 2021'
         if(Mensagem == 'Boleano') Mensagem = `Parâmetro ${Local} deve ser booleano`
         if(Mensagem == 'Concluido') Mensagem = `${Funcao}: Ação feita!`
 
-        if(Tipo == 'Warn') if(ConfigErros)  console.warn(`[${Funcao}: Erro em ${Local}='${Valor}] ${Mensagem}']`)
+        if(Tipo == 'Warn') if(ConfigErros)  console.warn(`[${Funcao}: Erro em ${Local}='${Valor}'] ${Mensagem}`)
         if(Tipo == 'Info') if(ConfigAvisos) console.info(`[${Funcao}] ${Mensagem}`)
         if(Tipo == 'Conc') if(ConfigUsos)   console.log( `[${Funcao} concluído] ${Mensagem}`)
-        if(Tipo == 'Log')                   console.log(`${Mensagem}`)
+        if(Tipo == 'Log')  if(ConfigInicio)	console.log(`${Mensagem}`)
 
         return false
     }
 
 
-/*Mensagem*/  if(ConfigInicio) Notificar('Log', '[cqs-uteis] Iniciado com uso da versão v'+versao+' de '+Pub+' by Zienaps')
+/*Mensagem*/	Notificar('Log', 'cqs-uteis', '[cqs-uteis] Iniciado com uso da versão v'+versao+' de '+Pub+' by Zienaps.\n[cqs-uteis] Encontrou algum erro no código? Reporte a nós pelo nosso site (rode o código com a function "AcessarSite()") para corrigirmos o mais cedo possível')
 
 
 
@@ -76,32 +100,42 @@ const Pub = '06 ago 2021'
     /*NÚMERO ALEATÓRIO*/
     function randomize(Max, Min, Dec){
         let Funcao = 'randomize'
-        if(Max[0] == undefined){var TipoDeConta = 2} else{var TipoDeConta = 1}
+        let TipoDeConta = 2
+        let Randomized
+        if(Min == undefined){TipoDeConta = 1} else{TipoDeConta = 2}
 
         if(TipoDeConta == 1){
             /*Info*/  if(Max[1] == undefined) Notificar('Info', Funcao, 'Vetor contém somente um elemento. Este será sorteado sempre')
 
             let VetorTamanho = Max.length
             let VetorPegar = Math.round(Math.random() * (VetorTamanho - 1))
-            var Randomized = Max[VetorPegar]
+            Randomized = Max[VetorPegar]
         } 
 
         if(TipoDeConta == 2){
+			let NMax
+			let NMin
+			if(Max < Min){
+				NMax = Max; NMin = Min
+				Max = NMin; Min = NMax
+			}
+			
             /*Erro*/  if(isNaN(Min)) return Notificar('Warn', Funcao, "Numero", 'Min', Min)
             /*Erro*/  if(isNaN(Max)) return Notificar('Warn', Funcao, "'Max' deve ser um número ou um vetor", 'Max', Max)
-            /*Erro*/  if(Min > Max)  return Notificar('Warn', Funcao, "'Min' é maior que 'Max' (provavelmente será tolerado futuramente)", 'Min/Max', Min+"/"+Max)
+            /*Info*/  if(Min > Max)         Notificar('Info', Funcao, "'Min' é maior que 'Max'")
             /*Erro*/  if(Dec < 0)    return Notificar('Warn', Funcao, "'Dec' deve ser maior ou igual a 0", 'Dec', Dec)
             /*Info*/  if(Min == Max)        Notificar('Info', Funcao, "'Min' é igual a 'Max'. Isso limita a somente um resultado")
 
             if(isNaN(Dec)){Dec = 0}
-            var Randomized = Min + (Math.round(Math.random() * (Max - Min) * 10**Dec) / 10**Dec)
+            Randomized = Min + (Math.round(Math.random() * (Max - Min) * 10**Dec) / 10**Dec)
+            console.log(Randomized)
         }
 
         /*Conclusao*/
-        Notificar('Conc', Funcao, 'Ação feita')
+        let Acao = 'Vetor'; if(TipoDeConta == 2) Acao = 'Numero'
+        Notificar('Conc', Funcao, 'Ação do tipo '+Acao+' feita')
         return Randomized
     }
-
 
 
     /*TIRAR MÉDIA*/
@@ -301,9 +335,10 @@ const Pub = '06 ago 2021'
 
 
     /*COMO USAR AS FUNÇÕES*/
-    function HowToUse(){
+    function AcessarSite(){
         console.log('Versão atual: v'+versao+' de '+Pub+' by Zienaps')
         console.log('Veja sobre a NPM aqui: https://zienaps.neocities.org/cqs-uteis.html')
+		console.log('Entre em contato conosco: https://forms.gle/jTNTWo7Kax62ZVXS6')
         
         /*Conclusao*/
         return true
@@ -354,9 +389,9 @@ const Pub = '06 ago 2021'
     function sequencia(Max, Min, Espaco){
         let Funcao = 'sequencia'
 
-        /*Erro*/  if(!isNaN(Max))                        return Notificar('Warn', Funcao, "Numero", 'Max', Max)
-        /*Erro*/  if(!isNaN(Min)    && Min != undefined) return Notificar('Warn', Funcao, "Numero", 'Min', Min)
-        /*Erro*/  if(!isNaN(Espaco) && Min != undefined) return Notificar('Warn', Funcao, "Numero", 'Espaco', Espaco)
+        /*Erro*/  if(isNaN(Max))                        return Notificar('Warn', Funcao, "Numero", 'Max', Max)
+        /*Erro*/  if(isNaN(Min)    && Min != undefined) return Notificar('Warn', Funcao, "Numero", 'Min', Min)
+        /*Erro*/  if(isNaN(Espaco) && Min != undefined) return Notificar('Warn', Funcao, "Numero", 'Espaco', Espaco)
         /*Erro*/  if(Max < Min) return Notificar('Warn', Funcao, "'Min' não pode ser menor que 'Max' (Possivelmente tolerado futuramente)", 'Min/Max', Min+"/"+Max)
         /*Info*/  if(Max-Min < Espaco)                          Notificar('Info', Funcao, "'Espaco' é maior que petição. Vetor virá vazio", 'Espaco', Espaco)
 
@@ -683,7 +718,7 @@ const Pub = '06 ago 2021'
     /*SUBIR/DESCER DECIMAIS DE VALORES*/
     function desrepetir(Vetor, Adicao, Direcao){
         let Funcao = 'desrepetir'
-        let AteAqui = Math.trunc((1/VetorTam) * 1000) / 1000
+        let AteAqui = Math.trunc((1/Vetor.length) * 1000) / 1000
         /*Erro*/  if(Vetor[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Vetor', Vetor)
         /*Aviso*/ if(Adicao > AteAqui)             Notificar('Info', Funcao, `Valor de adicao é maior que o recomendado (${AteAqui}). Pode ser que valores se repitam`, 'Adicao', Adicao)
 
@@ -764,7 +799,7 @@ const Pub = '06 ago 2021'
         }
 
         /*Conclusao*/
-        Notificar('Conc', Funcao, `Foi removido ${Acao} elemento`)
+        Notificar('Conc', Funcao, `Ação feita`)
         if(!Posicao) return Fim
         if( Posicao) return Fim[Posicao-1]
     }
@@ -802,7 +837,7 @@ const Pub = '06 ago 2021'
         }
 
         /*Conclusao*/
-        Notificar('Conc', Funcao, `Foi removido ${Acao} elemento`)
+        Notificar('Conc', Funcao, `Ação feita`)
         if(!Posicao) return Fim
         if( Posicao) return Fim[Posicao-1]
     }
@@ -837,8 +872,8 @@ const Pub = '06 ago 2021'
         if(Fim != Texto) Fim = Fim + TextoFinal
 
         /*Conclusao*/
-        let Acao = Vetor.length - Fim.length
-        if(Acao >= -1 && Acao <= 1) {Notificar('Conc', Funcao, `Foi removido ${Acao} carácter`)}
+        let Acao = Texto.length - Fim.length
+        if(Acao >= -1 && Acao <= 1) {Notificar('Conc', Funcao, `Foi removido ${Acao} caractere`)}
         else                        {Notificar('Conc', Funcao, `Foram removidos ${Acao} caracteres`)}
         return Fim
     }
@@ -881,9 +916,8 @@ const Pub = '06 ago 2021'
         if(Enviar == 'Masculino') Fim = SeMasculino
         if(Enviar == 'Feminino' ) Fim = SeFeminino 
 
-        let Acao =1
-        if(ConfigUsos){ if(Acao >= -1 && Acao <= 1) {console.log('[textoGenero: Concluded]: Ação feita')}}
-
+		//Conclusão
+        Notificar('Conc', Funcao, `Ação feita`)
         return Fim
     }
 
@@ -1095,9 +1129,9 @@ const Pub = '06 ago 2021'
     /*COLUNA PARA VETOR*/
     function colunaParaVetor(Aninhamento){
         let Funcao = 'colunaParaVetor'
-        /*Erro*/ if(Vetor[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Aninhamento', Vetor)
+        /*Erro*/ if(Aninhamento[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Aninhamento', Aninhamento)
         for(i=0; i<Aninhamento.length; i++){
-            let VetorA = Vetor[i]
+            let VetorA = Aninhamento[i]
             /*Erro*/ if(VetorA[0] == undefined) return Notificar('Warn', Funcao, 'Parâmetro Aninhamento deve conter somente vetor', 'Aninhamento['+i+']', VetorA)
         }
 
@@ -1151,11 +1185,92 @@ const Pub = '06 ago 2021'
         else                        {Notificar('Conc', Funcao, `Adicionado um espaço especial de ${Acao} caracteres`)}
         return Fim
     }
+	
+	
+	
+    
+//VERSÃO 1.4.0
+	function procv(Busca, Aninhamento, Coluna){
+		let Funcao = 'procv'
+		/*Erro*/ if(isNaN(Coluna))               return Notificar('Warn', Funcao, 'Numero', 'Coluna', Coluna)
+		/*Erro*/ if(Aninhamento[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Aninhamento', Aninhamento)
+		/*Info*/ if(Coluna%1 != 0)               return Notificar('Info', Funcao, 'Valor citado em Coluna é decimal. Será truncado somente para o valor inteiro', 'Aninhamento', Vetor)	
+		/*Info*/ if(Coluna <= 0)                        Notificar('Info', Funcao, 'Coluna é menor que 1. Sempre retornará undefined', 'Coluna', Coluna)
+		/*Info*/ if(Posicao >= Aninhamento.length)      Notificar('Info', Funcao, 'Aninhamento enviado não tem a coluna pedida. Retornado undefined', 'Coluna', Coluna)
+	
+		Coluna = Math.trunc(Coluna)
+		let AninTam = Aninhamento.length 	//Tamanho do aninhamento
+		if(Coluna == 'último' || Coluna == 'ultimo' || Coluna == 'última' || Coluna == 'ultima') Coluna = AninTam-1
+		
+		let Ler = Aninhamento[0]
+		let PosicaoB = localizar(Ler, Busca)
+		PosicaoB = PosicaoB[0]
+		
+		let Buscar = []
+		for(i=0; i<AninTam; i++){
+			if(i == Coluna-1) Buscar = Aninhamento[i]
+		}
+		
+		let Fim = Buscar[PosicaoB]
+		
+		/*Conclusao*/
+        let Acao = Fim
+        if(Acao == undefined) {Notificar('Conc', Funcao, `Encontrado valor na coluna ${PosicaoB}`)}
+        else                  {Notificar('Conc', Funcao, `Não encontrado o valor buscado (${Busca})`)}
+		return Fim
+	}
 
+    //REPETIÇÃO DE TODOS OS VALORES
+    function contarTudo(Vetor){
+		let Funcao = 'contarTudo'
+		/*Erro*/ if(Vetor[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Vetor', Vetor)
+        let VetorTam = Vetor.length
+        let Valores = unificar(Vetor)
+        let ValoresTam = Valores.length
 
+        let Repeticao = []
+        for(j=0; j<ValoresTam; j++){
+            let Repetiu = repete(Valores[j], Vetor)
+            Repeticao.push(Repetiu)
+        }
 
+        let Fim = {valores: Valores, repetiu: Repeticao}
+        return Fim
+    }
 
+    //UNIÃO DE VETORES
+    function unirVetor(Aninhamento){
+		let Funcao = 'unirVetor'
+		/*Erro*/ if(Vetor[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Vetor', Vetor)
+        let VetorTam = Aninhamento.length
+
+        let Fin = []
+        let Posicao = []
+        let Vetor = []
+        for(j=0; j<VetorTam; j++){
+            let Atual = Aninhamento[j]
+            for(k=0; k<Atual.length; k++){
+                Fin.push(Atual[k])
+                Posicao.push(k)
+                Vetor.push(j)
+            }
+        }
+
+        let Fim = {
+            valores: Fin,
+            posicoes: Posicao,
+            vetor: Vetor
+        }
+
+		/*Conclusao*/
+        let Acao = Aninhamento.length
+        if(Acao >= -1 && Acao <= 1) {Notificar('Conc', Funcao, `Não teve união de vetores por haver somente ${Acao} vetor`)}
+        else                        {Notificar('Conc', Funcao, `Foram unidos ${Acao} vetores`)}
+        return Fim
+    }
         
+
+
 module.exports = {
     randomize,
     chance,
@@ -1169,7 +1284,7 @@ module.exports = {
     filtragem,
     sequencia,
     LimparLog,
-    HowToUse,
+    AcessarSite,
     Checar,
     somar,
     adicionar,
@@ -1188,5 +1303,9 @@ module.exports = {
     textoNumero,
     textoGenero,
     textoGeneroNumero, textoNumeroGenero,
-    a
+    a,
+    Update,
+    procv,
+    contarTudo,
+    unirVetor
 }

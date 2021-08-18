@@ -1,6 +1,6 @@
 {
   "name": "cqs-uteis",
-  "version": "1.3.0",
+  "version": "1.3.5",
   "description": "Ferramentas simples porém muito úteis",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/JosienCQS/cqs-utei2s#readme",
   "dependencies": {
-    "cqs-uteis": "^1.2.1"
+    "cqs-uteis": "^1.2.1",
+    "mongodb": "^4.1.0"
   }
 }

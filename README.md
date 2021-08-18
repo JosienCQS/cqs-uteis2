@@ -1,5 +1,2 @@
-# SOBRE
-Versão atual: v1.3.0 de 01 ago 2021 by Zienaps
-
-# COMO USAR AS FUNÇÕES
+# VEJA COMO USAR, ENTRAR EM CONTATO E MAIS AQUI:
 https://zienaps.neocities.org/cqs-uteis.html
