@@ -1,5 +1,4 @@
-const explicacao = 'Correção'
-const versao = '1.4.0'
+const versao = '1.4.1'
 const Pub = '19 ago 2021'
 
 
@@ -37,22 +36,17 @@ const Pub = '19 ago 2021'
 	
 	/*O QUE ATUALIZOU*/
     function Update(){
-		//Listar o que mudou dentro da versão do peso atual (1.X). Mudar assim que subir peso
+		//Listar o que mudou dentro da versão do peso atual (1.X). Mudar assim que soltar ramificação do próximo peso
         console.log('O QUE ATUALIZOU?')
-        console.log('\nVersão 1.3.1')
-        console.log(' * Notificações padronizadas')
-        console.log('\nVersão 1.3.2')
-        console.log(' * Atualizado a estrutura do código')
-        console.log(' * Corrigido erros de notificação das functions. Estava travando todo o código')
-        console.log(' * Modificado "HowToUse()" para "AcessarSite()"')
-        console.log('\nVersão 1.3.3')
-        console.log(' * Corrigido uma function não estava sendo lida')
-        console.log('\nVersão 1.3.4')
-        console.log(' * Corrigido uma let que não estava sendo lida')
 		console.log('\nVersão 1.4.0')
-		console.log(' * Randomize agora aceita valores em posições invertidas (Mínimo no máximo e vice-versa)')
+		console.log(' * "Randomize()" agora aceita valores em posições invertidas (Mínimo no máximo e vice-versa)')
         console.log(' * Adicionado 3 novas functions')
-        console.log(' * "ColunaParaVetor" tinha um let indisponível. Agora funcionando corretamente')
+        console.log(' * "ColunaParaVetor()" tinha um let indisponível. Agora funcionando corretamente')
+		console.log('\nVersão 1.4.1')
+		console.log(' * Corrigido uma variável que estava indisponível em "unirVetor"')
+		console.log(' * Agora o link de reports irá estar no terminal sempre quando iniciar o código')
+		console.log(' * Corrigido "repete" não funcionar em "desrepetir"')
+    	console.log(' * Corrigido o fato de ter que acompanhar algo em "alfabetica". Não é mais necessário')
 		
 		return true
     }
@@ -91,7 +85,7 @@ const Pub = '19 ago 2021'
     }
 
 
-/*Mensagem*/	Notificar('Log', 'cqs-uteis', '[cqs-uteis] Iniciado com uso da versão v'+versao+' de '+Pub+' by Zienaps.\n[cqs-uteis] Encontrou algum erro no código? Reporte a nós pelo nosso site (rode o código com a function "AcessarSite()") para corrigirmos o mais cedo possível')
+/*Mensagem*/	Notificar('Log', 'cqs-uteis', '[cqs-uteis] Iniciado com uso da versão v'+versao+' de '+Pub+' by Zienaps.\n[cqs-uteis] Encontrou algum erro no código? Reporte a nós pelo nosso site (>> https://forms.gle/jTNTWo7Kax62ZVXS6 <<) para corrigirmos o mais cedo possível')
 
 
 
@@ -746,8 +740,8 @@ const Pub = '19 ago 2021'
                 VetorAgr.push(Vetor[j])
             }
 
-
-            let Repetiu = repete(Vetor[j], VetorAgr)
+			let Repetiu = 0
+			if(VetorAgr[0]) Repetiu = repete(Vetor[j], VetorAgr)
             let Add = 0
 
             if(Direcao == 'cima' ) Add = Adicao * Repetiu
@@ -970,8 +964,10 @@ const Pub = '19 ago 2021'
         let All = []
         let Fim = []
         let VetorTam = Vetor.length
-        let Acomp = Acompanhamento
-        let AcompTam = Acomp.length
+        let Acomp = undefined
+        if(Acompanhamento) Acomp = Acompanhamento
+		let AcompTam = false
+        if(Acompanhamento) AcompTam = Acomp.length
         let Acompanha = true
         let MaiorLetras = 0
         Ordem = Ordem.toLowerCase()
@@ -1052,7 +1048,9 @@ const Pub = '19 ago 2021'
                     Value = Value+agr
                 }
             }
-            Fim.push([Vetor[m], Value, Acomp[m]])
+            let Terceiro = undefined
+            if(Acompanha) Terceiro = Acomp[m]
+            Fim.push([Vetor[m], Value, Terceiro])
         }
 
         let Final = undefined
@@ -1068,12 +1066,12 @@ const Pub = '19 ago 2021'
         
         if(Ordem == 'crescente'){
                             Final  = organizar(Valores, 'crescente', Nomes)
-            if(Acompanhar)  Final2 = organizar(Valores, 'crescente', Acompanhar)
+            if(Acompanha)   Final2 = organizar(Valores, 'crescente', Acompanhar)
         }
         
         if(Ordem == 'decrescente'){
                             Final  = organizar(Valores, 'decrescente', Nomes)
-            if(Acompanhar)  Final2 = organizar(Valores, 'decrescente', Acompanhar)
+            if(Acompanha)   Final2 = organizar(Valores, 'decrescente', Acompanhar)
         }
 
         /*Conclusao*/
@@ -1083,6 +1081,7 @@ const Pub = '19 ago 2021'
         if(!Acomp) return Final[1]
         if( Acomp) return [Final[1], Final2[1]]
     }
+
 
 
     /*ORGANIZAR UM VETOR E UM ACOMPANHAMENTO*/
@@ -1196,7 +1195,7 @@ const Pub = '19 ago 2021'
 		/*Erro*/ if(Aninhamento[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Aninhamento', Aninhamento)
 		/*Info*/ if(Coluna%1 != 0)               return Notificar('Info', Funcao, 'Valor citado em Coluna é decimal. Será truncado somente para o valor inteiro', 'Aninhamento', Vetor)	
 		/*Info*/ if(Coluna <= 0)                        Notificar('Info', Funcao, 'Coluna é menor que 1. Sempre retornará undefined', 'Coluna', Coluna)
-		/*Info*/ if(Posicao >= Aninhamento.length)      Notificar('Info', Funcao, 'Aninhamento enviado não tem a coluna pedida. Retornado undefined', 'Coluna', Coluna)
+		/*Info*/ if(Coluna >= Aninhamento.length)      Notificar('Info', Funcao, 'Aninhamento enviado não tem a coluna pedida. Retornado undefined', 'Coluna', Coluna)
 	
 		Coluna = Math.trunc(Coluna)
 		let AninTam = Aninhamento.length 	//Tamanho do aninhamento
@@ -1220,6 +1219,8 @@ const Pub = '19 ago 2021'
 		return Fim
 	}
 
+
+
     //REPETIÇÃO DE TODOS OS VALORES
     function contarTudo(Vetor){
 		let Funcao = 'contarTudo'
@@ -1238,10 +1239,12 @@ const Pub = '19 ago 2021'
         return Fim
     }
 
+
+
     //UNIÃO DE VETORES
     function unirVetor(Aninhamento){
 		let Funcao = 'unirVetor'
-		/*Erro*/ if(Vetor[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Vetor', Vetor)
+		/*Erro*/ if(Aninhamento[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Vetor', Vetor)
         let VetorTam = Aninhamento.length
 
         let Fin = []
