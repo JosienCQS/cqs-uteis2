@@ -1,5 +1,5 @@
 const versao = '1.4.1'
-const Pub = '19 ago 2021'
+const Pub = '20 ago 2021'
 
 
 
@@ -41,12 +41,13 @@ const Pub = '19 ago 2021'
 		console.log('\nVersão 1.4.0')
 		console.log(' * "Randomize()" agora aceita valores em posições invertidas (Mínimo no máximo e vice-versa)')
         console.log(' * Adicionado 3 novas functions')
-        console.log(' * "ColunaParaVetor()" tinha um let indisponível. Agora funcionando corretamente')
+        console.log(' * Corrigido variável inexistente em "ColunaParaVetor()"')
 		console.log('\nVersão 1.4.1')
-		console.log(' * Corrigido uma variável que estava indisponível em "unirVetor"')
+		console.log(' * Corrigido variável inexistente em "unirVetor"')
 		console.log(' * Agora o link de reports irá estar no terminal sempre quando iniciar o código')
 		console.log(' * Corrigido "repete" não funcionar em "desrepetir"')
     	console.log(' * Corrigido o fato de ter que acompanhar algo em "alfabetica". Não é mais necessário')
+		console.log(' * Corrigido variável inexistente em "somar"')
 		
 		return true
     }
@@ -568,7 +569,7 @@ const Pub = '19 ago 2021'
         }
 
         /*Conclusao*/
-        Notificar('Conc', Funcao, `Foi removido ${Acao} elemento`)
+        Notificar('Conc', Funcao, `Ação feita`)
         return Result
     }
 
@@ -1244,7 +1245,7 @@ const Pub = '19 ago 2021'
     //UNIÃO DE VETORES
     function unirVetor(Aninhamento){
 		let Funcao = 'unirVetor'
-		/*Erro*/ if(Aninhamento[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Vetor', Vetor)
+		/*Erro*/ if(Aninhamento[0] == undefined) return Notificar('Warn', Funcao, 'Vetor', 'Aninhamento', Aninhamento)
         let VetorTam = Aninhamento.length
 
         let Fin = []
