@@ -1,5 +1,5 @@
-const versao = '1.4.1'
-const Pub = '20 ago 2021'
+const versao = '1.4.2'
+const Pub = '21 ago 2021'
 
 
 
@@ -48,6 +48,8 @@ const Pub = '20 ago 2021'
 		console.log(' * Corrigido "repete" não funcionar em "desrepetir"')
     	console.log(' * Corrigido o fato de ter que acompanhar algo em "alfabetica". Não é mais necessário')
 		console.log(' * Corrigido variável inexistente em "somar"')
+        console.log('\nVersão 1.4.2')
+        console.log(' * "organizar()" não aceitava vetores com 0 imbutido')
 		
 		return true
     }
@@ -204,7 +206,7 @@ const Pub = '20 ago 2021'
         let ver = 0
         if(Acompanhar) CLog++
 
-        /*Erro*/  if(!Vetor[0]) return Notificar('Warn', Funcao, "Vetor", 'Vetor', Vetor)
+        /*Erro*/  if(isNaN(Vetor[0])) return Notificar('Warn', Funcao, "Vetor", 'Vetor', Vetor)
 
         for(a=0; a<Vetor.length; a++){
             ver = Vetor.length
@@ -241,7 +243,7 @@ const Pub = '20 ago 2021'
         let LocalTam = Local.length
         let Repete = 0
 
-        /*Erro*/  if(!Local[0]) return Notificar('Warn', Funcao, "Vetor", 'Local', Local)
+        /*Erro*/  if(isNaN(Local[0])) return Notificar('Warn', Funcao, "Vetor", 'Local', Local)
 
         for(i=0; i <LocalTam; i++){
             if(Local[i] == Valor){
@@ -722,15 +724,16 @@ const Pub = '20 ago 2021'
         let Limitador = 1/VetorTam
         let Diferenca = Vetor[0] - Vetor[VetorTam-1]
         Adicao = Number(Adicao)
+        
+        if(!Direcao){
+            if(Diferenca <  0) Direcao = 'cima'
+            if(Diferenca >= 0) Direcao = 'baixo'
+        }
+
         Direcao = Direcao.toLowerCase()
 
         if(Direcao == 'crescente')   Direcao = 'cima'
         if(Direcao == 'decrescente') Direcao = 'baixo'
-
-        if(!Direcao){
-            if(Diferenca < 0) Direcao = 'cima'
-            if(Diferenca > 0) Direcao = 'baixo'
-        }
 
         if(!Adicao){Adicao = Limitador}
 
@@ -742,7 +745,8 @@ const Pub = '20 ago 2021'
             }
 
 			let Repetiu = 0
-			if(VetorAgr[0]) Repetiu = repete(Vetor[j], VetorAgr)
+			if(VetorAgr[0] || VetorAgr[0] == 0) Repetiu = repete(Vetor[j], VetorAgr)
+            console.log(Repetiu)
             let Add = 0
 
             if(Direcao == 'cima' ) Add = Adicao * Repetiu
@@ -775,7 +779,7 @@ const Pub = '20 ago 2021'
 
         for(i=0; i<VetorTam1; i++){
             let Numero = Number(Vetor[i])
-            if(!Numero){}
+            if(isNaN(Numero)){}
             else{
                 VetorValidos.push(Vetor[i])
             }
@@ -813,7 +817,7 @@ const Pub = '20 ago 2021'
 
         for(i=0; i<VetorTam1; i++){
             let Numero = Number(Vetor[i])
-            if(!Numero){}
+            if(isNaN(Numero)){}
             else{
                 VetorValidos.push(Vetor[i])
             }
@@ -1104,7 +1108,7 @@ const Pub = '20 ago 2021'
 
         if(Ordem == 'crescente')   VetorBase = desrepetir(Vetor, Limitador, 'cima' )
         if(Ordem == 'decrescente') VetorBase = desrepetir(Vetor, Limitador, 'baixo')
-
+        console.log(VetorBase)
         if(Ordem == 'crescente'  ) VetorBase2 = crescente(VetorBase)
         if(Ordem == 'decrescente') VetorBase2 = decrescente(VetorBase)
 
@@ -1124,7 +1128,7 @@ const Pub = '20 ago 2021'
         if( Acomp) return [VetorA, VetorB]
     }
 
-
+//console.log(organizar([0,0,0,0,0,0,0], 'crescente', [1,5,3,5,6,4,3]))
 
     /*COLUNA PARA VETOR*/
     function colunaParaVetor(Aninhamento){
