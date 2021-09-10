@@ -1,5 +1,5 @@
-const versao = '1.4.2'
-const Pub = '21 ago 2021'
+const versao = '1.5.0'
+const Pub = '10 set 2021'
 
 
 
@@ -38,10 +38,6 @@ const Pub = '21 ago 2021'
     function Update(){
 		//Listar o que mudou dentro da versão do peso atual (1.X). Mudar assim que soltar ramificação do próximo peso
         console.log('O QUE ATUALIZOU?')
-		console.log('\nVersão 1.4.0')
-		console.log(' * "Randomize()" agora aceita valores em posições invertidas (Mínimo no máximo e vice-versa)')
-        console.log(' * Adicionado 3 novas functions')
-        console.log(' * Corrigido variável inexistente em "ColunaParaVetor()"')
 		console.log('\nVersão 1.4.1')
 		console.log(' * Corrigido variável inexistente em "unirVetor"')
 		console.log(' * Agora o link de reports irá estar no terminal sempre quando iniciar o código')
@@ -49,8 +45,10 @@ const Pub = '21 ago 2021'
     	console.log(' * Corrigido o fato de ter que acompanhar algo em "alfabetica". Não é mais necessário')
 		console.log(' * Corrigido variável inexistente em "somar"')
         console.log('\nVersão 1.4.2')
-        console.log(' * "organizar()" não aceitava vetores com 0 imbutido')
-		
+        console.log(' * "organizar()", "desrepetir()", "unificar()", "repete()", "crescente()" e "decrescente()" não aceitavam vetor com 0 imbutido')
+		console.log('\nVersão 1.5.0')
+        console.log(' * Nova function: Acumulado')
+
 		return true
     }
 
@@ -334,7 +332,7 @@ const Pub = '21 ago 2021'
     /*COMO USAR AS FUNÇÕES*/
     function AcessarSite(){
         console.log('Versão atual: v'+versao+' de '+Pub+' by Zienaps')
-        console.log('Veja sobre a NPM aqui: https://zienaps.neocities.org/cqs-uteis.html')
+        console.log('Veja sobre a NPM aqui: https://zienaps.neocities.org/CQS-Uteis/Documentacao.html')
 		console.log('Entre em contato conosco: https://forms.gle/jTNTWo7Kax62ZVXS6')
         
         /*Conclusao*/
@@ -1276,7 +1274,53 @@ const Pub = '21 ago 2021'
         else                        {Notificar('Conc', Funcao, `Foram unidos ${Acao} vetores`)}
         return Fim
     }
-        
+
+
+
+
+//VERSÃO 1.5
+    function acumulado(Valor, Entrada, Saida, Dias){
+		let Funcao = 'acumulado'
+		/*Erro*/ if(typeof(Valor) != 'number' && typeof(Valor) != 'object')	return Notificar('Warn', Funcao, 'Valor deve ser número ou data', 'Valor', Valor)
+		/*Erro*/ if(typeof(Dias)  != 'number' && Dias != undefined) return Notificar('Warn', Funcao, 'Numero', 'Dias', Dias)
+		/*Info*/ if(Dias != undefined && (Entrada == 'meses' || Entrada == 'anos' || Saida == 'meses' || Saida == 'anos')) Notificar('Info', Funcao, 'Não é necessário adicionar "Dias" caso não utilize meses ou anos no pedido')
+        /*Info*/ if(Dias == undefined && (Entrada == 'meses' || Entrada == 'anos' || Saida == 'meses' || Saida == 'anos')) Notificar('Info', Funcao, 'Adicione "Dias" caso utilize meses ou anos para o valor sair conforme o seu pedido')
+        let Tipo = ''
+		let Valor1
+		let Fim = ''
+        if(Dias == undefined) Dias = 30.4375
+		
+        if(typeof(Valor) == 'number') Tipo = 'Numero'
+        if(typeof(Valor) == 'object') Tipo = 'Data'
+		
+        if(Tipo == 'Data') Valor1 = Date.now(Valor)
+        if(Tipo == 'Numero'){
+            if(Entrada == 'milissegundos') 	Valor1 = Valor        * 1
+            if(Entrada == 'segundos') 		Valor1 = Valor 		  * 1000
+            if(Entrada == 'minutos') 		Valor1 = Valor 		  * 1000 * 60
+            if(Entrada == 'horas')			Valor1 = Valor 		  * 1000 * 60 * 60
+            if(Entrada == 'dias')			Valor1 = Valor 		  * 1000 * 60 * 60 * 24
+            if(Entrada == 'semanas')		Valor1 = Valor 		  * 1000 * 60 * 60 * 24 * 7
+            if(Entrada == 'meses')			Valor1 = Valor 		  * 1000 * 60 * 60 * 24 * Dias
+            if(Entrada == 'anos')			Valor1 = Valor 		  * 1000 * 60 * 60 * 24 * Dias * 12
+        }
+        console.log(Valor1)
+		if(Saida == 'anos')		    		Fim   = Valor1        / 1000 / 60 / 60 / 24 / Dias / 12
+		if(Saida == 'meses')	    		Fim   = Valor1       / 1000 / 60 / 60 / 24 / Dias
+		if(Saida == 'semanas')	    		Fim   = Valor1      / 1000 / 60 / 60 / 24 / 7
+		if(Saida == 'dias')		    		Fim   = Valor1     / 1000 / 60 / 60 / 24
+		if(Saida == 'horas')	    		Fim   = Valor1    / 1000 / 60 / 60
+		if(Saida == 'minutos')	    		Fim   = Valor1   / 1000 / 60
+        if(Saida == 'segundos')             Fim   = Valor1  / 1000
+        if(Saida == 'milissegundos')        Fim   = Valor1 / 1
+		
+        /*Erro*/ if(Tipo == 'Data' && Fim == '') return Notificar('Warn', Funcao, 'Valor adicionado em Saida não foi reconhecida', 'Saida', Saida)
+		/*Erro*/ if(Fim == '') return Notificar('Warn', Funcao, 'Valor adicionado em Entrada/Saida não foi reconhecida', 'Entrada/Saida', Entrada+'/'+Saida)
+		
+		return Fim
+    }
+
+
 
 
 module.exports = {
@@ -1315,5 +1359,6 @@ module.exports = {
     Update,
     procv,
     contarTudo,
-    unirVetor
+    unirVetor,
+    acumulado
 }
