@@ -1,4 +1,4 @@
-const versao = '1.5.1'
+const versao = '1.6.0'
 const Pub = '20 out 2021'
 
 
@@ -1325,11 +1325,13 @@ const Pub = '20 out 2021'
 
 //VERSÃO 1.6
 	function fatorial(numero){
+        let Funcao = 'fatorial'
 		let Final = 1
 		let Fator = []
 		let Progresso = []
 		
-        /*Erro*/ if(numero < 0) return Notificar('Warn', Funcao, 'Adicione fatorial positivo', 'numeros', numeros)
+        /*Erro*/ if(typeof(numero) != 'number')	return Notificar('Warn', Funcao, 'Entrada deve ser número', 'numero', numero)
+        /*Erro*/ if(numero < 0) return Notificar('Warn', Funcao, 'Adicione fatorial positivo', 'numero', numero)
 
 		for(i=0; i<num; i++){
 			Final = Final * (num - i)
@@ -1359,6 +1361,8 @@ const Pub = '20 out 2021'
         let Quantia = numeros.length
         let Primos = primos(numeros, false)
         let Primo = 0
+
+        /*Erro*/ if(typeof(numeros) != 'number')	return Notificar('Warn', Funcao, 'Entrada deve ser número', 'numeros', numeros)
 
         //REMOVER MENOR QUE 1
         let Filtro = []
@@ -1445,6 +1449,8 @@ const Pub = '20 out 2021'
         let Quantia = numeros.length
         let Primos = primos(numeros, false)
         let Primo = 0
+
+        /*Erro*/ if(typeof(numeros) != 'number')	return Notificar('Warn', Funcao, 'Entrada deve ser número', 'numeros', numeros)
 
         //REMOVER MENOR QUE 1
         let Filtro = []
@@ -1537,9 +1543,13 @@ const Pub = '20 out 2021'
 
 
     function tabuada(numero, limite, informar){
+        let Funcao = 'tabuada'
         let Tabela = []
         let Linha = []
         if(!limite) limite = 10
+
+        /*Erro*/ if(typeof(numero) != 'number')	return Notificar('Warn', Funcao, 'Entrada deve ser número', 'numero', numero)
+        /*Erro*/ if(typeof(limite) != 'number')	return Notificar('Warn', Funcao, 'Entrada deve ser número', 'limite', limite)
 
         for(b=0;b<limite; b++){
             let Ver = b + 1
@@ -1559,9 +1569,12 @@ const Pub = '20 out 2021'
 
 
     function primos(limite, informar){
+        let Funcao = 'primos'
         let Verificar = sequencia(limite, 2, 1)
         let Verificando = Verificar
         let NaoPrimo = []
+
+        /*Erro*/ if(typeof(numeros) != 'number')	return Notificar('Warn', Funcao, 'Entrada deve ser número', 'limite', limite)
 
         //OLHANDO NÚMERO POR NÚMERO
         for(b=0; b<limite; b++){
@@ -1597,8 +1610,11 @@ const Pub = '20 out 2021'
 
 
     function modulo(numero){
+        let Funcao = 'modulo'
         let Final = numero
         let Negat = false
+
+        /*Erro*/ if(typeof(numero) != 'number')	return Notificar('Warn', Funcao, 'Entrada deve ser número', 'numero', numero)
 
         if(Final < 0){
             Negat = true
