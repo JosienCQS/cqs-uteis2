@@ -1324,11 +1324,13 @@ const Pub = '20 out 2021'
 	
 
 //VERSÃO 1.6
-	function fatorial(num){
+	function fatorial(numero){
 		let Final = 1
 		let Fator = []
 		let Progresso = []
 		
+        /*Erro*/ if(numero < 0) return Notificar('Warn', Funcao, 'Adicione fatorial positivo', 'numeros', numeros)
+
 		for(i=0; i<num; i++){
 			Final = Final * (num - i)
 			Progresso.push(Final)
@@ -1353,9 +1355,32 @@ const Pub = '20 out 2021'
 
     function mmc(numeros, informar){
         //SEPARAR VALORES
+        let Funcao = 'mmc'
         let Quantia = numeros.length
-        let Primos = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349]
+        let Primos = primos(numeros, false)
         let Primo = 0
+
+        //REMOVER MENOR QUE 1
+        let Filtro = []
+        let Indesejado = 0
+        let Removidos = []
+        for(g=0; g<Quantia;g++){
+            if(!isNaN(Number(numeros[g]))){
+                if(!(numeros[g] < 1)){Filtro.push(numeros[g])}
+                else{
+                    Indesejado++
+                    Removidos.push(numeros[g])
+                }
+            } else{
+                Removidos.push(numeros[g])
+                Indesejado++
+            }
+        }
+        numeros = Filtro
+        Quantia = numeros.length
+        
+        /*Info*/ if(Indesejado) Notificar('Info', Funcao, 'Foram removidos alguns valores indesejados ('+Removidos+')')
+        /*Erro*/ if(Quantia == 0) return Notificar('Warn', Funcao, 'Vetor adicionado está vazio', 'numeros', numeros)
 
         let Prosseguir = true
         let Processos = []
@@ -1371,27 +1396,28 @@ const Pub = '20 out 2021'
             }
             if(AumentarPrimo) Primo++
             
+            if(!AumentarPrimo){
+                //FAZER A DIVISÃO DE CADA UM PELO PRIMO
+                let NovoNumeros = []
+                for(c=0; c<Quantia; c++){
+                    if(ProcessoAtual[c]%Primos[Primo] == 0){NovoNumeros.push(ProcessoAtual[c]/Primos[Primo])}
+                    else{NovoNumeros.push(ProcessoAtual[c])}
+                }
 
-            //FAZER A DIVISÃO DE CADA PELO PRIMO
-            let NovoNumeros = []
-            for(c=0; c<Quantia; c++){
-                if(ProcessoAtual[c]%Primos[Primo] == 0){NovoNumeros.push(ProcessoAtual[c]/Primos[Primo])}
-                else{NovoNumeros.push(ProcessoAtual[c])}
+
+                //VERIFICAR SE TODOS DEU 1 E FINALIZAR PROCESSO
+                let Finalizar = true
+                for(d=0; d<Quantia; d++){
+                    if(NovoNumeros[d] != 1) Finalizar = false
+                }
+                if(Finalizar) Prosseguir = false
+
+                if(informar) console.log(ProcessoAtual+'|'+Primos[Primo])
+
+                Processos.push(ProcessoAtual)
+                LinhaDaDireita.push(Primos[Primo])
+                ProcessoAtual = NovoNumeros
             }
-
-
-            //VERIFICAR SE TODOS DEU 1 E FINALIZAR PROCESSO
-            let Finalizar = true
-            for(d=0; d<Quantia; d++){
-                if(NovoNumeros[d] != 1) Finalizar = false
-            }
-            if(Finalizar) Prosseguir = false
-
-            console.log(ProcessoAtual+'|'+Primos[Primo])
-
-            Processos.push(ProcessoAtual)
-            LinhaDaDireita.push(Primos[Primo])
-            ProcessoAtual = NovoNumeros
         }
 
 
@@ -1401,13 +1427,13 @@ const Pub = '20 out 2021'
             if( Resultado) Resultado = Resultado * LinhaDaDireita[e]
             if(!Resultado) Resultado = LinhaDaDireita[e]
         }
-        console.log(ProcessoAtual+'|>'+Resultado+'<')
+        if(informar) console.log(ProcessoAtual+'|>'+Resultado+'<')
         Processos.push(ProcessoAtual)
 
         return {
-            Resultado: Resultado,
-            Processos: Processos,
-            LinhaDaDireita: LinhaDaDireita
+            resultado: Resultado,
+            processos: Processos,
+            linhaDaDireita: LinhaDaDireita
         }
     }
 
@@ -1415,9 +1441,33 @@ const Pub = '20 out 2021'
 
     function mdc(numeros, informar){
         //SEPARAR VALORES
+        let Funcao = 'mdc'
         let Quantia = numeros.length
-        let Primos = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349]
+        let Primos = primos(numeros, false)
         let Primo = 0
+
+        //REMOVER MENOR QUE 1
+        let Filtro = []
+        let Indesejado = 0
+        let Removidos = []
+        for(g=0; g<Quantia;g++){
+            if(!isNaN(Number(numeros[g]))){
+                if(!(numeros[g] < 1)){Filtro.push(numeros[g])}
+                else{
+                    Indesejado++
+                    Removidos.push(numeros[g])
+                }
+            } else{
+                Removidos.push(numeros[g])
+                Indesejado++
+            }
+        }
+        numeros = Filtro
+        Quantia = numeros.length
+        
+        /*Info*/ if(Indesejado) Notificar('Info', Funcao, 'Foram removidos alguns valores indesejados ('+Removidos+')')
+        /*Erro*/ if(Quantia == 0) return Notificar('Warn', Funcao, 'Vetor adicionado está vazio', 'numeros', numeros)
+
 
         let Prosseguir = true
         let Processos = []
@@ -1434,35 +1484,36 @@ const Pub = '20 out 2021'
             }
             if(AumentarPrimo) Primo++
             
+            if(!AumentarPrimo){
+                //FAZER A DIVISÃO DE CADA PELO PRIMO
+                let NovoNumeros = []
+                for(c=0; c<Quantia; c++){
+                    if(ProcessoAtual[c]%Primos[Primo] == 0){NovoNumeros.push(ProcessoAtual[c]/Primos[Primo])}
+                    else{NovoNumeros.push(ProcessoAtual[c])}
+                }
 
-            //FAZER A DIVISÃO DE CADA PELO PRIMO
-            let NovoNumeros = []
-            for(c=0; c<Quantia; c++){
-                if(ProcessoAtual[c]%Primos[Primo] == 0){NovoNumeros.push(ProcessoAtual[c]/Primos[Primo])}
-                else{NovoNumeros.push(ProcessoAtual[c])}
+                let Destacar = true
+                for(f=0; f<Quantia; f++){
+                    if(ProcessoAtual[f]%Primos[Primo] != 0){Destacar = false}
+                }
+                if(Destacar) LinhaDestacada.push(Primos[Primo])
+
+
+                //VERIFICAR SE TODOS DEU 1 E FINALIZAR PROCESSO
+                let Finalizar = true
+                for(d=0; d<Quantia; d++){
+                    if(NovoNumeros[d] != 1) Finalizar = false
+                }
+                if(Finalizar) Prosseguir = false
+
+                let Destaque = ''
+                if(Destacar) Destaque = '*'
+                if(informar) console.log(ProcessoAtual+'|'+Primos[Primo]+Destaque)
+
+                Processos.push(ProcessoAtual)
+                LinhaDaDireita.push(Primos[Primo])
+                ProcessoAtual = NovoNumeros
             }
-
-            let Destacar = true
-            for(f=0; f<Quantia; f++){
-                if(ProcessoAtual[f]%Primos[Primo] != 0){Destacar = false}
-            }
-            if(Destacar) LinhaDestacada.push(Primos[Primo])
-
-
-            //VERIFICAR SE TODOS DEU 1 E FINALIZAR PROCESSO
-            let Finalizar = true
-            for(d=0; d<Quantia; d++){
-                if(NovoNumeros[d] != 1) Finalizar = false
-            }
-            if(Finalizar) Prosseguir = false
-
-            let Destaque = ''
-            if(Destacar) Destaque = '*'
-            console.log(ProcessoAtual+'|'+Primos[Primo]+Destaque)
-
-            Processos.push(ProcessoAtual)
-            LinhaDaDireita.push(Primos[Primo])
-            ProcessoAtual = NovoNumeros
         }
 
 
@@ -1472,14 +1523,14 @@ const Pub = '20 out 2021'
             if( Resultado) Resultado = Resultado * LinhaDestacada[e]
             if(!Resultado) Resultado = LinhaDestacada[e]
         }
-        console.log(ProcessoAtual+'|>'+Resultado+'<')
+        if(informar) console.log(ProcessoAtual+'|>'+Resultado+'<')
         Processos.push(ProcessoAtual)
 
         return {
-            Resultado: Resultado,
-            Processos: Processos,
-            LinhaDaDireita: LinhaDaDireita,
-            LinhaDestacada: LinhaDestacada
+            resultado: Resultado,
+            processos: Processos,
+            linhaDaDireita: LinhaDaDireita,
+            linhaDestacada: LinhaDestacada
         }
     }
 
@@ -1496,18 +1547,18 @@ const Pub = '20 out 2021'
 
             Tabela.push(Atual)
             Linha.push(Ver)
-            console.log(Ver+' * '+numero+' = '+Atual)
+            if(informar) console.log(Ver+' * '+numero+' = '+Atual)
         }
 
         return {
-            Tabuada: Tabela,
-            Linha: Linha
+            tabuada: Tabela,
+            linha: Linha
         }
     }
 
 
 
-    function Primos(limite, informar){
+    function primos(limite, informar){
         let Verificar = sequencia(limite, 2, 1)
         let Verificando = Verificar
         let NaoPrimo = []
@@ -1516,12 +1567,13 @@ const Pub = '20 out 2021'
         for(b=0; b<limite; b++){
             let Saida = []
             for(c=0;c<Verificando.length; c++){
-                console.log(Verificando[c]+' | '+Verificar[b])
                 if(Verificando[c]%Verificar[b] == 0){
                     if(Verificando[c] == Verificar[b]){
                         Saida.push(Verificando[c])
+                        if(informar) console.log(Verificando[c]+' | '+Verificar[b]+': É primo')
                     } else{
                         NaoPrimo.push(Verificando[c])
+                        if(informar) console.log(Verificando[c]+' | '+Verificar[b]+': Não é primo')
                     }
                 } else{
                     Saida.push(Verificando[c])
@@ -1541,9 +1593,26 @@ const Pub = '20 out 2021'
             NaoPrimos: NaoPrimo
         }
     }
+
+
+
+    function modulo(numero){
+        let Final = numero
+        let Negat = false
+
+        if(Final < 0){
+            Negat = true
+            Final = Final * -1
+        }
+
+        return {
+            resultado: Final,
+            seNegativo: Negat
+        }
+    }
   
 
-console.log()
+
 
 module.exports = {
     randomize,
@@ -1582,5 +1651,10 @@ module.exports = {
     procv,
     contarTudo,
     unirVetor,
-    acumulado
+    acumulado,
+    fatorial,
+    mmc,
+    mdc,
+    tabuada,
+    modulo
 }
